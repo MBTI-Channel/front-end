@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	compiler: {
+		// ssr and displayName are configured by default
+		styledComponents: true,
+	},
 	images: {
-		loader: 'imgix',
-		path: 'http://localhost:3000',
+		loader: 'akamai',
+		path: '/',
 	},
 };
 
