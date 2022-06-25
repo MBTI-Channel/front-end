@@ -19,6 +19,15 @@ export const Logo = styled.div`
 	flex-direction: row;
 	align-items: flex-start;
 	justify-content: center;
+	& a > span {
+		width: 296px;
+		height: 90px;
+		display: inline-block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		vertical-align: text-top;
+		background-image: url(/logo.svg);
+	}
 `;
 
 export const SocialLogin = styled.div`

@@ -20,6 +20,15 @@ export const Container = styled.div`
 
 export const Logo = styled.div`
 	padding-left: 24px;
+	& a > span {
+		width: 184px;
+		height: 48px;
+		display: inline-block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		vertical-align: text-top;
+		background-image: url(/logo.svg);
+	}
 `;
 
 export const Nav = styled.div`

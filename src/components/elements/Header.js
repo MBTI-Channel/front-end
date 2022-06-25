@@ -10,12 +10,7 @@ const Header = (props) => {
 				<Logo>
 					<Link href={'/'}>
 						<a>
-							<Image //
-								src='logo.svg'
-								alt='Logo'
-								width={184}
-								height={48}
-							/>
+							<span />
 						</a>
 					</Link>
 				</Logo>

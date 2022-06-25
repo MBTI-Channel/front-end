@@ -29,7 +29,7 @@ const Login = (props) => {
 				<Logo>
 					<Link href={'/'}>
 						<a>
-							<Image src='logo.svg' alt='Back home' width={296} height={90} />
+							<span />
 						</a>
 					</Link>
 				</Logo>
