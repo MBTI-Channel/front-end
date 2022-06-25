@@ -22,7 +22,9 @@ const Header = (props) => {
 				{/* TODO: 로그인 구현 후 조건부 GNB로 바꾸기 */}
 				<Nav>
 					<Link href={'/auth/login'} passHref>
-						<Btn>로그인</Btn>
+						<Btn>
+							<div>로그인</div>
+						</Btn>
 					</Link>
 				</Nav>
 			</Container>

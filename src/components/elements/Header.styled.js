@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
 	height: 72px;
 	background: white;
 	border-bottom: 1px solid #ebebeb;
-	padding: 6px;
 `;
 
 export const Container = styled.div`
@@ -27,10 +26,17 @@ export const Nav = styled.div`
 	width: fit-content;
 	height: 24px;
 	padding-right: 24px;
+	& a:link {
+		color: black;
+	}
+	& a:visited {
+		color: black;
+	}
 `;
 
 export const Btn = styled.a`
 	border: '0px';
 	font-size: '1.1rem';
 	font-weight: 'bold';
+	text-decoration: none;
 `;
