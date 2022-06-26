@@ -15,7 +15,7 @@ import {
 const CLIENT_ID = nextConfig.env.CLIENT_ID;
 const REDIRECT_URI = nextConfig.env.REDIRECT_URI;
 
-const Login = (props) => {
+const Login = () => {
 	return (
 		<Wrapper>
 			<Content>
