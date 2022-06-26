@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Wrapper, Container, Logo, Nav, Btn } from './Header.styled';
 
 const Header = (props) => {
@@ -10,19 +9,16 @@ const Header = (props) => {
 				<Logo>
 					<Link href={'/'}>
 						<a>
-							<Image //
-								src='logo.svg'
-								alt='Logo'
-								width={184}
-								height={48}
-							/>
+							<span />
 						</a>
 					</Link>
 				</Logo>
 				{/* TODO: 로그인 구현 후 조건부 GNB로 바꾸기 */}
 				<Nav>
 					<Link href={'/auth/login'} passHref>
-						<Btn>로그인</Btn>
+						<Btn>
+							<div>로그인</div>
+						</Btn>
 					</Link>
 				</Nav>
 			</Container>
