@@ -3,13 +3,14 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
 	width: 100vw;
 	height: 72px;
+	padding: 6px 0px;
 	background: white;
 	border-bottom: 1px solid #ebebeb;
 `;
 
 export const Container = styled.div`
 	min-width: 395px;
-	max-width: 64rem;
+	max-width: 70rem;
 	height: 60px;
 	margin-left: auto;
 	margin-right: auto;
@@ -35,6 +36,9 @@ export const Nav = styled.div`
 	width: fit-content;
 	height: 24px;
 	padding-right: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	& a:link {
 		color: black;
 	}

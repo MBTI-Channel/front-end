@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Wrapper, Container, Logo, Nav, Btn } from './Header.styled';
 
 const Header = (props) => {
