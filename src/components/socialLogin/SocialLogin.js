@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import nextConfig from '../../../next.config';
 import {
 	Wrapper,
 	Content,
@@ -12,8 +11,8 @@ import {
 	NaverIcon,
 } from './SocialLogin.styled';
 
-const CLIENT_ID = process.env.KAKAO_KEY || 'asdfasdf';
-const REDIRECT_URI = nextConfig.env.KAKAO_REDIRECT;
+const CLIENT_ID = process.env.KAKAO_KEY;
+const REDIRECT_URI = process.env.KAKAO_REDIRECT;
 
 const Login = () => {
 	return (
