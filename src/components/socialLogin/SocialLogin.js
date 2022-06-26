@@ -12,8 +12,8 @@ import {
 	NaverIcon,
 } from './SocialLogin.styled';
 
-const CLIENT_ID = nextConfig.env.CLIENT_ID;
-const REDIRECT_URI = nextConfig.env.REDIRECT_URI;
+const CLIENT_ID = process.env.KAKAO_KEY || 'asdfasdf';
+const REDIRECT_URI = nextConfig.env.KAKAO_REDIRECT;
 
 const Login = () => {
 	return (
