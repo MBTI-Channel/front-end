@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
 	display: flex;
-	height: 75vh;
+	height: 90vh;
+	background: white;
 `;
 
 export const Content = styled.div`
@@ -31,27 +32,25 @@ export const Logo = styled.div`
 `;
 
 export const Typo = styled.p`
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 3rem;
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 2.5rem;
 	font-weight: 700;
+	margin: 4px 0px;
 `;
 
 export const Middle = styled.div`
 	width: 100%;
-	text-align: center;
-	display: flex;
+	label {
+		max-width: 1px;
+		max-height: 1px;
+	}
 	input[type='radio'] {
 		display: none;
 		&:checked {
-			+ .box {
-				background-color: green;
+			& + div {
+				border: 0px;
 				span {
 					color: white;
-					transform: translateY(70px);
-					&:before {
-						transform: translateY(0px);
-						opacity: 1;
-					}
 				}
 			}
 		}
@@ -59,8 +58,8 @@ export const Middle = styled.div`
 `;
 
 export const Box = styled.div`
-	width: 200px;
-	height: 200px;
+	width: 87px;
+	height: 87px;
 	background-color: white;
 	transition: all 250ms ease;
 	will-change: transition;
@@ -69,39 +68,105 @@ export const Box = styled.div`
 	cursor: pointer;
 	position: relative;
 	font-weight: 900;
+	border-radius: 12px;
+	border: 1px solid #c4c4c4;
+	position: relative;
+	margin: 4px;
 	&:active {
-		transform: translateY(10px);
+		transform: scale(1.15); /* translateY(10px); */
 	}
 	span {
+		z-index: 500;
 		position: absolute;
-		transform: translate(0, 60px);
 		left: 0;
 		right: 0;
 		transition: all 300ms ease;
-		font-size: 1.5em;
+		font-family: 'Noto Sans', sans-serif;
+		font-weight: 900;
+		font-size: 2.5rem;
 		user-select: none;
-		color: green;
-		&:before {
-			font-size: 1.2em;
-			font-family: FontAwesome;
-			display: block;
-			transform: translateY(-80px);
-			opacity: 0;
-			transition: all 300ms ease-in-out;
-			font-weight: normal;
-			color: white;
+		color: #666666;
+		top: 55%;
+		transform: translateY(-50%);
+	}
+`;
+
+export const E = styled.input`
+	&:checked {
+		+ div {
+			background-color: #ffcc33;
 		}
 	}
 `;
 
-export const FrontEnd = styled.span`
-	&:before {
-		content: '\f121';
+export const I = styled.input`
+	&:checked {
+		+ div {
+			background-color: #ff9900;
+		}
 	}
 `;
 
-export const BackEnd = styled.span`
-	&:before {
-		content: '\f0f4';
+export const N = styled.input`
+	grid-template-areas: 'ns';
+	&:checked {
+		+ div {
+			background-color: #cc6666;
+		}
 	}
+`;
+
+export const S = styled.input`
+	&:checked {
+		+ div {
+			background-color: #cc3333;
+		}
+	}
+`;
+
+export const T = styled.input`
+	&:checked {
+		+ div {
+			background-color: #339966;
+		}
+	}
+`;
+
+export const F = styled.input`
+	grid-template-areas: 'ft';
+	&:checked {
+		+ div {
+			background-color: #66cc99;
+		}
+	}
+`;
+
+export const J = styled.input`
+	&:checked {
+		+ div {
+			background-color: #009999;
+		}
+	}
+`;
+
+export const P = styled.input`
+	&:checked {
+		+ div {
+			background-color: #66cccc;
+		}
+	}
+`;
+
+export const MBTIdiv = styled.div`
+	width: 182px;
+	height: 3rem;
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 4px 0px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: #ebebeb;
+	border-radius: 4px;
 `;
