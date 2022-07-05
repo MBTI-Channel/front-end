@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// BUG: 해당 디렉토리에서 발생하는 eslint 버그성 오류들 무시
 	eslint: {
 		dirs: ['pages', 'utils'],
 	},
