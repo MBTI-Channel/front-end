@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../elements/header/Header';
 
-const LandingPage = (props) => {
+const LandingPage = () => {
 	return (
 		<>
 			<Header />

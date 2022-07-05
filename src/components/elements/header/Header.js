@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Wrapper, Container, Logo, Nav, Btn } from './Header.styled';
 
-const Header = (props) => {
+const Header = () => {
 	return (
 		<Wrapper>
 			<Container>
