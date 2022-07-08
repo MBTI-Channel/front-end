@@ -46,6 +46,7 @@ export const Middle = styled.div`
 	}
 	input[type='radio'] {
 		display: none;
+
 		&:checked {
 			& + div {
 				border: 0px;
@@ -72,7 +73,7 @@ export const Box = styled.div`
 	border: 1px solid #c4c4c4;
 	position: relative;
 	margin: 4px;
-	&:active {
+	&:hover {
 		transform: scale(1.15); /* translateY(10px); */
 	}
 	span {
@@ -108,7 +109,6 @@ export const I = styled.input`
 `;
 
 export const N = styled.input`
-	grid-template-areas: 'ns';
 	&:checked {
 		+ div {
 			background-color: #cc6666;
@@ -133,7 +133,6 @@ export const T = styled.input`
 `;
 
 export const F = styled.input`
-	grid-template-areas: 'ft';
 	&:checked {
 		+ div {
 			background-color: #66cc99;
@@ -169,4 +168,22 @@ export const MBTIdiv = styled.div`
 	justify-content: center;
 	background: #ebebeb;
 	border-radius: 4px;
+`;
+
+export const Confirm = styled.div`
+	width: auto;
+	height: auto;
+	& a {
+		width: 24.25rem;
+		height: 3rem;
+		border-radius: 6px;
+		margin: 35px 0px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		outline: none;
+		box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
+		background: #1973fb;
+		color: white;
+	}
 `;

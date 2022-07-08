@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import {
 	Box,
+	Confirm,
 	Content,
 	E,
 	F,
@@ -30,19 +31,19 @@ const SetMBTI = (props) => {
 
 	const EIHandler = useCallback((e) => {
 		setEI(e.target.value);
-	});
+	}, []);
 
 	const NSHandler = useCallback((e) => {
 		setNS(e.target.value);
-	});
+	}, []);
 
 	const FTHandler = useCallback((e) => {
 		setFT(e.target.value);
-	});
+	}, []);
 
 	const PJHandler = useCallback((e) => {
 		setPJ(e.target.value);
-	});
+	}, []);
 
 	useEffect(() => {
 		setMBTI(`${EI}${NS}${FT}${PJ}`);
@@ -75,7 +76,12 @@ const SetMBTI = (props) => {
 						</label>
 
 						<label>
-							<I type='radio' name='ei' value='I' onChange={EIHandler} />
+							<I //
+								type='radio'
+								name='ei'
+								value='I'
+								onChange={EIHandler}
+							/>
 							<Box>
 								<span>I</span>
 							</Box>
@@ -97,7 +103,12 @@ const SetMBTI = (props) => {
 						</label>
 
 						<label>
-							<S type='radio' name='ns' value='S' onChange={NSHandler} />
+							<S //
+								type='radio'
+								name='ns'
+								value='S'
+								onChange={NSHandler}
+							/>
 							<Box>
 								<span>S</span>
 							</Box>
@@ -119,7 +130,12 @@ const SetMBTI = (props) => {
 						</label>
 
 						<label>
-							<F type='radio' name='ft' value='F' onChange={FTHandler} />
+							<F //
+								type='radio'
+								name='ft'
+								value='F'
+								onChange={FTHandler}
+							/>
 							<Box>
 								<span>F</span>
 							</Box>
@@ -141,7 +157,12 @@ const SetMBTI = (props) => {
 						</label>
 
 						<label>
-							<P type='radio' name='jp' value='P' onChange={PJHandler} />
+							<P //
+								type='radio'
+								name='jp'
+								value='P'
+								onChange={PJHandler}
+							/>
 							<Box>
 								<span>P</span>
 							</Box>
@@ -151,6 +172,9 @@ const SetMBTI = (props) => {
 				<MBTIdiv>
 					<p>{MBTI}</p>
 				</MBTIdiv>
+				<Confirm>
+					<Link href='/'>설정하기</Link>
+				</Confirm>
 			</Content>
 		</Wrapper>
 	);
