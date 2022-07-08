@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// TODO: auth 쪽 스타일 컴포넌트 UI로 분리하기
 export const Wrapper = styled.div`
 	display: flex;
 	height: 90vh;

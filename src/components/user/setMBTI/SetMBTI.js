@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { memo, useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
 	Box,
 	Confirm,
@@ -21,7 +22,7 @@ import {
 import { useRecoilState } from 'recoil';
 import { userMBTI } from '../../../sotre/user';
 
-const SetMBTI = (props) => {
+const SetMBTI = ({ nextHref }) => {
 	const [EI, setEI] = useState('E');
 	const [NS, setNS] = useState('N');
 	const [FT, setFT] = useState('T');
@@ -173,11 +174,15 @@ const SetMBTI = (props) => {
 					<p>{MBTI}</p>
 				</MBTIdiv>
 				<Confirm>
-					<Link href='/'>설정하기</Link>
+					<Link href={nextHref}>설정하기</Link>
 				</Confirm>
 			</Content>
 		</Wrapper>
 	);
+};
+
+SetMBTI.propTypes = {
+	nextHref: PropTypes.string.isRequired,
 };
 
 export default memo(SetMBTI);

@@ -9,3 +9,8 @@ export const userMBTI = atom({
 	key: 'userMBTI',
 	default: '',
 });
+
+export const userName = atom({
+	key: 'userName',
+	default: '',
+});
