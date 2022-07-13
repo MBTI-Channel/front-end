@@ -38,7 +38,14 @@ export const Typo = styled.p`
 	margin: 4px 0px;
 `;
 
-export const MBTIdiv = styled.div`
+export const MBTI = styled.div`
+	color: #1973fb;
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 1.25rem;
+	font-weight: 700;
+`;
+
+export const SetInfoDiv = styled.div`
 	width: 182px;
 	height: 3rem;
 	font-family: 'Noto Sans', sans-serif;

@@ -157,7 +157,7 @@ export const P = styled.input`
 	}
 `;
 
-export const MBTIdiv = styled.div`
+export const SetInfoDiv = styled.div`
 	width: 182px;
 	height: 3rem;
 	font-family: 'Noto Sans', sans-serif;

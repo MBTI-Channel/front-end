@@ -2,10 +2,18 @@ import Link from 'next/link';
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { userMBTI, userName } from '../../../sotre/user';
-import { Content, Logo, MBTIdiv, Typo, Wrapper } from './SetUserName.styled';
+import {
+	Content,
+	Logo,
+	MBTI,
+	SetInfoDiv,
+	Typo,
+	Wrapper,
+} from './SetUserName.styled';
 
 const SetUserName = (props) => {
-	const MBTI = useRecoilValue(userMBTI);
+	const mbti = useRecoilValue(userMBTI);
+	console.log(mbti);
 
 	return (
 		<Wrapper>
@@ -18,7 +26,8 @@ const SetUserName = (props) => {
 					</Link>
 				</Logo>
 				<Typo>닉네임 설정</Typo>
-				<MBTIdiv>{MBTI}</MBTIdiv>
+				<MBTI>{mbti}</MBTI>
+				<SetInfoDiv></SetInfoDiv>
 			</Content>
 		</Wrapper>
 	);

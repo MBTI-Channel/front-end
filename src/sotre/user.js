@@ -5,6 +5,26 @@ export const userState = atom({
 	default: {},
 });
 
+export const EI = atom({
+	key: 'EI',
+	default: '_',
+});
+
+export const NS = atom({
+	key: 'NS',
+	default: '_',
+});
+
+export const FT = atom({
+	key: 'FT',
+	default: '_',
+});
+
+export const PJ = atom({
+	key: 'PJ',
+	default: '_',
+});
+
 export const userMBTI = atom({
 	key: 'userMBTI',
 	default: '',

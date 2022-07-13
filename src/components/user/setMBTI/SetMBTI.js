@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
 	Box,
@@ -10,7 +10,7 @@ import {
 	I,
 	J,
 	Logo,
-	MBTIdiv,
+	SetInfoDiv,
 	Middle,
 	N,
 	P,
@@ -20,35 +20,50 @@ import {
 	Wrapper,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
-import { userMBTI } from '../../../sotre/user';
+import { EI, NS, FT, PJ, userMBTI } from '../../../sotre/user';
+import { useRouter } from 'next/router';
 
 const SetMBTI = ({ nextHref }) => {
-	const [EI, setEI] = useState('_');
-	const [NS, setNS] = useState('_');
-	const [FT, setFT] = useState('_');
-	const [PJ, setPJ] = useState('_');
+	const router = useRouter();
+
+	const [ei, setEI] = useRecoilState(EI);
+	const [ns, setNS] = useRecoilState(NS);
+	const [ft, setFT] = useRecoilState(FT);
+	const [pj, setPJ] = useRecoilState(PJ);
 
 	const [MBTI, setMBTI] = useRecoilState(userMBTI);
 
-	const EIHandler = useCallback((e) => {
-		setEI(e.target.value);
-	}, []);
+	const EIHandler = useCallback(
+		(e) => {
+			setEI(e.target.value);
+		},
+		[setEI],
+	);
 
-	const NSHandler = useCallback((e) => {
-		setNS(e.target.value);
-	}, []);
+	const NSHandler = useCallback(
+		(e) => {
+			setNS(e.target.value);
+		},
+		[setNS],
+	);
 
-	const FTHandler = useCallback((e) => {
-		setFT(e.target.value);
-	}, []);
+	const FTHandler = useCallback(
+		(e) => {
+			setFT(e.target.value);
+		},
+		[setFT],
+	);
 
-	const PJHandler = useCallback((e) => {
-		setPJ(e.target.value);
-	}, []);
+	const PJHandler = useCallback(
+		(e) => {
+			setPJ(e.target.value);
+		},
+		[setPJ],
+	);
 
 	useEffect(() => {
-		setMBTI(`${EI}${NS}${FT}${PJ}`);
-	}, [EI, NS, FT, PJ, setMBTI]);
+		setMBTI(`${ei}${ns}${ft}${pj}`);
+	}, [ei, ns, ft, pj, setMBTI]);
 
 	return (
 		<Wrapper>
@@ -68,6 +83,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='ei'
 								value='E'
+								checked={ei === 'E'}
 								onChange={EIHandler}
 							/>
 							<Box className='front-end'>
@@ -80,6 +96,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='ei'
 								value='I'
+								checked={ei === 'I'}
 								onChange={EIHandler}
 							/>
 							<Box>
@@ -94,6 +111,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='ns'
 								value='N'
+								checked={ns === 'N'}
 								onChange={NSHandler}
 							/>
 							<Box>
@@ -106,6 +124,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='ns'
 								value='S'
+								checked={ns === 'S'}
 								onChange={NSHandler}
 							/>
 							<Box>
@@ -120,6 +139,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='ft'
 								value='T'
+								checked={ft === 'T'}
 								onChange={FTHandler}
 							/>
 							<Box>
@@ -132,6 +152,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='ft'
 								value='F'
+								checked={ft === 'F'}
 								onChange={FTHandler}
 							/>
 							<Box>
@@ -146,6 +167,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='jp'
 								value='J'
+								checked={pj === 'J'}
 								onChange={PJHandler}
 							/>
 							<Box>
@@ -158,6 +180,7 @@ const SetMBTI = ({ nextHref }) => {
 								type='radio'
 								name='jp'
 								value='P'
+								checked={pj === 'P'}
 								onChange={PJHandler}
 							/>
 							<Box>
@@ -166,9 +189,9 @@ const SetMBTI = ({ nextHref }) => {
 						</label>
 					</div>
 				</Middle>
-				<MBTIdiv>
+				<SetInfoDiv>
 					<p>{MBTI}</p>
-				</MBTIdiv>
+				</SetInfoDiv>
 				<Confirm>
 					<Link href={nextHref}>설정하기</Link>
 				</Confirm>
