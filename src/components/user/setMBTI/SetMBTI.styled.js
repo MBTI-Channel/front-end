@@ -163,6 +163,7 @@ export const MBTIdiv = styled.div`
 	font-family: 'Noto Sans', sans-serif;
 	font-size: 1.5rem;
 	font-weight: 700;
+	letter-spacing: 5px;
 	margin: 4px 0px;
 	display: inline-flex;
 	align-items: center;

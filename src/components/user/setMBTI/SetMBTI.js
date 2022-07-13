@@ -23,10 +23,10 @@ import { useRecoilState } from 'recoil';
 import { userMBTI } from '../../../sotre/user';
 
 const SetMBTI = ({ nextHref }) => {
-	const [EI, setEI] = useState('E');
-	const [NS, setNS] = useState('N');
-	const [FT, setFT] = useState('T');
-	const [PJ, setPJ] = useState('J');
+	const [EI, setEI] = useState('_');
+	const [NS, setNS] = useState('_');
+	const [FT, setFT] = useState('_');
+	const [PJ, setPJ] = useState('_');
 
 	const [MBTI, setMBTI] = useRecoilState(userMBTI);
 
@@ -64,11 +64,10 @@ const SetMBTI = ({ nextHref }) => {
 				<Middle>
 					<div>
 						<label>
-							<E
+							<E //
 								type='radio'
 								name='ei'
 								value='E'
-								defaultChecked
 								onChange={EIHandler}
 							/>
 							<Box className='front-end'>
@@ -91,10 +90,9 @@ const SetMBTI = ({ nextHref }) => {
 
 					<div>
 						<label>
-							<N
+							<N //
 								type='radio'
 								name='ns'
-								defaultChecked
 								value='N'
 								onChange={NSHandler}
 							/>
@@ -118,10 +116,9 @@ const SetMBTI = ({ nextHref }) => {
 
 					<div>
 						<label>
-							<T
+							<T //
 								type='radio'
 								name='ft'
-								defaultChecked
 								value='T'
 								onChange={FTHandler}
 							/>
@@ -145,10 +142,9 @@ const SetMBTI = ({ nextHref }) => {
 
 					<div>
 						<label>
-							<J
+							<J //
 								type='radio'
 								name='jp'
-								defaultChecked
 								value='J'
 								onChange={PJHandler}
 							/>
