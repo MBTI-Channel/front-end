@@ -17,6 +17,14 @@ const nextConfig = {
 		API_DEV: process.env.API_DEV,
 		API_PRODUCT: process.env.API_PRODUCT,
 	},
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\.svg$/i,
+			issuer: /\.[jt]sx?$/,
+			use: ['@svgr/webpack'],
+		});
+		return config;
+	},
 };
 
 module.exports = nextConfig;
