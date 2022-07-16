@@ -17,17 +17,17 @@ const GnbWrapper = styled.header.attrs((props) => ({
 	align-items: center;
 	width: 100%;
 	height: 64px;
-	padding: 8px;
-	background-color: '#fff';
-	border-bottom: 1px solid #f8fafb;
+	background-color: #fff;
+	border-bottom: 1px solid #efefef;
 	transform: ${(props) =>
 		props.isVisible ? 'translateY(0%)' : 'translateY(-100%)'};
 	/* transition: all 400ms ease-in-out 0s; */
 	& button {
 		color: 'black';
+		opacity: '100%';
 		border: 0;
-		outline: 0;
-		background-color: #fff;
+		padding: 0px;
+		background-color: transparent;
 		cursor: pointer;
 	}
 `;
@@ -48,18 +48,14 @@ const Gnb = ({ isVisible }) => {
 	};
 	return (
 		<GnbWrapper isVisible={isVisible}>
-			<div
-				style={{ display: 'flex', alignItems: 'center', marginLeft: '48px' }}
-			>
-				<button value='logo' onClick={onClick}>
-					<LogoIcon />
-				</button>
-			</div>
+			<button value='logo' onClick={onClick} style={{ marginLeft: '48px' }}>
+				<LogoIcon />
+			</button>
 			<div
 				style={{
 					display: 'flex',
 					width: '275px',
-					justifyContent: 'space-evenly',
+					justifyContent: 'space-between',
 					marginRight: '48px',
 				}}
 			>
