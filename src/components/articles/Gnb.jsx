@@ -9,7 +9,7 @@ const GnbWrapper = styled.header.attrs((props) => ({
 	isVisible: props.isVisible,
 }))`
 	z-index: 10;
-	position: fixed;
+	position: sticky;
 	top: 0;
 	left: 0;
 	display: flex;
