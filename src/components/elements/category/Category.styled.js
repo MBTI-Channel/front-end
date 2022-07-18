@@ -5,6 +5,8 @@ export const CategoryContainer = styled.div`
 	flex-direction: column;
 	width: 390px;
 	height: 253px;
+	border: 1px solid #ebebeb;
+	margin-top: 16px;
 `;
 
 export const CategoryText = styled.div`
@@ -14,6 +16,7 @@ export const CategoryText = styled.div`
 	line-height: 150%;
 	text-align: center;
 	padding-left: 12px;
+	margin-top: 12px;
 `;
 
 export const BoardButtonContainer = styled.div`

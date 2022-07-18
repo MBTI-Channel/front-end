@@ -19,7 +19,6 @@ export const CardWrapper = styled.div`
 export const TextWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-top: 72px;
 `;
 
 export const ImageUploadBox = styled.div`
@@ -33,4 +32,38 @@ export const ImageUploadBox = styled.div`
 	& > input[type='file'] {
 		display: none;
 	}
+`;
+
+export const CategoryConatiner = styled.div`
+	display: flex;
+	margin-top: 72px;
+`;
+
+export const MenuWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-left: 14px;
+	margin-top: 46px;
+`;
+
+export const SearchInputBox = styled.div`
+	display: flex;
+	width: 390px;
+	height: 54px;
+	border: 1px solid #ebebeb;
+	color: #a5a5a5;
+	/* justify-content: center; */
+	align-items: center;
+`;
+
+export const Footer = styled.div`
+	display: flex;
+	width: 390px;
+	height: 185px;
+	border: 1px solid #ebebeb;
+	border-radius: 4px;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	font-size: 24px;
 `;
