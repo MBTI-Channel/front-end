@@ -20,7 +20,7 @@ import {
 	Typo,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
-import { EI, NS, FT, PJ, userMBTI } from '../../../sotre/user';
+import { EI, NS, FT, PJ, userMBTI } from '../../../store/user';
 import { useRouter } from 'next/router';
 
 const SetMBTI = ({ nextHref }) => {

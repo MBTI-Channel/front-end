@@ -32,5 +32,5 @@ export const userMBTI = atom({
 
 export const userName = atom({
 	key: 'userName',
-	default: '',
+	default: { value: '', isValid: false },
 });
