@@ -12,7 +12,7 @@ class Auth {
 				provider,
 				authCode,
 			});
-			return await res;
+			return res;
 		} catch (e) {
 			console.log(e);
 		}
