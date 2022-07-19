@@ -58,7 +58,7 @@ const WritingPage = () => {
 							/>
 						</SearchInputBox>
 						<Category />
-						<Footer>footer</Footer>
+						<Footer style={{ marginTop: '16px' }}>footer</Footer>
 					</MenuWrapper>
 				</CategoryConatiner>
 			</Section>
