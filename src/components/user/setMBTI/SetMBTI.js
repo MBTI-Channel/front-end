@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React, { memo, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper } from '../elements/wrapper/ContentWrapper.styled';
-import { Content } from '../elements/content/Content.styled';
+import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
+import { Content } from '../../elements/content/Content.styled';
 import {
 	Box,
 	Confirm,
