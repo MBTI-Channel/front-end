@@ -2,14 +2,9 @@ import Link from 'next/link';
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { userMBTI, userName } from '../../../sotre/user';
-import {
-	Content,
-	Logo,
-	MBTI,
-	SetInfoDiv,
-	Typo,
-	Wrapper,
-} from './SetUserName.styled';
+import { Wrapper } from '../elements/wrapper/ContentWrapper.styled';
+import { Content } from '../elements/content/Content.styled';
+import { Logo, MBTI, SetInfoDiv, Typo } from './SetUserName.styled';
 
 const SetUserName = (props) => {
 	const mbti = useRecoilValue(userMBTI);
