@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
+import { Wrapper } from '../elements/wrapper/ContentWrapper.styled';
+import { Content } from '../elements/content/Content.styled';
 import {
-	Wrapper,
-	Content,
 	Logo,
 	SocialLogin,
 	KakaoLogin,

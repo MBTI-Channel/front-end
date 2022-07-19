@@ -1,20 +1,5 @@
 import styled from 'styled-components';
 
-// TODO: auth 쪽 스타일 컴포넌트 UI로 분리하기
-export const Wrapper = styled.div`
-	display: flex;
-	height: 90vh;
-	background: white;
-`;
-
-export const Content = styled.div`
-	margin: auto;
-	width: 390px;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-`;
-
 export const Logo = styled.div`
 	display: flex;
 	flex-wrap: wrap;
