@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import React, { memo, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
+import { Content } from '../../elements/content/Content.styled';
 import {
 	Box,
 	Confirm,
-	Content,
 	E,
 	F,
 	I,
@@ -17,7 +18,6 @@ import {
 	S,
 	T,
 	Typo,
-	Wrapper,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
 import { EI, NS, FT, PJ, userMBTI } from '../../../sotre/user';
