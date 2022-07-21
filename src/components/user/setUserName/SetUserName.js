@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { userMBTI, userName } from '../../../store/user';
+import userService from '../../../service/userService';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
 import { Content } from '../../elements/content/Content.styled';
 import { Logo, MBTI, SetInfoDiv, Typo } from './SetUserName.styled';
@@ -13,7 +14,7 @@ const SetUserName = (props) => {
 	const mbti = useRecoilValue(userMBTI);
 	const [typedName, setTypedName] = useRecoilState(userName);
 	const InpunRef = useRef();
-	console.log(mbti);
+	const [validateMsg, setValidateMsg] = useState();
 
 	const nameHandler = (e) => {
 		setTypedName(() => ({
@@ -23,7 +24,40 @@ const SetUserName = (props) => {
 	};
 
 	useEffect(() => {
-		console.log(typedName);
+		typedName.value
+			? setValidateMsg(
+					<p style={{ color: 'red' }}>
+						2~10자의 한글, 영어 숫자 조합으로 만들어주세요.
+					</p>,
+			  )
+			: '';
+
+		if (typedName.isValid) {
+			const duplicateCheckTimeout = setTimeout(() => {
+				userService //
+					.nameDuplicateCheck(typedName.value.trim())
+					.then((res) => {
+						console.log(res);
+						if (res.data.isExistsNickname) {
+							setValidateMsg(
+								<p style={{ color: 'red' }}>이미 존재하는 이름입니다.</p>,
+							);
+							console.log(validateMsg);
+						} else {
+							setValidateMsg(
+								<p style={{ color: 'blue' }}>사용 가능한 이름입니다.</p>,
+							);
+							console.log(validateMsg.props.children);
+						}
+					});
+			}, 500);
+
+			return () => {
+				console.log(`Clean up`);
+				clearTimeout(duplicateCheckTimeout);
+			};
+		}
+		return;
 	}, [typedName]);
 
 	return (
@@ -46,11 +80,7 @@ const SetUserName = (props) => {
 					isValid={!typedName.value || typedName.isValid}
 					onChange={nameHandler}
 				></NameInput>
-				{typedName.value && !typedName.isValid ? (
-					<p style={{ color: 'red' }}>
-						2~10자의 한글, 영어 숫자 조합으로 만들어주세요.
-					</p>
-				) : undefined}
+				<div>{validateMsg}</div>
 			</Content>
 		</Wrapper>
 	);
