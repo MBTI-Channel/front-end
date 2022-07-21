@@ -5,8 +5,8 @@ export const Section = styled.section`
 	flex-direction: column;
 	margin-top: 64px;
 	width: 100%;
-	margin-left: 120px;
-	/* align-items: center; */
+	align-items: center;
+	background-color: #f8fafb; ;
 `;
 
 export const CardWrapper = styled.div`
@@ -28,6 +28,7 @@ export const ImageUploadBox = styled.div`
 	border: 1px dashed #ebebeb;
 	justify-content: center;
 	align-items: center;
+	background-color: white;
 
 	& > input[type='file'] {
 		display: none;
@@ -52,8 +53,8 @@ export const SearchInputBox = styled.div`
 	height: 54px;
 	border: 1px solid #ebebeb;
 	color: #a5a5a5;
-	/* justify-content: center; */
 	align-items: center;
+	background-color: white;
 `;
 
 export const Footer = styled.div`
@@ -66,4 +67,5 @@ export const Footer = styled.div`
 	text-align: center;
 	align-items: center;
 	font-size: 24px;
+	background-color: white;
 `;

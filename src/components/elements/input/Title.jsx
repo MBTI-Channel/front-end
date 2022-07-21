@@ -4,12 +4,14 @@ import styled from 'styled-components';
 const InputTitle = styled.input.attrs((props) => ({
 	marginTop: props.marginTop || '0',
 }))`
-	width: 795px;
-	height: 48px;
+	width: 767px;
+	height: 19px;
 	color: rgba(196, 196, 196, 1);
 	border: 1px solid #ebebeb;
 	border-radius: 2px;
-	padding-left: 14px;
+	padding: 14.5px 14px;
+	font-weight: 400;
+	font-size: 14px;
 	margin-top: ${(props) => props.marginTop};
 `;
 
