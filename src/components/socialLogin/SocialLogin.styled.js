@@ -1,18 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-	display: flex;
-	height: 75vh;
-`;
-
-export const Content = styled.div`
-	margin: auto;
-	width: 390px;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-`;
-
 export const Logo = styled.div`
 	display: flex;
 	flex-wrap: wrap;
