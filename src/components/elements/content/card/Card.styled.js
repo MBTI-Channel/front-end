@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const CardContainer = styled.div`
-	width: 290px;
-	height: 218px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
-
 export const TitleContainer = styled.div`
 	width: 242px;
 	color: white;
