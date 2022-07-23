@@ -6,20 +6,22 @@ import {
 	BaseBox,
 	ProgressBarContainer,
 } from './Card.styled';
-// import { LikeLogo } from 'icon/like.svg';
-// import SampleImage from '/sample_image.jpeg';
 
-const CardContainer = styled.div`
+const CardContainer = styled.div.attrs((props) => ({
+	src: props.src,
+}))`
 	width: 290px;
 	height: 218px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-	background-image: url('/sample_image.jpeg');
+	border-radius: 8px;
+	background-image: url(${(props) => props.src});
+	/* background-image: url('/sample_image.jpeg'); */
 `;
 
-const Card = () => {
+const Card = ({ src }) => {
 	const title = `'깻잎 논쟁'...당신의 생각은?`;
 	const agreeRate = '54%';
 	const disagreeRate = '46%';
@@ -35,7 +37,7 @@ const Card = () => {
 	`;
 
 	return (
-		<CardContainer>
+		<CardContainer src={src}>
 			<TitleContainer>{title}</TitleContainer>
 			<ContentContainer>
 				<div className='agree-container'>
