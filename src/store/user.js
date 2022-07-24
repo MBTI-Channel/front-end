@@ -27,10 +27,10 @@ export const PJ = atom({
 
 export const userMBTI = atom({
 	key: 'userMBTI',
-	default: '',
+	default: { value: '', isValid: false },
 });
 
 export const userName = atom({
 	key: 'userName',
-	default: { value: '', isValid: false },
+	default: { value: '', isValid: false, duplicate: false },
 });

@@ -5,8 +5,16 @@ import { userMBTI, userName } from '../../../store/user';
 import userService from '../../../service/userService';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
 import { Content } from '../../elements/content/Content.styled';
-import { Logo, MBTI, SetInfoDiv, Typo } from './SetUserName.styled';
+import {
+	Backward,
+	Confirm,
+	Logo,
+	MBTI,
+	SetInfoDiv,
+	Typo,
+} from './SetUserName.styled';
 import NameInput from '../../elements/input/NameInput';
+import Gnb from '../../articles/Gnb';
 
 const nameRegExp = /^[|가-힣|a-z|A-Z|0-9|]{2,10}$/;
 
@@ -15,9 +23,11 @@ const SetUserName = (props) => {
 	const [typedName, setTypedName] = useRecoilState(userName);
 	const InpunRef = useRef();
 	const [validateMsg, setValidateMsg] = useState();
+	const [notDupl, setNotDupl] = useState(false);
 
 	const nameHandler = (e) => {
-		setTypedName(() => ({
+		setTypedName((prev) => ({
+			...prev,
 			value: e.target.value.trim(),
 			isValid: nameRegExp.test(e.target.value.trim()),
 		}));
@@ -38,12 +48,13 @@ const SetUserName = (props) => {
 					.nameDuplicateCheck(typedName.value.trim())
 					.then((res) => {
 						console.log(res);
-						if (res.data.isExistsNickname) {
+						if (res.data?.isExistsNickname) {
 							setValidateMsg(
 								<p style={{ color: 'red' }}>이미 존재하는 이름입니다.</p>,
 							);
 							console.log(validateMsg);
 						} else {
+							setNotDupl(true);
 							setValidateMsg(
 								<p style={{ color: 'blue' }}>사용 가능한 이름입니다.</p>,
 							);
@@ -58,31 +69,33 @@ const SetUserName = (props) => {
 			};
 		}
 		return;
-	}, [typedName]);
+	}, [typedName, setTypedName, setValidateMsg]);
 
 	return (
-		<Wrapper>
-			<Content>
-				<Logo>
-					<Link href={'/'}>
-						<a>
-							<span />
-						</a>
-					</Link>
-				</Logo>
-				<Typo>닉네임 설정</Typo>
-				<MBTI>{mbti}</MBTI>
-				<SetInfoDiv></SetInfoDiv>
-				<NameInput
-					ref={InpunRef}
-					placeholder='닉네임은 언제든지 바꿀 수 있어요!'
-					value={typedName.value}
-					isValid={!typedName.value || typedName.isValid}
-					onChange={nameHandler}
-				></NameInput>
-				<div>{validateMsg}</div>
-			</Content>
-		</Wrapper>
+		<>
+			<Gnb isVisible={true}></Gnb>
+			<Wrapper>
+				<Content>
+					<Typo>채널에서 사용할 닉네임을 설정해주세요.</Typo>
+					<MBTI>{mbti.value}</MBTI>
+					<SetInfoDiv>{typedName.value}</SetInfoDiv>
+					<NameInput
+						ref={InpunRef}
+						placeholder='닉네임은 언제든지 바꿀 수 있어요!'
+						value={typedName.value}
+						isValid={!typedName.value || typedName.isValid}
+						onChange={nameHandler}
+					></NameInput>
+					<div>{validateMsg}</div>
+					<Confirm className={typedName.isValid && notDupl ? '' : 'disabled'}>
+						<Link href='/'>설정하기</Link>
+					</Confirm>
+					<Backward>
+						<Link href='/user/signUp/setMBTI'>뒤로가기</Link>
+					</Backward>
+				</Content>
+			</Wrapper>
+		</>
 	);
 };
 

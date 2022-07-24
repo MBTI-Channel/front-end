@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Content = styled.div`
-	margin: auto;
+	margin: 0px auto;
+	padding: 25px 0px;
 	width: 390px;
 	text-align: center;
 	align-items: center;

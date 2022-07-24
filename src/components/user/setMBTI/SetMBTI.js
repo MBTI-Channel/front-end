@@ -10,7 +10,6 @@ import {
 	F,
 	I,
 	J,
-	Logo,
 	SetInfoDiv,
 	Middle,
 	N,
@@ -18,10 +17,12 @@ import {
 	S,
 	T,
 	Typo,
+	Backward,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
 import { EI, NS, FT, PJ, userMBTI } from '../../../store/user';
 import { useRouter } from 'next/router';
+import Gnb from '../../articles/Gnb';
 
 const SetMBTI = ({ nextHref }) => {
 	const router = useRouter();
@@ -62,141 +63,141 @@ const SetMBTI = ({ nextHref }) => {
 	);
 
 	useEffect(() => {
-		setMBTI(`${ei}${ns}${ft}${pj}`);
+		setMBTI({ value: `${ei}${ns}${ft}${pj}` });
 	}, [ei, ns, ft, pj, setMBTI]);
+	console.log(MBTI.value.includes('_') ? 'disabled' : '');
 
 	return (
-		<Wrapper>
-			<Content>
-				<Logo>
-					<Link href={'/'}>
-						<a>
-							<span />
-						</a>
-					</Link>
-				</Logo>
-				<Typo>MBTI 설정</Typo>
-				<Middle>
-					<div>
-						<label>
-							<E //
-								type='radio'
-								name='ei'
-								value='E'
-								checked={ei === 'E'}
-								onChange={EIHandler}
-							/>
-							<Box className='front-end'>
-								<span>E</span>
-							</Box>
-						</label>
+		<>
+			<Gnb isVisible={true}></Gnb>
+			<Wrapper>
+				<Content>
+					<Typo>아래 알파벳을 조합해 MBTI를 설정해주세요.</Typo>
+					<Middle>
+						<div>
+							<label>
+								<E //
+									type='radio'
+									name='ei'
+									value='E'
+									checked={ei === 'E'}
+									onChange={EIHandler}
+								/>
+								<Box className='front-end'>
+									<span>E</span>
+								</Box>
+							</label>
 
-						<label>
-							<I //
-								type='radio'
-								name='ei'
-								value='I'
-								checked={ei === 'I'}
-								onChange={EIHandler}
-							/>
-							<Box>
-								<span>I</span>
-							</Box>
-						</label>
-					</div>
+							<label>
+								<I //
+									type='radio'
+									name='ei'
+									value='I'
+									checked={ei === 'I'}
+									onChange={EIHandler}
+								/>
+								<Box>
+									<span>I</span>
+								</Box>
+							</label>
+						</div>
 
-					<div>
-						<label>
-							<N //
-								type='radio'
-								name='ns'
-								value='N'
-								checked={ns === 'N'}
-								onChange={NSHandler}
-							/>
-							<Box>
-								<span>N</span>
-							</Box>
-						</label>
+						<div>
+							<label>
+								<N //
+									type='radio'
+									name='ns'
+									value='N'
+									checked={ns === 'N'}
+									onChange={NSHandler}
+								/>
+								<Box>
+									<span>N</span>
+								</Box>
+							</label>
 
-						<label>
-							<S //
-								type='radio'
-								name='ns'
-								value='S'
-								checked={ns === 'S'}
-								onChange={NSHandler}
-							/>
-							<Box>
-								<span>S</span>
-							</Box>
-						</label>
-					</div>
+							<label>
+								<S //
+									type='radio'
+									name='ns'
+									value='S'
+									checked={ns === 'S'}
+									onChange={NSHandler}
+								/>
+								<Box>
+									<span>S</span>
+								</Box>
+							</label>
+						</div>
 
-					<div>
-						<label>
-							<T //
-								type='radio'
-								name='ft'
-								value='T'
-								checked={ft === 'T'}
-								onChange={FTHandler}
-							/>
-							<Box>
-								<span>T</span>
-							</Box>
-						</label>
+						<div>
+							<label>
+								<T //
+									type='radio'
+									name='ft'
+									value='T'
+									checked={ft === 'T'}
+									onChange={FTHandler}
+								/>
+								<Box>
+									<span>T</span>
+								</Box>
+							</label>
 
-						<label>
-							<F //
-								type='radio'
-								name='ft'
-								value='F'
-								checked={ft === 'F'}
-								onChange={FTHandler}
-							/>
-							<Box>
-								<span>F</span>
-							</Box>
-						</label>
-					</div>
+							<label>
+								<F //
+									type='radio'
+									name='ft'
+									value='F'
+									checked={ft === 'F'}
+									onChange={FTHandler}
+								/>
+								<Box>
+									<span>F</span>
+								</Box>
+							</label>
+						</div>
 
-					<div>
-						<label>
-							<J //
-								type='radio'
-								name='jp'
-								value='J'
-								checked={pj === 'J'}
-								onChange={PJHandler}
-							/>
-							<Box>
-								<span>J</span>
-							</Box>
-						</label>
+						<div>
+							<label>
+								<J //
+									type='radio'
+									name='jp'
+									value='J'
+									checked={pj === 'J'}
+									onChange={PJHandler}
+								/>
+								<Box>
+									<span>J</span>
+								</Box>
+							</label>
 
-						<label>
-							<P //
-								type='radio'
-								name='jp'
-								value='P'
-								checked={pj === 'P'}
-								onChange={PJHandler}
-							/>
-							<Box>
-								<span>P</span>
-							</Box>
-						</label>
-					</div>
-				</Middle>
-				<SetInfoDiv>
-					<p>{MBTI}</p>
-				</SetInfoDiv>
-				<Confirm>
-					<Link href={nextHref}>설정하기</Link>
-				</Confirm>
-			</Content>
-		</Wrapper>
+							<label>
+								<P //
+									type='radio'
+									name='jp'
+									value='P'
+									checked={pj === 'P'}
+									onChange={PJHandler}
+								/>
+								<Box>
+									<span>P</span>
+								</Box>
+							</label>
+						</div>
+					</Middle>
+					<SetInfoDiv>
+						<p>{MBTI.value}</p>
+					</SetInfoDiv>
+					<Confirm className={`${MBTI.value.includes('_') ? 'disabled' : ''}`}>
+						<Link href={nextHref}>설정하기</Link>
+					</Confirm>
+					<Backward>
+						<Link href='/'>뒤로가기</Link>
+					</Backward>
+				</Content>
+			</Wrapper>
+		</>
 	);
 };
 
