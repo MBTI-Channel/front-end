@@ -32,6 +32,8 @@ const BoardButtonContainer = styled.div`
 `;
 
 const BoardButton = styled.button`
+	display: flex;
+	align-items: center;
 	width: 366px;
 	height: 43px;
 	background-color: white;
@@ -71,15 +73,22 @@ const Category = () => {
 				<CategoryText>카테고리</CategoryText>
 				<BoardButtonContainer>
 					<BoardButton onClick={onClickBoardButton} value='MyMbti'>
-						내 MBTI 게시판
+						<img src='/Icons/Basic/mbti.svg' style={{ marginRight: '8px' }} />내
+						MBTI 게시판
 					</BoardButton>
 					<BoardButton onClick={onClickBoardButton} value='Integrated'>
+						<img
+							src='/Icons/Basic/whole-list.svg'
+							style={{ marginRight: '8px' }}
+						/>
 						통합게시판
 					</BoardButton>
 					<BoardButton onClick={onClickBoardButton} value='date'>
+						<img src='/Icons/Basic/heart.svg' style={{ marginRight: '8px' }} />
 						연애
 					</BoardButton>
 					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
+						<img src='/Icons/Basic/school.svg' style={{ marginRight: '8px' }} />
 						학교/직장
 					</BoardButton>
 				</BoardButtonContainer>
