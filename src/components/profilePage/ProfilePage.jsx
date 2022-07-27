@@ -8,6 +8,7 @@ import Category from '../elements/category/Category';
 1. 프로필 페이지 레이아웃 완성
 2. 컬러, 폰트 컴포넌트 정리
 3. 달라진 컴포넌트 전달받아 정리
+4. Gnb 부분 선택시 텍스트 컬러 변경
 */
 
 const Profile = () => {
