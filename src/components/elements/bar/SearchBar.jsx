@@ -4,15 +4,25 @@ const SearchInputBox = styled.div`
 	display: flex;
 	border: 1px solid #ebebeb;
 	color: #a5a5a5;
-	justify-content: center;
 	align-items: center;
+	padding: 15px 0px 15px 20px;
+	background-color: white;
 `;
 
 const SearchBar = () => {
 	return (
 		<SearchInputBox>
 			<img src='/Icons/Basic/Search.svg' />
-			<input style={{ border: 0, fontWeight: 400 }} placeholder='search here' />
+			<input
+				style={{
+					border: 0,
+					fontWeight: 400,
+					marginLeft: '8px',
+					color: '#A5A5A5',
+					fontSize: '18px',
+				}}
+				placeholder='search here'
+			/>
 		</SearchInputBox>
 	);
 };
