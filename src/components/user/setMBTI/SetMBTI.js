@@ -20,19 +20,18 @@ import {
 	Backward,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
-import { EI, NS, FT, PJ, userMBTI } from '../../../store/user';
-import { useRouter } from 'next/router';
+import { userState, EI, NS, FT, PJ } from '../../../store/user';
 import Gnb from '../../articles/Gnb';
 
 const SetMBTI = ({ nextHref }) => {
-	const router = useRouter();
-
 	const [ei, setEI] = useRecoilState(EI);
 	const [ns, setNS] = useRecoilState(NS);
 	const [ft, setFT] = useRecoilState(FT);
 	const [pj, setPJ] = useRecoilState(PJ);
 
-	const [MBTI, setMBTI] = useRecoilState(userMBTI);
+	const [userInfo, setUserInfo] = useRecoilState(userState);
+
+	console.log(userInfo);
 
 	const EIHandler = useCallback(
 		(e) => {
@@ -63,9 +62,8 @@ const SetMBTI = ({ nextHref }) => {
 	);
 
 	useEffect(() => {
-		setMBTI({ value: `${ei}${ns}${ft}${pj}` });
-	}, [ei, ns, ft, pj, setMBTI]);
-	console.log(MBTI.value.includes('_') ? 'disabled' : '');
+		setUserInfo((prev) => ({ ...prev, mbti: `${ei}${ns}${ft}${pj}` }));
+	}, [ei, ns, ft, pj, setUserInfo]);
 
 	return (
 		<>
@@ -187,9 +185,11 @@ const SetMBTI = ({ nextHref }) => {
 						</div>
 					</Middle>
 					<SetInfoDiv>
-						<p>{MBTI.value}</p>
+						<p>{userInfo.mbti}</p>
 					</SetInfoDiv>
-					<Confirm className={`${MBTI.value.includes('_') ? 'disabled' : ''}`}>
+					<Confirm
+						className={`${userInfo.mbti.includes('_') ? 'disabled' : ''}`}
+					>
 						<Link href={nextHref}>설정하기</Link>
 					</Confirm>
 					<Backward>

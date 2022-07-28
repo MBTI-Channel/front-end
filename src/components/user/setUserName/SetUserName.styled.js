@@ -46,44 +46,22 @@ export const SetInfoDiv = styled.div`
 	border-radius: 4px;
 `;
 
-export const Confirm = styled.div`
-	width: auto;
-	height: auto;
-	& a {
-		width: 24.25rem;
-		height: 3rem;
-		border-radius: 6px;
-		margin: 20px 0px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		outline: none;
-		box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
-		background: #1973fb;
-		color: white;
+export const Confirm = styled.button`
+	width: 24.25rem;
+	height: 3rem;
+	border-radius: 4px;
+	margin: 20px 0px;
+	background: #1973fb;
+	color: white;
+	cursor: pointer;
+	border: 0 none;
+	box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
+	&:disabled {
+		pointer-events: none;
+		cursor: default;
+		background: #c4c4c4;
 	}
-	&.disabled {
-		a {
-			pointer-events: none;
-			cursor: default;
-			background: #c4c4c4;
-		}
-	}
-`;
-
-export const Backward = styled.div`
-	width: auto;
-	height: auto;
-	& a {
-		width: 24.25rem;
-		height: 3rem;
-		border-radius: 6px;
-		margin: 20px 0px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		outline: none;
-		border: #1973fb 1px solid;
-		box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
+	&:active {
+		background: #3d8aff;
 	}
 `;

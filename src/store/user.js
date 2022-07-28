@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 export const userState = atom({
 	key: 'userState',
-	default: {},
+	default: { id: '', uuid: '', mbti: '', nickname: '' },
 });
 
 export const EI = atom({
@@ -23,11 +23,6 @@ export const FT = atom({
 export const PJ = atom({
 	key: 'PJ',
 	default: '_',
-});
-
-export const userMBTI = atom({
-	key: 'userMBTI',
-	default: { value: '', isValid: false },
 });
 
 export const userName = atom({

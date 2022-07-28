@@ -14,15 +14,10 @@ const NameInput = React.forwardRef((props, ref) => {
 		};
 	});
 
-	console.log(props.isValid);
+	console.log(props.isValid && props.notDupl);
 
 	return (
-		<NameDiv className={`${!props.isValid ? 'invalid' : ''}`}>
-			{props.id && props.label ? (
-				<InputLabel htmlFor={props.id}>{props.label}</InputLabel>
-			) : (
-				''
-			)}
+		<NameDiv className={`${!props.isValid || !props.notDupl ? 'invalid' : ''}`}>
 			<Name
 				ref={inputRef}
 				type={props.type}

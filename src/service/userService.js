@@ -13,6 +13,15 @@ class User {
 			console.log(e);
 		}
 	};
+
+	signUp = async ({ id, uuid, nickname, mbti }) => {
+		try {
+			const res = await this.user.post(`users`, { id, uuid, nickname, mbti });
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
 }
 
 const userService = new User(httpClient);
