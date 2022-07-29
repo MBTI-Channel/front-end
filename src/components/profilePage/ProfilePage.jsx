@@ -19,12 +19,24 @@ import { Footer } from '../writingPage/WritingPage.style';
 1. 컬러, 폰트 컴포넌트 정리
 2. 달라진 컴포넌트 전달받아 정리
 3. Gnb 부분 선택시 텍스트 컬러 변경
+4. 버튼 클릭시 mbti, 닉네임 이동경로 설정
 */
 
 const Profile = () => {
 	const router = useRouter();
-	if (router.pathname == 'auth/profile') {
-	}
+	const onClickChangeProfileInfo = () => {
+		const screenWidth = screen.availWidth;
+		const screenHeight = screen.availHeight;
+		const popWidth = 779;
+		const popHeight = 779;
+		const positionLeft = (screenWidth - popWidth) / 2;
+		const positionTop = (screenHeight - popHeight) / 2;
+		window.open(
+			'/',
+			'test',
+			`width=${popWidth}, height=${popHeight}, top=${positionTop}, left=${positionLeft}, resizable=yes, scrollbars=no`,
+		);
+	};
 	return (
 		<>
 			<Gnb isVisible />
@@ -42,7 +54,12 @@ const Profile = () => {
 								<span className='nickname-mbti-container'>닉네임 | MBTI</span>
 								<span className='datetime-container'>2022-01-14</span>
 							</div>
-							<SmallButton isFilled={true}>닉네임/MBTI 변경</SmallButton>
+							<SmallButton
+								isFilled={true}
+								onClick={() => onClickChangeProfileInfo()}
+							>
+								닉네임/MBTI 변경
+							</SmallButton>
 						</ProfileBar>
 						<ActivityContainer>
 							<ActivityBar>
@@ -75,7 +92,7 @@ const Profile = () => {
 					</div>
 					<div style={{ marginLeft: '14px' }}>
 						<SearchBar />
-						<Category />
+						<Category marginTop='32px' />
 						<Footer style={{ marginTop: '32px' }}>Footer</Footer>
 					</div>
 				</div>

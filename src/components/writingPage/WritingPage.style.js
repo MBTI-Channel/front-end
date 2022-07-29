@@ -24,7 +24,7 @@ export const TextWrapper = styled.div`
 export const ImageUploadBox = styled.div`
 	display: flex;
 	width: 795px;
-	height: 56px;
+	height: 121px;
 	border: 1px dashed #ebebeb;
 	justify-content: center;
 	align-items: center;
@@ -44,7 +44,7 @@ export const MenuWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 14px;
-	margin-top: 46px;
+	margin-top: 42px;
 `;
 
 export const SearchInputBox = styled.div`

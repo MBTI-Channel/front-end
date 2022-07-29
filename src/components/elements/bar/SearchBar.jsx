@@ -7,6 +7,7 @@ const SearchInputBox = styled.div`
 	align-items: center;
 	padding: 15px 0px 15px 20px;
 	background-color: white;
+	border-radius: 4px;
 `;
 
 const SearchBar = () => {

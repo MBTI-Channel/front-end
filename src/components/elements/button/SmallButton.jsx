@@ -12,6 +12,7 @@ export const SmallButton = styled.button.attrs((props) => ({
 	color: ${(props) => (props.isFilled ? '#FFFFFF' : '#333333')};
 	font-weight: 400;
 	font-size: 12px;
+	cursor: pointer;
 
 	& .small-button-icon {
 		stroke: ${(props) => (props.isFilled ? '#FFFFFF' : '#333333')};

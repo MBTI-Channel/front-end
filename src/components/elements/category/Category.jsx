@@ -1,54 +1,50 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-const CategoryContainer = styled.div`
+const CategoryContainer = styled.div.attrs((props) => ({
+	marginTop: props.marginTop,
+}))`
 	display: flex;
 	flex-direction: column;
 	width: 390px;
-	height: 253px;
+	height: 265px;
 	border: 1px solid #ebebeb;
-	margin-top: 16px;
+	margin-top: ${(props) => props.marginTop};
 	background-color: white;
+	padding: 12px;
 `;
 
 const CategoryText = styled.div`
-	width: 74px;
-	height: 30px;
 	font-size: 20px;
-	/* line-height: 150%; */
-	text-align: center;
-	margin-left: 12px;
-	margin-top: 12px;
+	font-weight: 900;
+	line-height: 30px;
 `;
 
 const BoardButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 366px;
-	height: 187px;
-	margin: 12px;
-	/* padding-top: 12px;
-	padding-left: 12px; */
+	height: 199px;
+	margin-top: 4px;
 `;
 
 const BoardButton = styled.button`
 	display: flex;
 	align-items: center;
 	width: 366px;
-	height: 43px;
+	height: 46px;
 	background-color: white;
 	border: #fff;
 	border-bottom: 1px solid #fbfbfb;
 	text-align: left;
-	line-height: 43px;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 30px;
+	margin-top: 8px;
 	cursor: pointer;
 `;
 
-const BoardButtonText = styled.span`
-	font-size: 18px;
-`;
-
-const Category = () => {
+const Category = ({ marginTop }) => {
 	const router = useRouter();
 
 	const onClickBoardButton = (e) => {
@@ -69,7 +65,7 @@ const Category = () => {
 
 	return (
 		<div>
-			<CategoryContainer>
+			<CategoryContainer marginTop={marginTop}>
 				<CategoryText>카테고리</CategoryText>
 				<BoardButtonContainer>
 					<BoardButton onClick={onClickBoardButton} value='MyMbti'>
