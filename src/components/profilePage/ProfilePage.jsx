@@ -93,7 +93,7 @@ const Profile = () => {
 					<div style={{ marginLeft: '14px' }}>
 						<SearchBar />
 						<Category marginTop='32px' />
-						<Footer style={{ marginTop: '32px' }}>Footer</Footer>
+						<Footer style={{ marginTop: '20px' }}>Footer</Footer>
 					</div>
 				</div>
 			</Section>

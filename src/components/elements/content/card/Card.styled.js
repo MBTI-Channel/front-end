@@ -18,7 +18,7 @@ export const ContentContainer = styled.div`
 		font-size: 12px;
 		line-height: 18px;
 		align-items: center;
-		color: #0085ff;
+		color: white;
 	}
 
 	& .disagree-container {
@@ -27,7 +27,7 @@ export const ContentContainer = styled.div`
 		font-size: 12px;
 		line-height: 18px;
 		align-items: center;
-		color: #eb7b7b;
+		color: white;
 		justify-content: flex-end;
 	}
 `;

@@ -15,7 +15,7 @@ import Paragraph from '../elements/input/Paragraph';
 import { Button } from '../elements/button/Button';
 import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
-// import CameraIcon from '/Icons/Basic/Camera.svg';
+import CameraIcon from '../../../public/Icons/Basic/Camera.svg';
 
 /* 7/21 TODO
 	1. placeholder 줄바꿈 ... 미해결
@@ -53,15 +53,9 @@ const WritingPage = () => {
 								id='image-upload'
 								accept='image/x-png,image/gif,image/jpeg'
 							/>
-							<img
-								src='/Icons/Basic/Camera.svg'
-								width='48px'
-								height='48px'
-								color='#C4C4C4'
-								alt='카메라 아이콘'
-							/>
+							<CameraIcon width='48px' height='48px' fill='#C4C4C4' />
 						</ImageUploadBox>
-						<Button height='52px' marginTop='32px'>
+						<Button height='52px' marginTop='53px'>
 							글 올리기
 						</Button>
 					</TextWrapper>

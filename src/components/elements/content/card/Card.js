@@ -6,6 +6,8 @@ import {
 	BaseBox,
 	ProgressBarContainer,
 } from './Card.styled';
+import LikeIcon from '../../../../../public/icon/like.svg';
+import UnLikeIcon from '../../../../../public/icon/unlike.svg';
 
 const CardContainer = styled.div.attrs((props) => ({
 	src: props.src,
@@ -18,13 +20,13 @@ const CardContainer = styled.div.attrs((props) => ({
 	align-items: center;
 	border-radius: 8px;
 	background-image: url(${(props) => props.src});
-	/* background-image: url('/sample_image.jpeg'); */
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 `;
 
 const Card = ({ src }) => {
-	const title = `'깻잎 논쟁'...당신의 생각은?`;
-	const agreeRate = '54%';
-	const disagreeRate = '46%';
+	const title = `'깻잎 논쟁'...당신의 생각은?`; // 제목 받아오기
+	const agreeRate = '54%'; // 찬성률 받아오기
+	const disagreeRate = '46%'; // 반대율 받아오기
 
 	const AgreeRate = styled(BaseBox)`
 		background-color: #0085ff;
@@ -37,30 +39,17 @@ const Card = ({ src }) => {
 	`;
 
 	return (
+		//백그라운드에 검정 필터 씌우기
 		<CardContainer src={src}>
 			<TitleContainer>{title}</TitleContainer>
 			<ContentContainer>
 				<div className='agree-container'>
-					<img
-						src='/icon/like.svg'
-						style={{
-							width: '12.74px',
-							height: '14px',
-							stroke: '#0085ff',
-							fill: '#0085ff',
-						}}
-					/>
-					찬성 {agreeRate}
+					<LikeIcon width='14px' height='14px' fill='#3D8AFF' />
+					<span style={{ marginLeft: '4px' }}>찬성 {agreeRate}</span>
 				</div>
 				<div className='disagree-container'>
-					<img
-						src='/icon/unlike.svg'
-						style={{
-							width: '12.74px',
-							height: '14px',
-						}}
-					/>
-					반대 {disagreeRate}
+					<UnLikeIcon width='14px' height='14px' fill='#DF1D1D' />
+					<span style={{ marginLeft: '4px' }}>반대 {disagreeRate}</span>
 				</div>
 			</ContentContainer>
 			<ProgressBarContainer>
