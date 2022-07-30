@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Typo = styled.p`
 	font-family: 'Noto Sans', sans-serif;
-	font-size: 1.25rem;
+	font-size: 1.5rem;
 	font-weight: 400;
 	margin: 4px 0px;
 `;

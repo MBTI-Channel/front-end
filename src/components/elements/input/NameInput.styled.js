@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const NameDiv = styled.div`
 	display: flex;
-	align-items: stretch;
-	flex-direction: column;
+	position: relative;
+	margin-top: 72px;
 	& label,
 	input {
 		display: block;
@@ -13,6 +13,9 @@ export const NameDiv = styled.div`
 		outline: none;
 		border-color: #1973fb;
 		background: white;
+	}
+	&.valid input {
+		border-color: #1973fb;
 	}
 	&.invalid input {
 		border-color: red;
@@ -37,4 +40,5 @@ export const Name = styled.input`
 	height: 54px;
 	border: 1px solid #ebebeb;
 	border-radius: 2px;
+	z-index: 0;
 `;

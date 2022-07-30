@@ -1,11 +1,9 @@
-import Link from 'next/link';
 import React, { memo, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
 import { Content } from '../../elements/content/Content.styled';
 import {
 	Box,
-	Confirm,
 	E,
 	F,
 	I,
@@ -17,17 +15,19 @@ import {
 	S,
 	T,
 	Typo,
-	Backward,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
 import { userState, EI, NS, FT, PJ } from '../../../store/user';
 import Gnb from '../../articles/Gnb';
+import { useRouter } from 'next/router';
+import { Button, BackwardButton } from '../../elements/button/Button';
 
 const SetMBTI = ({ nextHref }) => {
 	const [ei, setEI] = useRecoilState(EI);
 	const [ns, setNS] = useRecoilState(NS);
 	const [ft, setFT] = useRecoilState(FT);
 	const [pj, setPJ] = useRecoilState(PJ);
+	const router = useRouter();
 
 	const [userInfo, setUserInfo] = useRecoilState(userState);
 
@@ -64,6 +64,10 @@ const SetMBTI = ({ nextHref }) => {
 	useEffect(() => {
 		setUserInfo((prev) => ({ ...prev, mbti: `${ei}${ns}${ft}${pj}` }));
 	}, [ei, ns, ft, pj, setUserInfo]);
+
+	const onSet = () => {
+		router.push(nextHref);
+	};
 
 	return (
 		<>
@@ -187,14 +191,24 @@ const SetMBTI = ({ nextHref }) => {
 					<SetInfoDiv>
 						<p>{userInfo.mbti}</p>
 					</SetInfoDiv>
-					<Confirm
-						className={`${userInfo.mbti.includes('_') ? 'disabled' : ''}`}
+					<Button
+						width={'24.375rem'}
+						height={'3rem'}
+						disabled={userInfo.mbti.includes('_') ? true : false}
+						marginTop={'50px'}
+						fontWeight={'700'}
+						onClick={onSet}
 					>
-						<Link href={nextHref}>설정하기</Link>
-					</Confirm>
-					<Backward>
-						<Link href='/'>뒤로가기</Link>
-					</Backward>
+						설정하기
+					</Button>
+					<BackwardButton
+						width={'24.375rem'}
+						height={'3rem'}
+						marginTop={'25px'}
+						fontWeight={'700'}
+					>
+						뒤로가기
+					</BackwardButton>
 				</Content>
 			</Wrapper>
 		</>
