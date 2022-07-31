@@ -4,10 +4,9 @@ export const Section = styled.section`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	height: 100%;
 	align-items: center;
-
 	background-color: #f8fafb;
-	height: (1500-64) px;
 `;
 
 export const CardWrapper = styled.div`
@@ -59,6 +58,7 @@ export const ActivityBar = styled.div`
 	justify-content: flex-start;
 	border: 1px solid #ebebeb;
 	margin-top: 16px;
+	background-color: white;
 
 	& .icon-container {
 		padding: 16px 0px 16px 24px;
@@ -66,7 +66,7 @@ export const ActivityBar = styled.div`
 
 	& .text-container {
 		color: '#333333';
-		font-weight: 500;
+		font-weight: 700;
 		font-size: 18px;
 		padding-left: 8px;
 		line-height: 150%;
@@ -83,11 +83,13 @@ export const MyActivityContainer = styled.div`
 
 export const MyActivity = styled.div`
 	width: 739px;
-	border-bottom: 1px solid #666666;
+	border-bottom: 1px solid #ebebeb;
 	background-color: white;
 	padding: 8px;
-	font-weight: 500;
-	font-size: 18px;
+	font-family: 'Noto Sans';
 	line-height: 150%;
 	margin-top: 12px;
+	color: #333333;
+	font-weight: 400;
+	font-size: 16px;
 `;

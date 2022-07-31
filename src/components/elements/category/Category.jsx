@@ -9,9 +9,9 @@ const CategoryContainer = styled.div.attrs((props) => ({
 	width: 390px;
 	height: 265px;
 	border: 1px solid #ebebeb;
-	margin-top: ${(props) => props.marginTop};
 	background-color: white;
 	padding: 12px;
+	margin-top: ${(props) => props.marginTop};
 `;
 
 const CategoryText = styled.div`
@@ -35,12 +35,12 @@ const BoardButton = styled.button`
 	height: 46px;
 	background-color: white;
 	border: #fff;
-	border-bottom: 1px solid #fbfbfb;
+	border-bottom: 1px solid #ebebeb;
 	text-align: left;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 400;
-	line-height: 30px;
-	margin-top: 8px;
+	line-height: 24px;
+	margin-top: 4px;
 	cursor: pointer;
 `;
 

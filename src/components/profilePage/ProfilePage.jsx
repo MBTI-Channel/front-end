@@ -67,7 +67,10 @@ const Profile = () => {
 								<span className='text-container'>알림</span>
 							</ActivityBar>
 							<ActivityBar>
-								<img className='icon-container' src='/Icons/Basic/bell.svg' />
+								<img
+									className='icon-container'
+									src='/Icons/Basic/History.svg'
+								/>
 								<span className='text-container'>내 활동</span>
 							</ActivityBar>
 							<MyActivityContainer>
@@ -77,15 +80,21 @@ const Profile = () => {
 								<MyActivity>북마크</MyActivity>
 							</MyActivityContainer>
 							<ActivityBar>
-								<img className='icon-container' src='/Icons/Basic/bell.svg' />
+								<img
+									className='icon-container'
+									src='/Icons/Basic/Questionmark.svg'
+								/>
 								<span className='text-container'>문의</span>
 							</ActivityBar>
 							<ActivityBar>
-								<img className='icon-container' src='/Icons/Basic/bell.svg' />
+								<img className='icon-container' src='/Icons/Basic/Alert.svg' />
 								<span className='text-container'>이용 제한 내역</span>
 							</ActivityBar>
 							<ActivityBar>
-								<img className='icon-container' src='/Icons/Basic/bell.svg' />
+								<img
+									className='icon-container'
+									src='/Icons/Basic/Signout.svg'
+								/>
 								<span className='text-container'>탈퇴</span>
 							</ActivityBar>
 						</ActivityContainer>

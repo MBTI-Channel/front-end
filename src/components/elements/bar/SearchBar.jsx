@@ -3,11 +3,19 @@ import styled from 'styled-components';
 const SearchInputBox = styled.div`
 	display: flex;
 	border: 1px solid #ebebeb;
-	color: #a5a5a5;
+	color: black;
 	align-items: center;
 	padding: 15px 0px 15px 20px;
 	background-color: white;
 	border-radius: 4px;
+
+	::placeholder,
+	::-webkit-input-placeholder {
+		color: #a5a5a5;
+		font-family: 'Noto Sans';
+		font-weight: 400;
+		font-size: 18px;
+	}
 `;
 
 const SearchBar = () => {
@@ -19,7 +27,6 @@ const SearchBar = () => {
 					border: 0,
 					fontWeight: 400,
 					marginLeft: '8px',
-					color: '#A5A5A5',
 					fontSize: '18px',
 				}}
 				placeholder='search here'

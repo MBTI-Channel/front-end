@@ -76,7 +76,12 @@ const WritingPage = () => {
 							/>
 							<CameraIcon width='48px' height='48px' fill='#C4C4C4' />
 						</ImageUploadBox>
-						<Button height='52px' marginTop='53px' onClick={onPostButtonClick}>
+						<Button
+							height='52px'
+							marginTop='53px'
+							backgroundColor='#1973FB'
+							onClick={onPostButtonClick}
+						>
 							글 올리기
 						</Button>
 					</TextWrapper>
