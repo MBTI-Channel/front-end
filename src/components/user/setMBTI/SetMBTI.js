@@ -14,13 +14,13 @@ import {
 	P,
 	S,
 	T,
-	Typo,
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
 import { userState, EI, NS, FT, PJ } from '../../../store/user';
 import Gnb from '../../articles/Gnb';
 import { useRouter } from 'next/router';
 import { Button, BackwardButton } from '../../elements/button/Button';
+import { Typo } from '../../elements/typo/Typo.styled';
 
 const SetMBTI = ({ nextHref }) => {
 	const [ei, setEI] = useRecoilState(EI);
@@ -65,16 +65,18 @@ const SetMBTI = ({ nextHref }) => {
 		setUserInfo((prev) => ({ ...prev, mbti: `${ei}${ns}${ft}${pj}` }));
 	}, [ei, ns, ft, pj, setUserInfo]);
 
-	const onSet = () => {
+	const onSet = useCallback(() => {
 		router.push(nextHref);
-	};
+	});
 
 	return (
 		<>
 			<Gnb isVisible={true}></Gnb>
 			<Wrapper>
 				<Content>
-					<Typo>아래 알파벳을 조합해 MBTI를 설정해주세요.</Typo>
+					<Typo fontWeight={400} fontSize={'1.5rem'} mb={'48px'}>
+						알파벳을 조합해 MBTI를 설정해주세요.
+					</Typo>
 					<Middle>
 						<div>
 							<label>
@@ -191,24 +193,33 @@ const SetMBTI = ({ nextHref }) => {
 					<SetInfoDiv>
 						<p>{userInfo.mbti}</p>
 					</SetInfoDiv>
-					<Button
-						width={'24.375rem'}
-						height={'3rem'}
-						disabled={userInfo.mbti.includes('_') ? true : false}
-						marginTop={'50px'}
-						fontWeight={'700'}
-						onClick={onSet}
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							position: 'absolute',
+							bottom: '0px',
+						}}
 					>
-						설정하기
-					</Button>
-					<BackwardButton
-						width={'24.375rem'}
-						height={'3rem'}
-						marginTop={'25px'}
-						fontWeight={'700'}
-					>
-						뒤로가기
-					</BackwardButton>
+						<Button
+							width={'24.375rem'}
+							height={'3rem'}
+							disabled={userInfo.mbti.includes('_') ? true : false}
+							marginTop={'50px'}
+							fontWeight={'700'}
+							onClick={onSet}
+						>
+							설정하기
+						</Button>
+						<BackwardButton
+							width={'24.375rem'}
+							height={'3rem'}
+							marginTop={'8px'}
+							fontWeight={'700'}
+						>
+							뒤로가기
+						</BackwardButton>
+					</div>
 				</Content>
 			</Wrapper>
 		</>

@@ -46,7 +46,6 @@ export const Box = styled.div`
 		transform: scale(1.15); /* translateY(10px); */
 	}
 	span {
-		z-index: 500;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -132,7 +131,7 @@ export const SetInfoDiv = styled.div`
 	font-size: 1.5rem;
 	font-weight: 700;
 	letter-spacing: 5px;
-	margin: 4px 0px;
+	margin: 40px 0px 32px 0px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

@@ -18,7 +18,7 @@ export const Logo = styled.div`
 `;
 
 export const MBTI = styled.div`
-	margin-top: 36px;
+	margin-bottom: 72px;
 	color: #1973fb;
 	font-size: 2.5rem;
 	font-weight: 700;

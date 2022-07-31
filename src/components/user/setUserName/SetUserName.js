@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { userState, userName } from '../../../store/user';
 import userService from '../../../service/userService';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
@@ -17,31 +16,48 @@ const SetUserName = (props) => {
 	const [typedName, setTypedName] = useRecoilState(userName);
 	const [userInfo, setUserInfo] = useRecoilState(userState);
 	const InpunRef = useRef();
-	let validateMsg;
 	const [notDupl, setNotDupl] = useState(false);
+	const [validateMsg, setValidateMsg] = useState();
 
-	const nameHandler = (e) => {
+	const nameHandler = useCallback((e) => {
 		setTypedName((prev) => ({
 			...prev,
 			value: e.target.value.trim(),
 			isValid: nameRegExp.test(e.target.value.trim()),
 		}));
-	};
+	});
 
-	const onSignUp = (e) => {
+	const onSignUp = useCallback((e) => {
 		userService.signUp(userInfo).then((res) => console.log(res));
-	};
+	});
 
 	useEffect(() => {
-		if (typedName.isValid) {
+		if (!typedName.value) {
+			setValidateMsg('');
+			return;
+		}
+		if (!typedName.isValid) {
+			setValidateMsg(
+				<p style={{ color: 'red' }}>
+					2~10자의 한글, 영어 숫자 조합으로 만들어주세요.
+				</p>,
+			);
+			return;
+		} else {
 			const duplicateCheckTimeout = setTimeout(() => {
 				userService //
 					.nameDuplicateCheck(typedName.value.trim())
 					.then((res) => {
 						if (res.data?.isExistsNickname) {
 							setNotDupl(false);
+							setValidateMsg(
+								<p style={{ color: 'red' }}>이미 존재하는 이름입니다.</p>,
+							);
 						} else {
 							setNotDupl(true);
+							setValidateMsg(
+								<p style={{ color: '#1973FB' }}>사용 가능한 이름입니다.</p>,
+							);
 							setUserInfo((prev) => ({
 								...prev,
 								id: +prev.id,
@@ -50,26 +66,11 @@ const SetUserName = (props) => {
 						}
 					});
 			}, 500);
-
 			return () => {
 				clearTimeout(duplicateCheckTimeout);
 			};
 		}
-		return;
-	}, [typedName, setTypedName]);
-
-	if (notDupl)
-		validateMsg = <p style={{ color: '#1973FB' }}>사용 가능한 이름입니다.</p>;
-	else validateMsg = <p style={{ color: 'red' }}>이미 존재하는 이름입니다.</p>;
-
-	if (!typedName.isValid)
-		validateMsg = (
-			<p style={{ color: 'red' }}>
-				2~10자의 한글, 영어 숫자 조합으로 만들어주세요.
-			</p>
-		);
-
-	if (typedName.value === '') validateMsg = '';
+	}, [typedName, setTypedName, setValidateMsg]);
 
 	return (
 		<>
@@ -78,7 +79,7 @@ const SetUserName = (props) => {
 				<Content>
 					{' '}
 					{/* TODO: 싹자 form으로 바꾸기 */}
-					<Typo fontWeight={400} fontSize={'1.5rem'}>
+					<Typo fontWeight={400} fontSize={'1.5rem'} mb={`48px`}>
 						채널에서 사용할 닉네임을 설정해주세요.
 					</Typo>
 					<MBTI>{userInfo.mbti}</MBTI>
@@ -118,7 +119,7 @@ const SetUserName = (props) => {
 						<BackwardButton
 							width={'24.375rem'}
 							height={'3rem'}
-							marginTop={'25px'}
+							marginTop={'8px'}
 							fontWeight={'700'}
 						>
 							뒤로가기
@@ -130,4 +131,4 @@ const SetUserName = (props) => {
 	);
 };
 
-export default SetUserName;
+export default memo(SetUserName);
