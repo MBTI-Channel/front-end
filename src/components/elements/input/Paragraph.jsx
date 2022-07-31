@@ -5,7 +5,7 @@ const InputParagraph = styled.input.attrs((props) => ({
 }))`
 	width: 795px;
 	height: 341px;
-	color: rgba(196, 196, 196, 1);
+	color: black;
 	border: 1px solid #ebebeb;
 	border-radius: 2px;
 	font-weight: 400;
@@ -22,8 +22,14 @@ const InputParagraph = styled.input.attrs((props) => ({
 	}
 `;
 
-const Paragraph = ({ marginTop, placeholder }) => {
-	return <InputParagraph placeholder={placeholder} marginTop={marginTop} />;
+const Paragraph = ({ marginTop, placeholder, onChange }) => {
+	return (
+		<InputParagraph
+			placeholder={placeholder}
+			marginTop={marginTop}
+			onChange={onChange}
+		/>
+	);
 };
 
 export default Paragraph;

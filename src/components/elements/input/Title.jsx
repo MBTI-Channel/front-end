@@ -21,12 +21,13 @@ const InputTitle = styled.input.attrs((props) => ({
 	}
 `;
 
-const Title = ({ marginTop }) => {
+const Title = ({ marginTop, onChange }) => {
 	return (
 		<InputTitle
 			className='title'
 			placeholder='제목을 입력해주세요.'
 			marginTop={marginTop}
+			onChange={onChange}
 		/>
 	);
 };

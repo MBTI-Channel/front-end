@@ -32,7 +32,7 @@ const Profile = () => {
 		const positionLeft = (screenWidth - popWidth) / 2;
 		const positionTop = (screenHeight - popHeight) / 2;
 		window.open(
-			'/',
+			'/auth/changeProfile',
 			'test',
 			`width=${popWidth}, height=${popHeight}, top=${positionTop}, left=${positionLeft}, resizable=yes, scrollbars=no`,
 		);
