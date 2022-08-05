@@ -28,7 +28,11 @@ const SetUserName = (props) => {
 	});
 
 	const onSignUp = useCallback((e) => {
-		userService.signUp(userInfo).then((res) => console.log(res));
+		userService.signUp(userInfo).then((res) => {
+			console.log(res);
+			Cookies.set('mbtichannel', user.data.refreshToken);
+			localStorage.setItem('mbtichannel-at', user.data.accessToken);
+		});
 	});
 
 	useEffect(() => {
