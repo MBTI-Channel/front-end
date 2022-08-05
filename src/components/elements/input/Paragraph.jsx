@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InputParagraph = styled.input.attrs((props) => ({
+const InputParagraph = styled.textarea.attrs((props) => ({
 	marginTop: props.marginTop || '0',
 }))`
 	width: 795px;

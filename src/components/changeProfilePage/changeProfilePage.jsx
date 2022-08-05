@@ -30,7 +30,6 @@ const changeProfile = () => {
 				width='390px'
 				marginTop='8px'
 				backgroundColor='white'
-				borderColor='#1973FB'
 				color='#1973FB'
 			>
 				뒤로가기

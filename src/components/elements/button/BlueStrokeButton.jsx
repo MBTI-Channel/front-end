@@ -5,14 +5,12 @@ export const BlueStrokeButton = styled.button.attrs((props) => ({
 	height: props.height || '52px',
 	marginTop: props.marginTop,
 	backgroundColor: props.backgroundColor,
-	borderColor: props.borderColor,
 	color: props.color,
 }))`
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
 	margin-top: ${(props) => props.marginTop};
-	border-width: 1px;
-	border-color: ${(props) => props.borderColor};
+	border: 1px solid #1973fb;
 	border-radius: 4px;
 	text-align: center;
 	background-color: ${(props) => props.backgroundColor};

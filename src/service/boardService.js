@@ -10,7 +10,7 @@ class Board {
 	write = async ({ categoryId, isSecret, title, content }) => {
 		try {
 			const res = await this.auth.post('/posts', {
-				categoryId,
+				header: categoryId,
 				isSecret,
 				title,
 				content,
@@ -27,6 +27,15 @@ class Board {
 				`/posts/search?category=${category}&startId=${startId}&maxResults=${maxResults}&order=${order}`,
 				{},
 			);
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	trend = async () => {
+		try {
+			const res = await this.auth.get('/posts/trending');
 			return res;
 		} catch (e) {
 			console.log(e);
