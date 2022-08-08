@@ -7,7 +7,7 @@ class User {
 
 	nameDuplicateCheck = async (name) => {
 		try {
-			const res = await this.user.get(`users?nickname=${name}`);
+			const res = await this.user.get(`users/check?nickname=${name}`);
 			return res;
 		} catch (e) {
 			console.log(e);

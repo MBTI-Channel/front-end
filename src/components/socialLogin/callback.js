@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import Cookies from 'js-cookie';
-import { userState } from '../../../store/user';
-import authService from '../../../service/authService';
+import { userState } from '../../store/user';
+import authService from '../../service/authService';
 
 const LoginRedirectHandler = ({ provider }) => {
 	const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -15,7 +15,7 @@ const LoginRedirectHandler = ({ provider }) => {
 		// 백엔드 서버로 로그인 요청
 		authService.logIn(provider, code).then((user) => {
 			console.log(user);
-			if (!user.data.accessToken) {
+			if (!user.data?.accessToken) {
 				setUserInfo((prev) => ({
 					...prev,
 					id: user.data.id,
@@ -23,8 +23,7 @@ const LoginRedirectHandler = ({ provider }) => {
 				}));
 				router.push('/user/signUp/setMBTI');
 			}
-			Cookies.set('mbtichannel', user.data.refreshToken);
-			localStorage.setItem('mbtichannel-at', user.data.accessToken);
+			localStorage.setItem('mbtichannel', user.data.accessToken);
 		});
 	}, []);
 
