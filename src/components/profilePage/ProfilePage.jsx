@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Gnb from '../../components/articles/Gnb';
 import {
@@ -9,11 +10,14 @@ import {
 	MyActivityContainer,
 	MyActivity,
 } from './ProfilePage.styled';
-import Card from '../elements/content/card/Card';
+import Card from '../elements/card/Card';
 import { SmallButton } from '../elements/button/SmallButton';
 import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
 import { Footer } from '../writingPage/WritingPage.style';
+import boardService from '../../service/boardService';
+import { useRecoilState } from 'recoil';
+import { isAdminState } from '../../store/profileState';
 
 /* 7/25 TODO
 1. 컬러, 폰트 컴포넌트 정리
@@ -23,7 +27,10 @@ import { Footer } from '../writingPage/WritingPage.style';
 */
 
 const Profile = () => {
-	const router = useRouter();
+	const [nickname, setNickname] = useState('');
+	const [mbti, setMbti] = useState('');
+	const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
+
 	const onClickChangeProfileInfo = () => {
 		const screenWidth = screen.availWidth;
 		const screenHeight = screen.availHeight;
@@ -37,6 +44,14 @@ const Profile = () => {
 			`width=${popWidth}, height=${popHeight}, top=${positionTop}, left=${positionLeft}, resizable=yes, scrollbars=no`,
 		);
 	};
+
+	const profile = boardService.profile();
+
+	// 정보 설정
+	// setNickname(profile.nickname);
+	// setMbti(profile.mbti);
+	// setIsAdmin(profile.isAdmin);
+
 	return (
 		<>
 			<Gnb isVisible />
@@ -51,7 +66,9 @@ const Profile = () => {
 					<div style={{ display: 'flex', flexDirection: 'column' }}>
 						<ProfileBar>
 							<div className='profile-info-container'>
-								<span className='nickname-mbti-container'>닉네임 | MBTI</span>
+								<span className='nickname-mbti-container'>
+									{nickname} | {mbti}
+								</span>
 								<span className='datetime-container'>2022-01-14</span>
 							</div>
 							<SmallButton

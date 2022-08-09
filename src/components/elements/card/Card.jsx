@@ -1,13 +1,55 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-	TitleContainer,
-	ContentContainer,
-	BaseBox,
-	ProgressBarContainer,
-} from './Card.styled';
-import LikeIcon from '../../../../../public/icon/like.svg';
-import UnLikeIcon from '../../../../../public/icon/unlike.svg';
+import LikeIcon from '../../../../public/icon/like.svg';
+import UnLikeIcon from '../../../../public/icon/unlike.svg';
+
+export const TitleContainer = styled.div`
+	width: 242px;
+	color: white;
+`;
+
+export const ContentContainer = styled.div`
+	width: 242px;
+	height: 18px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+
+	& .agree-container {
+		display: flex;
+		width: 100px;
+		font-size: 12px;
+		line-height: 18px;
+		align-items: center;
+		color: white;
+	}
+
+	& .disagree-container {
+		display: flex;
+		width: 100px;
+		font-size: 12px;
+		line-height: 18px;
+		align-items: center;
+		color: white;
+		justify-content: flex-end;
+	}
+`;
+
+export const ProgressBarContainer = styled.div`
+	width: 242px;
+	height: 7px;
+	position: relative;
+	margin-top: 1px;
+	margin-bottom: 16px;
+`;
+
+export const BaseBox = styled.div`
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 3px;
+`;
 
 const CardContainer = styled.div.attrs((props) => ({
 	src: props.src,
@@ -23,11 +65,7 @@ const CardContainer = styled.div.attrs((props) => ({
 	background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 `;
 
-const Card = ({ src }) => {
-	const title = `'깻잎 논쟁'...당신의 생각은?`; // 제목 받아오기
-	const agreeRate = '54%'; // 찬성률 받아오기
-	const disagreeRate = '46%'; // 반대율 받아오기
-
+const Card = ({ src, title, agreeRate, disagreeRate }) => {
 	const AgreeRate = styled(BaseBox)`
 		background-color: #0085ff;
 		width: ${agreeRate};

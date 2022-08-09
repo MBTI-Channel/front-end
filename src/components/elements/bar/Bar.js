@@ -17,7 +17,7 @@ const Bar = (props) => {
 
 	return (
 		<DefaultBarContainer>
-			<HeaderImage src={headerImageSrc} alt='사용자 설정 이미지' />
+			<HeaderImage src='/sample_image.jpeg' alt='사용자 설정 이미지' />
 			<TextWrapper>
 				<Title>제목제목제목</Title>
 				<Author>작성자 | {MBTI || 'MBTI'}</Author>

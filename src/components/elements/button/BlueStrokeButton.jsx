@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const BlueStrokeButton = styled.button.attrs((props) => ({
+	marginTop: props.marginTop,
 	width: props.width || '795px',
 	height: props.height || '52px',
-	marginTop: props.marginTop,
 	backgroundColor: props.backgroundColor,
 	color: props.color,
+	// border: props.border,
 }))`
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};

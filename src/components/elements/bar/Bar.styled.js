@@ -16,10 +16,7 @@ export const HeaderImage = styled.img`
 	width: 80px;
 	height: 80px;
 	padding-left: 36px;
-	/* display: flex; */
-	/* margin: 0 auto; */
-	/* justify-content: center; */
-	top: 50%;
+	/* top: 50%; */
 `;
 
 export const TextWrapper = styled.div`

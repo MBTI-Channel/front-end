@@ -8,7 +8,7 @@ import {
 	MenuWrapper,
 	Footer,
 } from './WritingPage.style';
-import Card from '../elements/content/card/Card';
+import Card from '../elements/card/Card';
 import Title from '../elements/input/Title';
 import Paragraph from '../elements/input/Paragraph';
 import { Button } from '../elements/button/Button';
@@ -35,7 +35,6 @@ const WritingPage = () => {
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
-	const imageUrlList = [];
 
 	const onTitleChange = (e) => {
 		const value = e.target.value;
@@ -66,6 +65,7 @@ const WritingPage = () => {
 				});
 				resolve();
 			};
+			console.log(imageUrl[0]);
 		});
 	};
 

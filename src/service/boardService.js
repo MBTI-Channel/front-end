@@ -41,6 +41,15 @@ class Board {
 			console.log(e);
 		}
 	};
+
+	profile = async () => {
+		try {
+			const res = await this.auth.get('/users/me');
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
 }
 
 const boardService = new Board(httpClient);
