@@ -3,13 +3,15 @@ import LikeIcon from '../../../../public/icon/like.svg';
 import CommentIcon from '../../../../public/icon/comment.svg';
 import EyeIcon from '../../../../public/icon/eye.svg';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs((props) => ({
+	marginTop: props.marginTop,
+}))`
 	width: 795px;
 	height: 185px;
 	background-color: white;
-	margin-top: 16px;
 	border: 1px solid #ebebeb;
 	border-radius: 4px;
+	margin-top: ${(props) => props.marginTop};
 `;
 
 const UsernameContainer = styled.div`
@@ -48,6 +50,7 @@ const ContentContainer = styled.div`
 `;
 
 const PostThumbnailBar = ({
+	marginTop,
 	mbti,
 	userNickname,
 	title,
@@ -58,7 +61,7 @@ const PostThumbnailBar = ({
 	textContent,
 }) => {
 	return (
-		<Wrapper>
+		<Wrapper marginTop={marginTop}>
 			<TextContainer style={{ padding: '16px' }}>
 				<UsernameContainer>
 					<span

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ContentWrapper = styled.div`
 	display: flex;
-	margin-top: 72px;
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 30px;

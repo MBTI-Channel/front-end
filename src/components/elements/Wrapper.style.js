@@ -25,6 +25,7 @@ export const Row = styled.div.attrs((props) => ({
 
 export const Column = styled.div.attrs((props) => ({
 	marginBottom: props.marginBottom || '0',
+	marginLeft: props.marginLeft || '0',
 	justifyContent: props.justifyContent || 'center',
 	alignItems: props.alignItems || 'flex-start',
 	gap: props.gap || '0',
@@ -34,6 +35,7 @@ export const Column = styled.div.attrs((props) => ({
 	justify-content: ${(props) => props.justifyContent};
 	align-items: ${(props) => props.alignItems};
 	margin-bottom: ${(props) => props.marginBottom};
+	margin-left: ${(props) => props.marginLeft};
 	gap: ${(props) => props.gap};
 `;
 

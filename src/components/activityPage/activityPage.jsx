@@ -4,8 +4,11 @@ import Card from '../elements/card/Card';
 import { CardWrapper } from '../profilePage/ProfilePage.styled';
 import { ContentWrapper, ButtonContainer } from './activityPage.styled';
 import { Button } from '../elements/button/Button';
-import Bar from '../elements/bar/Bar';
 import PostThumbnailBar from '../elements/bar/PostThumbnailBar';
+import SearchBar from '../elements/bar/SearchBar';
+import Category from '../elements/category/Category';
+import Footer from '../elements/Footer';
+import { Row, Column } from '../elements/Wrapper.style';
 
 const MyActivity = () => {
 	return (
@@ -18,26 +21,46 @@ const MyActivity = () => {
 					<Card />
 					<Card />
 				</CardWrapper>
-				<ContentWrapper>
-					<div style={{ display: 'flex', flexDirection: 'column' }}>
-						내활동
-						<ButtonContainer>
-							<Button width='99px' height='34px' backgroundColor='#1973FB'>
-								내가 쓴 글
-							</Button>
-							<Button width='110px' height='34px' backgroundColor='#1973FB'>
-								내가 쓴 댓글
-							</Button>
-							<Button width='154px' height='34px' backgroundColor='#1973FB'>
-								내가 참여한 공식질문
-							</Button>
-							<Button width='82px' height='34px' backgroundColor='#1973FB'>
-								북마크
-							</Button>
-						</ButtonContainer>
-						<PostThumbnailBar />
-					</div>
-				</ContentWrapper>
+				<Row marginTop='72px'>
+					<Column>
+						<Column
+							style={{
+								fontWeight: 700,
+								fontSize: '20px',
+								lineHeight: '30px',
+							}}
+						>
+							내활동
+							<ButtonContainer>
+								<Button width='99px' height='34px' backgroundColor='#1973FB'>
+									내가 쓴 글
+								</Button>
+								<Button width='110px' height='34px' backgroundColor='#1973FB'>
+									내가 쓴 댓글
+								</Button>
+								<Button width='154px' height='34px' backgroundColor='#1973FB'>
+									내가 참여한 공식질문
+								</Button>
+								<Button width='82px' height='34px' backgroundColor='#1973FB'>
+									북마크
+								</Button>
+							</ButtonContainer>
+						</Column>
+						<ContentWrapper>
+							<Column>
+								<PostThumbnailBar marginTop='16px' />
+								<PostThumbnailBar marginTop='8px' />
+								<PostThumbnailBar marginTop='8px' />
+								<PostThumbnailBar marginTop='8px' />
+							</Column>
+							<Column marginBottom='212px' marginLeft='14px'>
+								<SearchBar />
+								<Category marginTop='16px' />
+								<Footer marginTop='16px' />
+							</Column>
+						</ContentWrapper>
+					</Column>
+				</Row>
 			</Section>
 		</>
 	);
