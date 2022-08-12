@@ -1,26 +1,9 @@
 import styled from 'styled-components';
 
-export const Logo = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
-	& a > span {
-		width: 296px;
-		height: 90px;
-		display: inline-block;
-		background-size: contain;
-		background-repeat: no-repeat;
-		vertical-align: text-top;
-		background-image: url(/logo.svg);
-	}
-`;
-
 export const Typo = styled.p`
 	font-family: 'Noto Sans', sans-serif;
-	font-size: 2.5rem;
-	font-weight: 700;
+	font-size: 1.5rem;
+	font-weight: 400;
 	margin: 4px 0px;
 `;
 
@@ -63,7 +46,6 @@ export const Box = styled.div`
 		transform: scale(1.15); /* translateY(10px); */
 	}
 	span {
-		z-index: 500;
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -149,7 +131,7 @@ export const SetInfoDiv = styled.div`
 	font-size: 1.5rem;
 	font-weight: 700;
 	letter-spacing: 5px;
-	margin: 4px 0px;
+	margin: 40px 0px 32px 0px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -164,7 +146,7 @@ export const Confirm = styled.div`
 		width: 24.25rem;
 		height: 3rem;
 		border-radius: 6px;
-		margin: 35px 0px;
+		margin: 20px 0px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -172,5 +154,29 @@ export const Confirm = styled.div`
 		box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
 		background: #1973fb;
 		color: white;
+	}
+	&.disabled {
+		a {
+			pointer-events: none;
+			cursor: default;
+			background: #c4c4c4;
+		}
+	}
+`;
+
+export const Backward = styled.div`
+	width: auto;
+	height: auto;
+	& a {
+		width: 24.25rem;
+		height: 3rem;
+		border-radius: 6px;
+		margin: 20px 0px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		outline: none;
+		border: #1973fb 1px solid;
+		box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
 	}
 `;

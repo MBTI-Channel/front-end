@@ -12,8 +12,11 @@ const nextConfig = {
 		path: '/',
 	},
 	env: {
-		KAKAO_KEY: process.env.KAKAO_KEY,
-		KAKAO_REDIRECT: process.env.KAKAO_REDIRECT,
+		KAKAO_KEY: process.env.NEXT_PUBLIC_KAKAO_KEY,
+		KAKAO_REDIRECT: process.env.NEXT_PUBLIC_KAKAO_REDIRECT,
+		NAVER_KEY: process.env.NEXT_PUBLIC_NAVER_KEY,
+		NAVER_REDIRECT: process.env.NEXT_PUBLIC_NAVER_REDIRECT,
+		NAVER_RANDOM_STATE: process.env.NEXT_PUBLIC_NAVER_RANDOM_STATE,
 		API_DEV: process.env.API_DEV,
 		API_PRODUCT: process.env.API_PRODUCT,
 	},

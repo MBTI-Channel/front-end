@@ -1,25 +1,9 @@
 import styled from 'styled-components';
 
-export const Logo = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
-	& a > span {
-		width: 296px;
-		height: 90px;
-		display: inline-block;
-		background-size: contain;
-		background-repeat: no-repeat;
-		vertical-align: text-top;
-		background-image: url(/logo.svg);
-	}
-`;
-
 export const SocialLogin = styled.div`
 	width: auto;
 	height: auto;
+	margin: 150px 0px;
 	& a {
 		width: 24.25rem;
 		height: 3rem;

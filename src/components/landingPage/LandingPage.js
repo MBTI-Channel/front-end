@@ -1,4 +1,5 @@
 import React from 'react';
+import GnB from '../articles/Gnb.jsx';
 import Header from '../elements/header/Header';
 
 const LandingPage = () => {

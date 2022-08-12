@@ -1,7 +1,8 @@
 import React from 'react';
+import LoginRedirectHandler from '../../../components/socialLogin/callback';
 
-const NaverRedirectHandler = () => {
-	return <div></div>;
+const KakaoCallback = () => {
+	return <LoginRedirectHandler provider={'naver'} />;
 };
 
-export default NaverRedirectHandler;
+export default KakaoCallback;
