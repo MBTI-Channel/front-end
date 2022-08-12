@@ -2,7 +2,7 @@ import Gnb from '../articles/Gnb';
 import { Section } from '../profilePage/ProfilePage.styled';
 import Card from '../elements/card/Card';
 import { CardWrapper } from '../profilePage/ProfilePage.styled';
-import { ContentWrapper, ButtonContainer } from './activityPage.styled';
+import { ContentWrapper, ButtonContainer } from './ActivityPage.styled';
 import { Button } from '../elements/button/Button';
 import PostThumbnailBar from '../elements/bar/PostThumbnailBar';
 import SearchBar from '../elements/bar/SearchBar';
@@ -10,7 +10,7 @@ import Category from '../elements/category/Category';
 import Footer from '../elements/Footer';
 import { Row, Column } from '../elements/Wrapper.style';
 
-const MyActivity = () => {
+const ActivityPage = () => {
 	return (
 		<>
 			<Gnb isVisible />
@@ -66,4 +66,4 @@ const MyActivity = () => {
 	);
 };
 
-export default MyActivity;
+export default ActivityPage;

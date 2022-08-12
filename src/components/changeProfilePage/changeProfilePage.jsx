@@ -1,4 +1,4 @@
-import { Wrapper, InputBox } from './changeProfilePage.styled';
+import { Wrapper, InputBox } from './ChangeProfilePage.styled';
 import { Button } from '../elements/button/Button';
 import { BlueStrokeButton } from '../elements/button/BlueStrokeButton';
 

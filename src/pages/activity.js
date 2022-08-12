@@ -1,1 +1,1 @@
-export { default } from '../../src/components/activityPage';
+export { default } from '../../src/components/ActivityPage';

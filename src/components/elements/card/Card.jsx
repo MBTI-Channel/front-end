@@ -43,12 +43,24 @@ export const ProgressBarContainer = styled.div`
 	margin-bottom: 16px;
 `;
 
-export const BaseBox = styled.div`
+const BaseBox = styled.div`
 	height: 100%;
 	position: absolute;
 	left: 0;
 	top: 0;
 	border-radius: 3px;
+`;
+
+const AgreeRate = styled(BaseBox).attrs((props) => ({
+	agreeRate: props.agreeRate,
+}))`
+	background-color: #0085ff;
+	width: ${(props) => props.agreeRate};
+`;
+
+const DisagreeRate = styled(BaseBox)`
+	background-color: #eb7b7b;
+	width: 100%;
 `;
 
 const CardContainer = styled.div.attrs((props) => ({
@@ -66,18 +78,7 @@ const CardContainer = styled.div.attrs((props) => ({
 `;
 
 const Card = ({ src, title, agreeRate, disagreeRate }) => {
-	const AgreeRate = styled(BaseBox)`
-		background-color: #0085ff;
-		width: ${agreeRate};
-	`;
-
-	const DisagreeRate = styled(BaseBox)`
-		background-color: #eb7b7b;
-		width: 100%;
-	`;
-
 	return (
-		//백그라운드에 검정 필터 씌우기
 		<CardContainer src={src}>
 			<TitleContainer>{title}</TitleContainer>
 			<ContentContainer>
