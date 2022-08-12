@@ -1,6 +1,6 @@
 import httpClient from './httpClient';
 
-class Auth {
+class AuthService {
 	constructor(httpClient) {
 		this.auth = httpClient;
 	}
@@ -28,5 +28,5 @@ class Auth {
 	refresh = () => {};
 }
 
-const authService = new Auth(httpClient);
-export default authService;
+const Auth = new AuthService(httpClient);
+export default Auth;

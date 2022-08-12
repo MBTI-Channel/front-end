@@ -1,6 +1,6 @@
 import httpClient from './httpClient';
 
-class User {
+class UserService {
 	constructor(httpClient) {
 		this.user = httpClient;
 	}
@@ -22,7 +22,20 @@ class User {
 			console.log(e);
 		}
 	};
+
+	me = async (accessToken) => {
+		try {
+			const res = await this.user.get(`users/me`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
 }
 
-const userService = new User(httpClient);
-export default userService;
+const User = new UserService(httpClient);
+export default User;

@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
+import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import { userState } from '../../store/user';
-import authService from '../../service/authService';
+import Auth from '../../service/authService';
 
 const LoginRedirectHandler = ({ provider }) => {
 	const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -13,9 +14,9 @@ const LoginRedirectHandler = ({ provider }) => {
 		let code = params.get('code'); // URL에서 인가코드 추출
 
 		// 백엔드 서버로 로그인 요청
-		authService.logIn(provider, code).then((user) => {
+		Auth.logIn(provider, code).then((user) => {
 			console.log(user);
-			if (!user.data?.accessToken) {
+			if (!user?.data?.accessToken) {
 				setUserInfo((prev) => ({
 					...prev,
 					id: user.data.id,
@@ -28,6 +29,10 @@ const LoginRedirectHandler = ({ provider }) => {
 	}, []);
 
 	return <div></div>;
+};
+
+LoginRedirectHandler.propTypes = {
+	provider: PropTypes.string,
 };
 
 export default LoginRedirectHandler;

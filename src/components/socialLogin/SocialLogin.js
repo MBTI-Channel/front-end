@@ -11,6 +11,7 @@ import {
 } from './SocialLogin.styled';
 import Gnb from '../articles/Gnb';
 import nextConfig from '../../../next.config';
+import Header from '../elements/header/Header';
 
 const KCLIENT_ID = nextConfig.env.KAKAO_KEY;
 const KREDIRECT_URI = nextConfig.env.KAKAO_REDIRECT;
@@ -22,7 +23,7 @@ const NAVER_STATE = nextConfig.env.NAVER_RANDOM_STATE;
 const Login = () => {
 	return (
 		<>
-			<Gnb isVisible={true} />
+			<Header />
 			<Wrapper>
 				<Content>
 					<SocialLogin>

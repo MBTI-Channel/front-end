@@ -5,7 +5,7 @@ import Header from '../elements/header/Header';
 const LandingPage = () => {
 	return (
 		<>
-			<GnB isVisible={true} />
+			<Header />
 			<h1 style={{ fontSize: '10rem' }}>Hello</h1>
 			{/* TODO: 콘텐츠, 사이드바, 푸터 추가하기 */}
 		</>

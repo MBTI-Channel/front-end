@@ -17,10 +17,10 @@ import {
 } from './SetMBTI.styled';
 import { useRecoilState } from 'recoil';
 import { userState, EI, NS, FT, PJ } from '../../../store/user';
-import Gnb from '../../articles/Gnb';
 import { useRouter } from 'next/router';
 import { Button, BackwardButton } from '../../elements/button/Button';
 import { Typo } from '../../elements/typo/Typo.styled';
+import Header from '../../elements/header/Header';
 
 const SetMBTI = ({ nextHref }) => {
 	const [ei, setEI] = useRecoilState(EI);
@@ -30,8 +30,6 @@ const SetMBTI = ({ nextHref }) => {
 	const router = useRouter();
 
 	const [userInfo, setUserInfo] = useRecoilState(userState);
-
-	console.log(userInfo);
 
 	const EIHandler = useCallback(
 		(e) => {
@@ -71,7 +69,7 @@ const SetMBTI = ({ nextHref }) => {
 
 	return (
 		<>
-			<Gnb isVisible={true}></Gnb>
+			<Header />
 			<Wrapper>
 				<Content>
 					<Typo fontWeight={400} fontSize={'1.5rem'} mb={'48px'}>

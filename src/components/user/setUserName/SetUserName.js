@@ -1,14 +1,15 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userState, userName } from '../../../store/user';
-import userService from '../../../service/userService';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
 import { Content } from '../../elements/content/Content.styled';
 import { MBTI } from './SetUserName.styled';
 import NameInput from '../../elements/input/NameInput';
-import Gnb from '../../articles/Gnb';
 import { BackwardButton, Button } from '../../elements/button/Button';
 import { Typo } from '../../elements/typo/Typo.styled';
+import User from '../../../service/userService';
+import Header from '../../elements/header/Header';
+import { useRouter } from 'next/router';
 
 const nameRegExp = /^[|가-힣|a-z|A-Z|0-9|]{2,10}$/;
 
@@ -18,21 +19,28 @@ const SetUserName = (props) => {
 	const InpunRef = useRef();
 	const [notDupl, setNotDupl] = useState(false);
 	const [validateMsg, setValidateMsg] = useState();
+	const router = useRouter();
 
-	const nameHandler = useCallback((e) => {
-		setTypedName((prev) => ({
-			...prev,
-			value: e.target.value.trim(),
-			isValid: nameRegExp.test(e.target.value.trim()),
-		}));
-	});
+	const nameHandler = useCallback(
+		(e) => {
+			setTypedName((prev) => ({
+				...prev,
+				value: e.target.value.trim(),
+				isValid: nameRegExp.test(e.target.value.trim()),
+			}));
+		},
+		[setTypedName],
+	);
 
-	const onSignUp = useCallback((e) => {
-		userService.signUp(userInfo).then((res) => {
-			console.log(res);
-			localStorage.setItem('mbtichannel', user.data.accessToken);
-		});
-	});
+	const onSignUp = useCallback(
+		(e) => {
+			User.signUp(userInfo).then((user) => {
+				localStorage.setItem('mbtichannel', user.data.accessToken);
+				router.push('/');
+			});
+		},
+		[userInfo, router],
+	);
 
 	useEffect(() => {
 		if (!typedName.value) {
@@ -48,8 +56,7 @@ const SetUserName = (props) => {
 			return;
 		} else {
 			const duplicateCheckTimeout = setTimeout(() => {
-				userService //
-					.nameDuplicateCheck(typedName.value.trim())
+				User.nameDuplicateCheck(typedName.value.trim()) //
 					.then((res) => {
 						if (res.data?.isExistsNickname) {
 							setNotDupl(false);
@@ -77,7 +84,7 @@ const SetUserName = (props) => {
 
 	return (
 		<>
-			<Gnb isVisible={true}></Gnb>
+			<Header />
 			<Wrapper>
 				<Content>
 					{' '}
