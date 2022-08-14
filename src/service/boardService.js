@@ -9,15 +9,15 @@ class Board {
 	//TODO: 이미지 업로드 과정 추가
 	write = async (accessToken, categoryId, isSecret, title, content) => {
 		try {
-			const res = await this.auth.post(`/posts`, {
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
+			const res = await this.auth.post(
+				`posts`,
+				{ categoryId, isSecret, title, content },
+				{
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
 				},
-				categoryId,
-				isSecret,
-				title,
-				content,
-			});
+			);
 			return res;
 		} catch (e) {
 			console.log(e);

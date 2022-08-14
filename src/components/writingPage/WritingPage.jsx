@@ -49,7 +49,7 @@ const WritingPage = () => {
 
 	const onPostButtonClick = () => {
 		boardService
-			.write(accessToken, 2, false, title, content)
+			.write(accessToken, 1, false, title, content)
 			.then((res) => console.log(res));
 	};
 
