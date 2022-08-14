@@ -5,7 +5,7 @@ import Card from '../elements/card/Card';
 import { CardWrapper } from '../profilePage/ProfilePage.styled';
 import { ContentWrapper, ButtonContainer } from './ActivityPage.styled';
 import { Button } from '../elements/button/Button';
-import PostThumbnailBar from '../elements/bar/PostThumbnailBar';
+import ThumbnailBar from '../elements/bar/ThumbnailBar';
 import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
 import Footer from '../elements/Footer';
@@ -49,10 +49,10 @@ const ActivityPage = () => {
 						</Column>
 						<ContentWrapper>
 							<Column>
-								<PostThumbnailBar marginTop='16px' />
-								<PostThumbnailBar marginTop='8px' />
-								<PostThumbnailBar marginTop='8px' />
-								<PostThumbnailBar marginTop='8px' />
+								<ThumbnailBar marginTop='16px' />
+								<ThumbnailBar marginTop='8px' />
+								<ThumbnailBar marginTop='8px' />
+								<ThumbnailBar marginTop='8px' />
 							</Column>
 							<Column marginBottom='212px' marginLeft='14px'>
 								<SearchBar />

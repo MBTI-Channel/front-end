@@ -8,3 +8,10 @@ export const Section = styled.section`
 	align-items: center;
 	background-color: #f8fafb; ;
 `;
+
+export const CardWrapper = styled.div`
+	display: flex;
+	width: 1202px;
+	justify-content: space-between;
+	align-items: center;
+`;

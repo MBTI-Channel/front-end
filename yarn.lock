@@ -6149,36 +6149,36 @@ react@18.2.0:
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
-    "loose-envify" "^1.1.0"
+    loose-envify "^1.1.0"
 
 recoil@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.7.4.tgz#d6508fa656d9c93e66fdf334e1f723a9e98801cf"
   integrity sha512-sCXvQGMfSprkNU4ZRkJV4B0qFQSURJMgsICqY1952WRlg66NMwYqi6n67vhnhn0qw4zHU1gHXJuMvRDaiRNFZw==
   dependencies:
-    "hamt_plus" "1.0.2"
+    hamt_plus "1.0.2"
 
-"regenerate-unicode-properties@^10.0.1":
-  "integrity" "sha512-vn5DU6yg6h8hP/2OkQo3K7uVILvY4iu0oI4t3HFa81UPkhGJwkRwM10JEc3upjdhHjs/k8GJY1sRBhk5sr69Bw=="
-  "resolved" "https://registry.npmjs.org/regenerate-unicode-properties/-/regenerate-unicode-properties-10.0.1.tgz"
-  "version" "10.0.1"
+regenerate-unicode-properties@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.npmjs.org/regenerate-unicode-properties/-/regenerate-unicode-properties-10.0.1.tgz"
+  integrity sha512-vn5DU6yg6h8hP/2OkQo3K7uVILvY4iu0oI4t3HFa81UPkhGJwkRwM10JEc3upjdhHjs/k8GJY1sRBhk5sr69Bw==
   dependencies:
-    "regenerate" "^1.4.2"
+    regenerate "^1.4.2"
 
-"regenerate@^1.4.2":
-  "integrity" "sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A=="
-  "resolved" "https://registry.npmjs.org/regenerate/-/regenerate-1.4.2.tgz"
-  "version" "1.4.2"
+regenerate@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/regenerate/-/regenerate-1.4.2.tgz"
+  integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
 
-"regenerator-runtime@^0.13.4":
-  "integrity" "sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA=="
-  "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
-  "version" "0.13.9"
+regenerator-runtime@^0.13.4:
+  version "0.13.9"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
+  integrity sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==
 
-"regenerator-transform@^0.15.0":
-  "integrity" "sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg=="
-  "resolved" "https://registry.npmjs.org/regenerator-transform/-/regenerator-transform-0.15.0.tgz"
-  "version" "0.15.0"
+regenerator-transform@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.npmjs.org/regenerator-transform/-/regenerator-transform-0.15.0.tgz"
+  integrity sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==
   dependencies:
     "@babel/runtime" "^7.8.4"
 
@@ -6491,6 +6491,11 @@ styled-jsx@5.0.2:
   version "5.0.2"
   resolved "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.2.tgz"
   integrity sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ==
+
+styled-normalize@^8.0.7:
+  version "8.0.7"
+  resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-8.0.7.tgz#e883bff6a0c59a65a39365a4eb9c6cf48372c61f"
+  integrity sha512-qQV4O7B9g7ZUnStCwGde7Dc/mcFF/pz0Ha/LL7+j/r6uopf6kJCmmR7jCPQMCBrDkYiQ4xvw1hUoceVJkdaMuQ==
 
 subtag@^0.5.0:
   version "0.5.0"

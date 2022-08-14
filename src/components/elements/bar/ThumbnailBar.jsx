@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import LikeIcon from '../../../../public/icon/like.svg';
 import CommentIcon from '../../../../public/icon/comment.svg';
 import EyeIcon from '../../../../public/icon/eye.svg';
+import BookmarkIcon from '../../../../public/Icons/Basic/Bookmark.svg';
+import { useRecoilValue } from 'recoil';
+import { isBookMarkedState, isImgState } from '../../../store';
 
 const Wrapper = styled.div.attrs((props) => ({
 	marginTop: props.marginTop,
@@ -15,10 +18,17 @@ const Wrapper = styled.div.attrs((props) => ({
 `;
 
 const UsernameContainer = styled.div`
-	width: 219px;
+	/* width: 219px; */
 	height: 24px;
 	display: flex;
 	align-items: center;
+
+	& .username-mbti-container {
+		line-height: '18px';
+		font-size: '12px';
+		font-weight: 700;
+		color: '#1973FB';
+	}
 `;
 
 const TextContainer = styled.div`
@@ -26,6 +36,7 @@ const TextContainer = styled.div`
 	height: 119px;
 
 	& .content-thumbnail {
+		display: flex;
 		width: 755px;
 		height: 63px;
 		margin-top: 24px;
@@ -49,7 +60,7 @@ const ContentContainer = styled.div`
 	}
 `;
 
-const PostThumbnailBar = ({
+const ThumbnailBar = ({
 	marginTop,
 	mbti,
 	userNickname,
@@ -59,21 +70,42 @@ const PostThumbnailBar = ({
 	viewCount,
 	updateDatetime,
 	textContent,
+	isBookmarked,
+	imgSrc,
 }) => {
 	return (
 		<Wrapper marginTop={marginTop}>
 			<TextContainer style={{ padding: '16px' }}>
 				<UsernameContainer>
-					<span
-						style={{
-							lineHeight: '18px',
-							fontSize: '12px',
-							fontWeight: '700',
-							color: '#1973FB',
-						}}
-					>
-						[{mbti || 'ENTJ'}] {userNickname || '야옹맨'}
-					</span>
+					{isBookmarked ? (
+						<>
+							<BookmarkIcon fill='rgba(223, 29, 29, 1)' />
+							<span
+								style={{
+									lineHeight: '18px',
+									fontSize: '12px',
+									fontWeight: '700',
+									color: '#1973FB',
+									marginLeft: '6px',
+								}}
+							>
+								[{mbti || 'ENTJ'}] {userNickname || '야옹맨'}
+							</span>
+						</>
+					) : (
+						<>
+							<span
+								style={{
+									lineHeight: '18px',
+									fontSize: '12px',
+									fontWeight: '700',
+									color: '#1973FB',
+								}}
+							>
+								[{mbti || 'ENTJ'}] {userNickname || '야옹맨'}
+							</span>
+						</>
+					)}
 					<span
 						style={{
 							lineHeight: '24px',
@@ -85,7 +117,10 @@ const PostThumbnailBar = ({
 						{title || '야옹맨의 게시글 제목'}
 					</span>
 				</UsernameContainer>
-				<div className='content-thumbnail'>{textContent || 'hi'}</div>
+				<div className='content-thumbnail'>
+					<span>{textContent || 'hi'}</span>
+					{imgSrc ? <img src={imgSrc} /> : <></>}
+				</div>
 			</TextContainer>
 			<ContentContainer>
 				<div className='content-count'>
@@ -108,4 +143,4 @@ const PostThumbnailBar = ({
 	);
 };
 
-export default PostThumbnailBar;
+export default ThumbnailBar;

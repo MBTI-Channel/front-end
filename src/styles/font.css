@@ -1,0 +1,78 @@
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('./NotoSansKR-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('./NotoSansKR-Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+.mbti {
+	font: normal normal 700 48px Noto Sans;
+	line-height: 100%;
+}
+
+.title {
+	font: normal normal 700 40px Noto Sans;
+	line-height: 100%;
+}
+
+.heading-1 {
+	font: normal normal 700 24px Noto Sans;
+	line-height: 150%;
+}
+
+.heading-2 {
+	font: normal normal 400 20px Noto Sans;
+	line-height: 150%;
+}
+
+.heading-3-label {
+	font: normal normal 700 18px Noto Sans;
+	line-height: 100%;
+}
+
+.notice-l {
+	font: normal normal 400 24px Noto Sans;
+	line-height: 150%;
+}
+
+.label-disabled {
+	font: normal normal 400 18px Noto Sans;
+	line-height: 100%;
+}
+
+.label {
+	font: normal normal 700 16px Noto Sans;
+	line-height: 150%;
+}
+
+.label-2 {
+	font: normal normal 400 16px Noto Sans;
+	line-height: 150%;
+}
+
+.paragraph-strong {
+	font: normal normal 700 14px Noto Sans;
+	line-height: 150%;
+}
+
+.paragraph {
+	font: normal normal 400 14px Noto Sans;
+	line-height: 150%;
+}
+
+.small-text-regular {
+	font: normal normal 400 12px Noto Sans;
+	line-height: 150%;
+}
+
+.small-text-bold {
+	font: normal normal 700 12px Noto Sans;
+	line-height: 150%;
+}

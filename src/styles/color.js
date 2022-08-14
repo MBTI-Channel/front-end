@@ -1,0 +1,15 @@
+export const MBTI_BLUE = '#1973FB';
+export const SUB_BLUE = '#3D8AFF';
+export const LOGO_BLUE = '#72C4F2';
+export const ORANGE = '#ED6B42';
+export const RED = '#DF1D1D';
+export const LIGHT_GREY_1 = '#EBEBEB';
+export const LIGHT_GREY_2 = '#C4C4C4';
+export const GREY_1 = '#A5A5A5';
+export const GREY_2 = '#8B8B8B';
+export const GREY_3 = '#6F6F6F';
+export const GREY_4 = '#4F4C4C';
+export const DARK_GREY_1 = '#3C3C3C';
+export const DARK_GREY_2 = '#333333';
+export const BLACK = '#000000';
+export const BACKGROUND = '#F8FAFB';
