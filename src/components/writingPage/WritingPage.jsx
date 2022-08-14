@@ -1,4 +1,4 @@
-import Gnb from '../articles/Gnb';
+import Header from '../elements/header/Header';
 import {
 	Section,
 	CardWrapper,
@@ -15,7 +15,7 @@ import { Button } from '../elements/button/Button';
 import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
 import CameraIcon from '../../../public/Icons/Basic/Camera.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import boardService from '../../service/boardService';
 import styled from 'styled-components';
 
@@ -35,6 +35,7 @@ const WritingPage = () => {
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
+	const [accessToken, setAccessToken] = useState('');
 
 	const onTitleChange = (e) => {
 		const value = e.target.value;
@@ -48,9 +49,13 @@ const WritingPage = () => {
 
 	const onPostButtonClick = () => {
 		boardService
-			.write(1, false, title, content)
+			.write(accessToken, 2, false, title, content)
 			.then((res) => console.log(res));
 	};
+
+	useEffect(() => {
+		setAccessToken(localStorage.getItem('mbtichannel'));
+	}, [accessToken]);
 
 	const encodeFileToBase64 = (fileBlob) => {
 		const fileReader = new FileReader();
@@ -65,13 +70,12 @@ const WritingPage = () => {
 				});
 				resolve();
 			};
-			console.log(imageUrl[0]);
 		});
 	};
 
 	return (
 		<>
-			<Gnb isVisible />
+			<Header isVisible />
 			<Section>
 				<CardWrapper>
 					<Card src='/sample_image.jpeg' />
@@ -111,8 +115,9 @@ const WritingPage = () => {
 							)}
 						</ImageUploadBox>
 						<Button
+							width='795px'
 							height='52px'
-							marginTop='53px'
+							mt='32px'
 							backgroundColor='#1973FB'
 							onClick={onPostButtonClick}
 						>

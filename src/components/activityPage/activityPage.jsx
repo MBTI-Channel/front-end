@@ -1,4 +1,5 @@
 import Gnb from '../articles/Gnb';
+import Header from '../elements/header/Header';
 import { Section } from '../profilePage/ProfilePage.styled';
 import Card from '../elements/card/Card';
 import { CardWrapper } from '../profilePage/ProfilePage.styled';
@@ -13,7 +14,7 @@ import { Row, Column } from '../elements/Wrapper.style';
 const ActivityPage = () => {
 	return (
 		<>
-			<Gnb isVisible />
+			<Header isVisible />
 			<Section>
 				<CardWrapper>
 					<Card />

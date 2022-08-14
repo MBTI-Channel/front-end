@@ -64,7 +64,8 @@ const Header = () => {
 			case 'login':
 				router.push('auth/login');
 			case 'logout':
-				// setIsLoggedIn(false);
+				setIsLoggedIn(false);
+				localStorage.removeItem('mbtichannel');
 				router.push('/');
 			default:
 				router.push('/');

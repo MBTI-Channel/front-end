@@ -7,10 +7,13 @@ class Board {
 
 	// 게시글 작성
 	//TODO: 이미지 업로드 과정 추가
-	write = async ({ categoryId, isSecret, title, content }) => {
+	write = async (accessToken, categoryId, isSecret, title, content) => {
 		try {
-			const res = await this.auth.post('/posts', {
-				header: categoryId,
+			const res = await this.auth.post(`/posts`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+				categoryId,
 				isSecret,
 				title,
 				content,

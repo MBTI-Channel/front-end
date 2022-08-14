@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userState, userName } from '../../../store/user';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
-import { Content } from '../../elements/content/Content.styled';
+import { Content } from '../../elements/Content.styled';
 import { MBTI } from './SetUserName.styled';
 import NameInput from '../../elements/input/NameInput';
 import { BackwardButton, Button } from '../../elements/button/Button';
