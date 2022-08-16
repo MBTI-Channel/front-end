@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper } from '../../elements/wrapper/ContentWrapper.styled';
-import { Content } from '../../elements/content/Content.styled';
+import { Content } from '../../elements/Content.styled';
 import {
 	Box,
 	E,

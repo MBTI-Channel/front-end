@@ -1,5 +1,4 @@
 import axios from 'axios';
-import nextConfig from '../../next.config';
 
 const API_DEV = process.env.API_DEV;
 const API_PRODUCT = process.env.API_PRODUCT;

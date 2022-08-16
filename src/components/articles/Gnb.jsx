@@ -15,9 +15,8 @@ const NotLoggedIn = ({ navHandler }) => {
 				로그인
 			</button>
 		</div>
-	)
-
-}
+	);
+};
 
 const LoggedIn = ({ navHandler }) => (
 	<>
@@ -87,9 +86,13 @@ const Gnb = ({ navHandler, isLoggedIn }) => {
 			}}
 		>
 			{console.log(isLoggedIn)}
-			{isLoggedIn ? <LoggedIn navHandler={navHandler} /> : <NotLoggedIn navHandler={navHandler} />}
+			{isLoggedIn ? (
+				<LoggedIn navHandler={navHandler} />
+			) : (
+				<NotLoggedIn navHandler={navHandler} />
+			)}
 		</div>
 	);
-}
+};
 
 export default Gnb;
