@@ -85,7 +85,6 @@ const Gnb = ({ navHandler, isLoggedIn }) => {
 				justifyItems: 'end',
 			}}
 		>
-			{console.log(isLoggedIn)}
 			{isLoggedIn ? (
 				<LoggedIn navHandler={navHandler} />
 			) : (

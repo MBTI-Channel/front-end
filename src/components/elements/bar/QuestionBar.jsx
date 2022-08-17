@@ -2,12 +2,18 @@ import styled from 'styled-components';
 import LikeIcon from '../customIcon/LikeIcon';
 import UnlikeIcon from '../customIcon/UnlikeIcon';
 import CommentIcon from '../../../../public/icon/comment.svg';
+import {
+	LIGHT_GREY_1,
+	DARK_GREY_2,
+	RED,
+	MBTI_BLUE,
+} from '../../../styles/color';
 
 const Wrapper = styled.div`
 	display: flex;
 	width: 795px;
 	height: 112px;
-	border: 1px solid #ebebeb;
+	border: 1px solid ${LIGHT_GREY_1};
 	background-color: white;
 
 	& img {
@@ -24,7 +30,9 @@ const Wrapper = styled.div`
 	}
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.div.attrs((props) => ({
+	isAgree: props.isAgree,
+}))`
 	display: flex;
 	flex-direction: column;
 	margin-left: 16px;
@@ -38,7 +46,7 @@ const ContentContainer = styled.div`
 	}
 
 	& .isAgree-container {
-		color: rgba(25, 115, 251, 1);
+		color: ${(props) => (props.isAgree ? MBTI_BLUE : RED)};
 		font-size: 14px;
 		line-height: 21px;
 		font-weight: 700;
@@ -52,7 +60,7 @@ const ReactionContainer = styled.div`
 
 	& .content-count {
 		display: flex;
-		color: #333333;
+		color: ${DARK_GREY_2};
 		align-items: center;
 	}
 `;

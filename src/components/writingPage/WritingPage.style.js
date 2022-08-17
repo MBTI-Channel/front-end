@@ -59,7 +59,7 @@ export const SearchInputBox = styled.div`
 
 export const Footer = styled.div`
 	display: flex;
-	width: 390px;
+	width: 357px;
 	height: 185px;
 	border: 1px solid #ebebeb;
 	border-radius: 4px;

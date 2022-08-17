@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SearchInputBox = styled.div.attrs((props) => ({
-	width: props.width || '390px',
+	width: props.width || '357px',
 	height: props.height || '54px',
 }))`
 	display: flex;

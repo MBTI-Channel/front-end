@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import Gnb from '../../components/articles/Gnb';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Header from '../../components/elements/header/Header';
 import {
 	Section,
 	CardWrapper,
@@ -9,12 +10,14 @@ import {
 	MyActivityContainer,
 	MyActivity,
 } from './ProfilePage.styled';
+import { Row, Column } from '../elements/Wrapper.style';
 import Card from '../elements/card/Card';
 import { SmallButton } from '../elements/button/SmallButton';
 import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
 import { Footer } from '../writingPage/WritingPage.style';
-import boardService from '../../service/boardService';
+import User from '../../service/userService';
+import profileService from '../../service/profileservice';
 import { useRecoilState } from 'recoil';
 import { isAdminState } from '../../store/profileState';
 
@@ -26,9 +29,14 @@ import { isAdminState } from '../../store/profileState';
 */
 
 const Profile = () => {
+	const router = useRouter();
 	const [nickname, setNickname] = useState('');
 	const [mbti, setMbti] = useState('');
+	const [accessToken, setAccessToken] = useState('');
+	const [createdAt, setCreatedAt] = useState('');
 	const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
+
+	const userId = router.query.id;
 
 	const onClickChangeProfileInfo = () => {
 		const screenWidth = screen.availWidth;
@@ -44,16 +52,24 @@ const Profile = () => {
 		);
 	};
 
-	const profile = boardService.profile();
+	useEffect(() => {
+		setAccessToken(localStorage.getItem('mbtichannel'));
+	}, [accessToken]);
 
-	// 정보 설정
-	// setNickname(profile.nickname);
-	// setMbti(profile.mbti);
-	// setIsAdmin(profile.isAdmin);
+	if (nickname == '') {
+		User.me(accessToken).then((res) => {
+			if (res) {
+				setNickname(res.data.nickname);
+				setMbti(res.data.mbti);
+				setCreatedAt(res.data.createdAt.slice(0, 10));
+				setIsAdmin(res.data.isAdmin);
+			}
+		});
+	}
 
 	return (
 		<>
-			<Gnb isVisible />
+			<Header isVisible />
 			<Section>
 				<CardWrapper>
 					<Card src='/sample_image.jpeg' />
@@ -61,14 +77,16 @@ const Profile = () => {
 					<Card src='/sample_image.jpeg' />
 					<Card src='/sample_image.jpeg' />
 				</CardWrapper>
-				<div style={{ display: 'flex', marginTop: '72px' }}>
-					<div style={{ display: 'flex', flexDirection: 'column' }}>
+				<Row marginTop='72px'>
+					<Column>
 						<ProfileBar>
 							<div className='profile-info-container'>
-								<span className='nickname-mbti-container'>
+								<span className='label'>
 									{nickname} | {mbti}
 								</span>
-								<span className='datetime-container'>2022-01-14</span>
+								<span className='datetime-container small-text-bold'>
+									{createdAt}
+								</span>
 							</div>
 							<SmallButton
 								isFilled={true}
@@ -77,8 +95,8 @@ const Profile = () => {
 								닉네임/MBTI 변경
 							</SmallButton>
 						</ProfileBar>
-						<ActivityContainer>
-							<ActivityBar>
+						<ActivityContainer className='label'>
+							<ActivityBar style={{ marginTop: '24px' }}>
 								<img className='icon-container' src='/Icons/Basic/bell.svg' />
 								<span className='text-container'>알림</span>
 							</ActivityBar>
@@ -89,7 +107,7 @@ const Profile = () => {
 								/>
 								<span className='text-container'>내 활동</span>
 							</ActivityBar>
-							<MyActivityContainer>
+							<MyActivityContainer className='label-2'>
 								<MyActivity>내가 쓴 글</MyActivity>
 								<MyActivity>내가 쓴 댓글</MyActivity>
 								<MyActivity>내가 참여한 공식질문</MyActivity>
@@ -114,13 +132,13 @@ const Profile = () => {
 								<span className='text-container'>탈퇴</span>
 							</ActivityBar>
 						</ActivityContainer>
-					</div>
-					<div style={{ marginLeft: '14px' }}>
+					</Column>
+					<Column marginLeft='14px'>
 						<SearchBar />
-						<Category marginTop='32px' />
+						<Category marginTop='16px' />
 						<Footer style={{ marginTop: '20px' }}>Footer</Footer>
-					</div>
-				</div>
+					</Column>
+				</Row>
 			</Section>
 		</>
 	);
