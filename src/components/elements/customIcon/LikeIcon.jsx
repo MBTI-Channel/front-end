@@ -5,6 +5,7 @@ const LikeIcon = ({
 	fill = 'rgba(51, 51, 51, 1)',
 	width = 16,
 	height = 16,
+	marginLeft,
 }) => {
 	return (
 		<svg

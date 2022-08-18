@@ -52,23 +52,42 @@ const Header = () => {
 		});
 	});
 
+	// const navHandler = (e) => {
+	// 	const { value } = e.currentTarget;
+	// 	switch (value) {
+	// 		case 'write':
+	// 			router.push('post/write');
+	// 		case 'notification':
+	// 			router.push('user/notification');
+	// 		case 'profile':
+	// 			router.push('user');
+	// 		case 'login':
+	// 			router.push('auth/login');
+	// 		case 'logout':
+	// 			setIsLoggedIn(false);
+	// 			localStorage.removeItem('mbtichannel');
+	// 			router.push('/');
+	// 		default:
+	// 			router.push('/');
+	// 	}
+	// };
+
 	const navHandler = (e) => {
 		const { value } = e.currentTarget;
-		switch (value) {
-			case 'write':
-				router.push('post/write');
-			case 'notification':
-				router.push('user/notification');
-			case 'profile':
-				router.push('user');
-			case 'login':
-				router.push('auth/login');
-			case 'logout':
-				setIsLoggedIn(false);
-				localStorage.removeItem('mbtichannel');
-				router.push('/');
-			default:
-				router.push('/');
+		if (value == 'write') {
+			router.push('/post/write/1');
+		} else if (value == 'login') {
+			router.push('/auth/login');
+		} else if (value == 'notification') {
+			router.push('user/notification');
+		} else if (value == 'profile') {
+			router.push('/user');
+		} else if (value == 'logout') {
+			setIsLoggedIn(false);
+			localStorage.removeItem('mbtichannel');
+			router.push('/');
+		} else {
+			router.push('/');
 		}
 	};
 

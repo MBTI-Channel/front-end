@@ -22,7 +22,7 @@ export const ProfileBar = styled.div`
 	width: 795px;
 	height: 82px;
 	border: 1px solid #ebebeb;
-	border-radius: 12px;
+	border-radius: 4px;
 	align-items: center;
 	justify-content: space-between;
 	padding: 25px 20px;
@@ -56,6 +56,7 @@ export const ActivityBar = styled.div`
 	margin-top: 16px;
 	margin-left: 12px;
 	background-color: white;
+	cursor: pointer;
 
 	& .icon-container {
 		width: 24px;
@@ -77,6 +78,7 @@ export const MyActivityContainer = styled.div`
 	flex-direction: column;
 	margin-top: 8px;
 	margin-left: 56px;
+	cursor: pointer;
 `;
 
 export const MyActivity = styled.div`

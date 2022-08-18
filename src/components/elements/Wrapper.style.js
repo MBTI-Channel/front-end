@@ -11,6 +11,7 @@ export const WideWrapper = styled.div`
 export const Row = styled.div.attrs((props) => ({
 	marginBottom: props.marginBottom || '0',
 	marginTop: props.marginTop || '0',
+	marginLeft: props.marginLeft || '0',
 	justifyContent: props.justifyContent || '',
 	alignItems: props.alignItems || '',
 	gap: props.gap || '0',
@@ -20,6 +21,7 @@ export const Row = styled.div.attrs((props) => ({
 	align-items: ${(props) => props.alignItems};
 	margin-bottom: ${(props) => props.marginBottom};
 	margin-top: ${(props) => props.marginTop};
+	margin-left: ${(props) => props.marginLeft};
 	gap: ${(props) => props.gap};
 `;
 

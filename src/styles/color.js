@@ -12,4 +12,5 @@ export const GREY_4 = '#4F4C4C';
 export const DARK_GREY_1 = '#3C3C3C';
 export const DARK_GREY_2 = '#333333';
 export const BLACK = '#000000';
+export const WHITE = '#FFFFFF';
 export const BACKGROUND = '#F8FAFB';

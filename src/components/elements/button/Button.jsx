@@ -4,7 +4,6 @@ export const Button = styled.button.attrs((props) => ({
 	width: props.width || '390px',
 	height: props.height,
 	mt: props.mt,
-	fontWeight: props.fontWeight || '400',
 }))`
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
@@ -13,8 +12,7 @@ export const Button = styled.button.attrs((props) => ({
 	border-radius: 4px;
 	text-align: center;
 	background-color: #1973fb;
-	font-size: 18px;
-	font-weight: ${(props) => props.fontWeight};
+
 	color: white;
 	cursor: pointer;
 	&:disabled {

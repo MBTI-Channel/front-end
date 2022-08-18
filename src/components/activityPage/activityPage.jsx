@@ -3,15 +3,20 @@ import Header from '../elements/header/Header';
 import { Section } from '../profilePage/ProfilePage.styled';
 import Card from '../elements/card/Card';
 import { CardWrapper } from '../profilePage/ProfilePage.styled';
-import { ContentWrapper, ButtonContainer } from './ActivityPage.styled';
-import { Button } from '../elements/button/Button';
+import {
+	ContentWrapper,
+	ButtonContainer,
+	CategoryButton,
+} from './activityPage.styled';
 import ThumbnailBar from '../elements/bar/ThumbnailBar';
 import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
 import Footer from '../elements/Footer';
 import { Row, Column } from '../elements/Wrapper.style';
+import User from '../../service/userService';
 
 const ActivityPage = () => {
+	User.getPost('trip', 0, 4, 'createdAt').then((res) => console.log(res));
 	return (
 		<>
 			<Header isVisible />
@@ -24,37 +29,51 @@ const ActivityPage = () => {
 				</CardWrapper>
 				<Row marginTop='72px'>
 					<Column>
-						<Column
-							style={{
-								fontWeight: 700,
-								fontSize: '20px',
-								lineHeight: '30px',
-							}}
-						>
-							내활동
+						<Column>
+							<span className='heading-1'>내활동</span>
 							<ButtonContainer>
-								<Button width='99px' height='34px' backgroundColor='#1973FB'>
+								<CategoryButton
+									className='small-text-bold'
+									width='99px'
+									height='34px'
+									isSelected={true}
+								>
 									내가 쓴 글
-								</Button>
-								<Button width='110px' height='34px' backgroundColor='#1973FB'>
+								</CategoryButton>
+								<CategoryButton
+									className='small-text-bold'
+									width='110px'
+									height='34px'
+									isSelected={false}
+								>
 									내가 쓴 댓글
-								</Button>
-								<Button width='154px' height='34px' backgroundColor='#1973FB'>
+								</CategoryButton>
+								<CategoryButton
+									className='small-text-bold'
+									width='154px'
+									height='34px'
+									isSelected={false}
+								>
 									내가 참여한 공식질문
-								</Button>
-								<Button width='82px' height='34px' backgroundColor='#1973FB'>
+								</CategoryButton>
+								<CategoryButton
+									className='small-text-bold'
+									width='82px'
+									height='34px'
+									isSelected={false}
+								>
 									북마크
-								</Button>
+								</CategoryButton>
 							</ButtonContainer>
 						</Column>
-						<ContentWrapper>
+						<ContentWrapper style={{ marginTop: '16px' }}>
 							<Column>
-								<ThumbnailBar marginTop='16px' />
+								<ThumbnailBar />
 								<ThumbnailBar marginTop='8px' />
 								<ThumbnailBar marginTop='8px' />
 								<ThumbnailBar marginTop='8px' />
 							</Column>
-							<Column marginBottom='212px' marginLeft='14px'>
+							<Column marginLeft='14px'>
 								<SearchBar />
 								<Category marginTop='16px' />
 								<Footer marginTop='16px' />

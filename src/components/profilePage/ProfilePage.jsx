@@ -67,6 +67,23 @@ const Profile = () => {
 		});
 	}
 
+	const onClickActivity = (e) => {
+		const { value } = e.target.value;
+		if (value == alarm) {
+			router.push('/alarm');
+		} else if (value == myActivity) {
+			router.push('/myActivity');
+		} else if (value == question) {
+			router.push('/question');
+		} else if (value == prohibit) {
+			router.push('/prohibit');
+		} else if (value == quit) {
+			router.push('/quit');
+		} else if (value == myActivity) {
+			router.push('/myActivity');
+		}
+	};
+
 	return (
 		<>
 			<Header isVisible />
@@ -88,10 +105,7 @@ const Profile = () => {
 									{createdAt}
 								</span>
 							</div>
-							<SmallButton
-								isFilled={true}
-								onClick={() => onClickChangeProfileInfo()}
-							>
+							<SmallButton isFilled={true} onClick={onClickChangeProfileInfo}>
 								닉네임/MBTI 변경
 							</SmallButton>
 						</ProfileBar>

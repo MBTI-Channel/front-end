@@ -35,6 +35,37 @@ class UserService {
 			console.log(e);
 		}
 	};
+
+	getPost = async (category, startId, size, sort) => {
+		try {
+			const res = await this.user.get(`posts`, {
+				params: {
+					category: category,
+					startId: startId,
+					size: size,
+					sort: sort,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	comment = async (postId, page, maxResults) => {
+		try {
+			const res = await this.user.get(`comments`, {
+				params: {
+					postId: postId,
+					page: page,
+					maxResults: maxResults,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
 }
 
 const User = new UserService(httpClient);

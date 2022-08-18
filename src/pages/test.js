@@ -1,7 +1,9 @@
-import QuestionBar from '../components/elements/bar/QuestionBar';
+import CommentBar from '../../src/components/elements/bar/CommentBar';
+import User from '../service/userService';
 
 const Test = () => {
-	return <QuestionBar />;
+	User.comment(1, 1, 10).then((res) => console.log(res));
+	return <CommentBar isClicked={true} />;
 };
 
 export default Test;
