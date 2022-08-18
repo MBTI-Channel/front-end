@@ -6,44 +6,38 @@ const CategoryContainer = styled.div.attrs((props) => ({
 }))`
 	display: flex;
 	flex-direction: column;
-	width: 390px;
-	height: 265px;
+	width: 357px;
+	height: 518px;
 	border: 1px solid #ebebeb;
 	background-color: white;
-	padding: 12px;
+	padding: 20px 32px;
 	margin-top: ${(props) => props.marginTop};
-`;
-
-const CategoryText = styled.div`
-	font-size: 20px;
-	font-weight: 900;
-	line-height: 30px;
+	border-radius: 4px;
 `;
 
 const BoardButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 366px;
-	height: 199px;
-	margin-top: 4px;
+	width: 293px;
+	height: 448px;
+	margin-top: 10px;
 `;
 
 const BoardButton = styled.button`
 	display: flex;
 	align-items: center;
-	width: 366px;
-	height: 46px;
+	width: 293px;
+	height: 48px;
 	background-color: white;
-	border: #fff;
-	border-bottom: 1px solid #ebebeb;
+	border: transparent;
 	text-align: left;
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 24px;
-	margin-top: 4px;
+	margin-top: 2px;
 	cursor: pointer;
-`;
 
+	& img {
+		margin-right: 8px;
+	}
+`;
 const Category = ({ marginTop }) => {
 	const router = useRouter();
 
@@ -66,26 +60,42 @@ const Category = ({ marginTop }) => {
 	return (
 		<div>
 			<CategoryContainer marginTop={marginTop}>
-				<CategoryText>카테고리</CategoryText>
-				<BoardButtonContainer>
+				<div className='heading-3-label'>카테고리</div>
+				<BoardButtonContainer className='heading-2'>
 					<BoardButton onClick={onClickBoardButton} value='MyMbti'>
-						<img src='/Icons/Basic/mbti.svg' style={{ marginRight: '8px' }} />내
-						MBTI 게시판
+						<img src='/CategoryIcon/star-dynamic-color.svg' />내 MBTI 게시판
 					</BoardButton>
 					<BoardButton onClick={onClickBoardButton} value='Integrated'>
-						<img
-							src='/Icons/Basic/whole-list.svg'
-							style={{ marginRight: '8px' }}
-						/>
+						<img src='/CategoryIcon/tea-cup-dynamic-color.svg' />
 						통합게시판
 					</BoardButton>
 					<BoardButton onClick={onClickBoardButton} value='date'>
-						<img src='/Icons/Basic/heart.svg' style={{ marginRight: '8px' }} />
+						<img src='/CategoryIcon/heart-dynamic-color.svg' />
 						연애
 					</BoardButton>
 					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
-						<img src='/Icons/Basic/school.svg' style={{ marginRight: '8px' }} />
-						학교/직장
+						<img src='/CategoryIcon/bell-dynamic-color.svg' />
+						학교
+					</BoardButton>
+					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
+						<img src='/CategoryIcon/computer-dynamic-color.svg' />
+						직장
+					</BoardButton>
+					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
+						<img src='/CategoryIcon/headphone-dynamic-color.svg' />
+						음악
+					</BoardButton>
+					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
+						<img src='/CategoryIcon/video-camera-dynamic-color.svg' />
+						영화
+					</BoardButton>
+					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
+						<img src='/CategoryIcon/travel-dynamic-color.svg' />
+						여행
+					</BoardButton>
+					<BoardButton onClick={onClickBoardButton} value='schoolWork'>
+						<img src='/CategoryIcon/target-dynamic-color.svg' />
+						취미
 					</BoardButton>
 				</BoardButtonContainer>
 			</CategoryContainer>

@@ -11,8 +11,8 @@ export const WideWrapper = styled.div`
 export const Row = styled.div.attrs((props) => ({
 	marginBottom: props.marginBottom || '0',
 	marginTop: props.marginTop || '0',
-	justifyContent: props.justifyContent || 'flex-start',
-	alignItems: props.alignItems || 'center',
+	justifyContent: props.justifyContent || '',
+	alignItems: props.alignItems || '',
 	gap: props.gap || '0',
 }))`
 	display: flex;
@@ -26,9 +26,10 @@ export const Row = styled.div.attrs((props) => ({
 export const Column = styled.div.attrs((props) => ({
 	marginBottom: props.marginBottom || '0',
 	marginLeft: props.marginLeft || '0',
-	justifyContent: props.justifyContent || 'center',
-	alignItems: props.alignItems || 'flex-start',
+	justifyContent: props.justifyContent || '',
+	alignItems: props.alignItems || '',
 	gap: props.gap || '0',
+	backgroundColor: props.backgroundColor,
 }))`
 	display: flex;
 	flex-direction: column;
@@ -37,6 +38,7 @@ export const Column = styled.div.attrs((props) => ({
 	margin-bottom: ${(props) => props.marginBottom};
 	margin-left: ${(props) => props.marginLeft};
 	gap: ${(props) => props.gap};
+	background-color: ${(props) => props.backgroundColor};
 `;
 
 export const Observer = styled.div`
