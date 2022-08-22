@@ -50,23 +50,28 @@ const Header = () => {
 				setIsLoggedIn(false);
 			}
 		});
-	});
+	}, []);
 
 	const navHandler = (e) => {
 		const { value } = e.currentTarget;
 		switch (value) {
 			case 'write':
-				router.push('post/write');
+				router.push('/post/write');
+				break;
 			case 'notification':
-				router.push('user/notification');
+				router.push('/user/notification');
+				break;
 			case 'profile':
-				router.push('user');
+				router.push('/user');
+				break;
 			case 'login':
-				router.push('auth/login');
+				router.push('/auth/login');
+				break;
 			case 'logout':
 				setIsLoggedIn(false);
 				localStorage.removeItem('mbtichannel');
 				router.push('/');
+				break;
 			default:
 				router.push('/');
 		}

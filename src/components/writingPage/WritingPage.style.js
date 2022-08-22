@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+// TODO: 공용 컴포넌트로 분리하기
+// Section,
+// CardWrapper,
+// CategoryConatiner,
+// MenuWrapper,
+// Footer,
+// TextWrapper,
+
 export const Section = styled.section`
 	display: flex;
 	flex-direction: column;

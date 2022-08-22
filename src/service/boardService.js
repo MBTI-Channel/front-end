@@ -1,17 +1,18 @@
 import httpClient from './httpClient';
 
-class Board {
+class BoardService {
 	constructor(httpClient) {
-		this.auth = httpClient;
+		this.board = httpClient;
 	}
 
 	// 게시글 작성
 	//TODO: 이미지 업로드 과정 추가
-	write = async (accessToken, categoryId, isSecret, title, content) => {
+	write = async (accessToken, category, isSecret, title, content) => {
+		console.log(category);
 		try {
-			const res = await this.auth.post(
+			const res = await this.board.post(
 				`posts`,
-				{ categoryId, isSecret, title, content },
+				{ category, isSecret, title, content },
 				{
 					headers: {
 						Authorization: `Bearer ${accessToken}`,
@@ -24,9 +25,22 @@ class Board {
 		}
 	};
 
+	detail = async (accessToken, id) => {
+		try {
+			const res = await this.board.get(`posts/${id}`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
 	search = async ({ category, startId, maxResults, order }) => {
 		try {
-			const res = await this.auth.get(
+			const res = await this.board.get(
 				`/posts/search?category=${category}&startId=${startId}&maxResults=${maxResults}&order=${order}`,
 				{},
 			);
@@ -38,7 +52,7 @@ class Board {
 
 	trend = async () => {
 		try {
-			const res = await this.auth.get('/posts/trending');
+			const res = await this.board.get('/posts/trending');
 			return res;
 		} catch (e) {
 			console.log(e);
@@ -47,7 +61,7 @@ class Board {
 
 	profile = async () => {
 		try {
-			const res = await this.auth.get('/users/me');
+			const res = await this.board.get('/users/me');
 			return res;
 		} catch (e) {
 			console.log(e);
@@ -55,5 +69,5 @@ class Board {
 	};
 }
 
-const boardService = new Board(httpClient);
-export default boardService;
+const Board = new BoardService(httpClient);
+export default Board;

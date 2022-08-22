@@ -38,7 +38,7 @@ const BoardButton = styled.button`
 		margin-right: 8px;
 	}
 `;
-const Category = ({ marginTop }) => {
+const SideBar = ({ marginTop }) => {
 	const router = useRouter();
 
 	const onClickBoardButton = (e) => {
@@ -103,4 +103,4 @@ const Category = ({ marginTop }) => {
 	);
 };
 
-export default Category;
+export default SideBar;

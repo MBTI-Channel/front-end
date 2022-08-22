@@ -7,9 +7,9 @@ import { ContentWrapper, ButtonContainer } from './ActivityPage.styled';
 import { Button } from '../elements/button/Button';
 import ThumbnailBar from '../elements/bar/ThumbnailBar';
 import SearchBar from '../elements/bar/SearchBar';
-import Category from '../elements/category/Category';
 import Footer from '../elements/Footer';
 import { Row, Column } from '../elements/Wrapper.style';
+import SideBar from "../elements/sideBar/SideBar";
 
 const ActivityPage = () => {
 	return (
@@ -56,7 +56,7 @@ const ActivityPage = () => {
 							</Column>
 							<Column marginBottom='212px' marginLeft='14px'>
 								<SearchBar />
-								<Category marginTop='16px' />
+								<SideBar marginTop='16px' />
 								<Footer marginTop='16px' />
 							</Column>
 						</ContentWrapper>

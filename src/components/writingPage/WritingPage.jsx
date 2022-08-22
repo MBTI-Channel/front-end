@@ -13,11 +13,12 @@ import Title from '../elements/input/Title';
 import Paragraph from '../elements/input/Paragraph';
 import { Button } from '../elements/button/Button';
 import SearchBar from '../elements/bar/SearchBar';
-import Category from '../elements/category/Category';
+import SideBar from '../elements/sideBar/SideBar';
 import CameraIcon from '../../../public/Icons/Basic/Camera.svg';
 import { useEffect, useState } from 'react';
-import boardService from '../../service/boardService';
+import Board from '../../service/boardService';
 import styled from 'styled-components';
+import SideBar from "../elements/sideBar/SideBar";
 
 /* 7/21 TODO
 	1. placeholder 줄바꿈 ... 미해결
@@ -48,8 +49,8 @@ const WritingPage = () => {
 	};
 
 	const onPostButtonClick = () => {
-		boardService
-			.write(accessToken, 1, false, title, content)
+		Board
+			.write(accessToken, 'love', false, title, content)
 			.then((res) => console.log(res));
 	};
 
@@ -126,7 +127,7 @@ const WritingPage = () => {
 					</TextWrapper>
 					<MenuWrapper>
 						<SearchBar />
-						<Category marginTop='16px' />
+						<SideBar marginTop='16px' />
 						<Footer style={{ marginTop: '27px' }}>footer</Footer>
 					</MenuWrapper>
 				</CategoryConatiner>

@@ -72,7 +72,22 @@
 	line-height: 150%;
 }
 
+.middle-text-regular {
+	font: normal normal 400 14px Noto Sans;
+	line-height: 150%;
+}
+
 .small-text-bold {
 	font: normal normal 700 12px Noto Sans;
+	line-height: 150%;
+}
+
+.middle-text-bold {
+	font: normal normal 700 20px Noto Sans;
+	line-height: 150%;
+}
+
+.large-text-bold {
+	font: normal normal 700 20px Noto Sans;
 	line-height: 150%;
 }
