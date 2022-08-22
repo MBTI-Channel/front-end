@@ -14,9 +14,18 @@ import Category from '../elements/category/Category';
 import Footer from '../elements/Footer';
 import { Row, Column } from '../elements/Wrapper.style';
 import User from '../../service/userService';
+import { useRecoilValue } from 'recoil';
+import { accessTokenState } from '../../store/user';
 
 const ActivityPage = () => {
-	User.getPost('test', 0, 4, 'createdAt').then((res) => console.log(res));
+	const accessToken = useRecoilValue(accessTokenState);
+	if (accessToken) {
+		User.getPost(accessToken, 1, 10).then((res) => {
+			let items = res.data.items;
+			console.log(items);
+		});
+	}
+
 	return (
 		<>
 			<Header isVisible />
@@ -66,9 +75,9 @@ const ActivityPage = () => {
 								</CategoryButton>
 							</ButtonContainer>
 						</Column>
-						<ContentWrapper style={{ marginTop: '16px' }}>
+						<ContentWrapper style={{ marginTop: '8px' }}>
 							<Column>
-								<ThumbnailBar />
+								<ThumbnailBar isBookmarked marginTop='8px' />
 								<ThumbnailBar marginTop='8px' />
 								<ThumbnailBar marginTop='8px' />
 								<ThumbnailBar marginTop='8px' />

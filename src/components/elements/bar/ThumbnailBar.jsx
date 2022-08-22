@@ -3,6 +3,8 @@ import LikeIcon from '../../../../public/icon/like.svg';
 import CommentIcon from '../../../../public/icon/comment.svg';
 import EyeIcon from '../../../../public/icon/eye.svg';
 import BookmarkIcon from '../../../../public/Icons/Basic/Bookmark.svg';
+import PropTypes from 'prop-types';
+import { RED, MBTI_BLUE, DARK_GREY_2 } from '../../../styles/color';
 import { useRecoilValue } from 'recoil';
 import { isBookMarkedState, isImgState } from '../../../store';
 
@@ -10,7 +12,6 @@ const Wrapper = styled.div.attrs((props) => ({
 	marginTop: props.marginTop,
 }))`
 	width: 795px;
-	height: 185px;
 	background-color: white;
 	border: 1px solid #ebebeb;
 	border-radius: 4px;
@@ -19,38 +20,35 @@ const Wrapper = styled.div.attrs((props) => ({
 
 const UsernameContainer = styled.div`
 	/* width: 219px; */
-	height: 24px;
+	max-height: 24px;
 	display: flex;
 	align-items: center;
 
 	& .username-mbti-container {
-		line-height: '18px';
-		font-size: '12px';
-		font-weight: 700;
-		color: '#1973FB';
+		color: ${MBTI_BLUE};
 	}
 `;
 
 const TextContainer = styled.div`
-	width: 763px;
-	height: 119px;
+	/* max-width: 763px; */
+	text-overflow: ellipsis;
 
 	& .content-thumbnail {
 		display: flex;
-		width: 755px;
-		height: 63px;
-		margin-top: 24px;
+		max-width: 745px;
+		max-height: 63px;
+		margin: 24px 0px;
 		border: transparent;
-		font-size: 14px;
-		font-weight: 400;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		border: 1px solid red;
 	}
 `;
 
 const ContentContainer = styled.div`
+	position: relative;
+	bottom: 16px;
 	display: flex;
-	margin-top: 18px;
-	font-size: 12px;
-	font-weight: 400;
 	padding-left: 16px;
 
 	& .content-count {
@@ -79,64 +77,61 @@ const ThumbnailBar = ({
 				<UsernameContainer>
 					{isBookmarked ? (
 						<>
-							<BookmarkIcon fill='rgba(223, 29, 29, 1)' />
+							<BookmarkIcon fill={RED} />
 							<span
+								className='small-text-bold'
 								style={{
-									lineHeight: '18px',
-									fontSize: '12px',
-									fontWeight: '700',
-									color: '#1973FB',
+									color: MBTI_BLUE,
 									marginLeft: '6px',
 								}}
 							>
-								[{mbti || 'ENTJ'}] {userNickname || '야옹맨'}
+								[{mbti}] {userNickname}
 							</span>
 						</>
 					) : (
 						<>
 							<span
+								className='small-text-bold'
 								style={{
-									lineHeight: '18px',
-									fontSize: '12px',
-									fontWeight: '700',
-									color: '#1973FB',
+									color: MBTI_BLUE,
 								}}
 							>
-								[{mbti || 'ENTJ'}] {userNickname || '야옹맨'}
+								[{mbti}] {userNickname}
 							</span>
 						</>
 					)}
 					<span
+						className='label'
 						style={{
-							lineHeight: '24px',
-							fontSize: '16px',
-							fontWeight: '700',
 							marginLeft: '6px',
 						}}
 					>
-						{title || '야옹맨의 게시글 제목'}
+						{title}
 					</span>
 				</UsernameContainer>
 				<div className='content-thumbnail'>
-					<span>{textContent || 'hi'}</span>
-					{imgSrc ? <img src={imgSrc} /> : <></>}
+					<div className='paragraph' style={{ color: DARK_GREY_2 }}>
+						{textContent ||
+							'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content smore-or-less normal distribution of letters, as opposed to using Content here, content smore-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content s v more-or-less normal distribution of letters, as opposed to using Content here, content s'}
+					</div>
 				</div>
+				{imgSrc ? <img src={imgSrc} /> : <></>}
 			</TextContainer>
 			<ContentContainer>
 				<div className='content-count'>
 					<LikeIcon width='16px' height='16px' fill='#4F4C4C' />
-					<span style={{ marginLeft: '4px' }}>{likesCount || 200}</span>
+					<span style={{ marginLeft: '4px' }}>{likesCount}</span>
 				</div>
 				<div className='content-count' style={{ marginLeft: '12px' }}>
 					<CommentIcon width='16px' height='16px' fill='#4F4C4C' />
-					<span style={{ marginLeft: '4px' }}>{replyCount || 200}</span>
+					<span style={{ marginLeft: '4px' }}>{replyCount}</span>
 				</div>
 				<div className='content-count' style={{ marginLeft: '12px' }}>
 					<EyeIcon width='16px' height='16px' />
-					<span style={{ marginLeft: '4px' }}>{viewCount || 200}</span>
+					<span style={{ marginLeft: '4px' }}>{viewCount}</span>
 				</div>
 				<div className='content-count' style={{ marginLeft: '12px' }}>
-					<span>{updateDatetime} 02/22 23&#58;02</span>
+					<span>{updateDatetime}</span>
 				</div>
 			</ContentContainer>
 		</Wrapper>

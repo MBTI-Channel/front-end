@@ -18,9 +18,13 @@ import Category from '../elements/category/Category';
 import { Footer } from '../writingPage/WritingPage.style';
 import User from '../../service/userService';
 import profileService from '../../service/profileservice';
-import { accessTokenState } from '../../store/user';
+import {
+	accessTokenState,
+	nicknameState,
+	mbtiState,
+	isAdminState,
+} from '../../store/user';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { isAdminState } from '../../store/profileState';
 
 /* 7/25 TODO
 1. 컬러, 폰트 컴포넌트 정리
@@ -31,8 +35,8 @@ import { isAdminState } from '../../store/profileState';
 
 const Profile = () => {
 	const router = useRouter();
-	const [nickname, setNickname] = useState('');
-	const [mbti, setMbti] = useState('');
+	const [nickname, setNickname] = useRecoilState(nicknameState);
+	const [mbti, setMbti] = useRecoilState(mbtiState);
 	const accessToken = useRecoilValue(accessTokenState);
 	const [createdAt, setCreatedAt] = useState('');
 	const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
@@ -40,6 +44,7 @@ const Profile = () => {
 	const userId = router.query.id;
 
 	const onClickChangeProfileInfo = () => {
+		// console.log(nickname, mbti);
 		const screenWidth = screen.availWidth;
 		const screenHeight = screen.availHeight;
 		const popWidth = 779;

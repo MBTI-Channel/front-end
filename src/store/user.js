@@ -39,3 +39,18 @@ export const accessTokenState = atom({
 	key: 'user/accessToken',
 	default: '',
 });
+
+export const isAdminState = atom({
+	key: 'profileState/isAdmin',
+	default: '0',
+});
+
+export const nicknameState = atom({
+	key: 'user/nickname',
+	default: '',
+});
+
+export const mbtiState = atom({
+	key: 'user/mbti',
+	default: '',
+});

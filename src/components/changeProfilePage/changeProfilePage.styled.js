@@ -9,14 +9,16 @@ export const Wrapper = styled.div`
 	background-color: white;
 `;
 
-export const InputBox = styled.input`
+export const InputBox = styled.input.attrs((props) => ({
+	marginTop: props.marginTop,
+}))`
 	width: 390px;
 	height: 52px;
 	color: black;
-	/* font-size: 16px; */
 	border: 1px solid #ebebeb;
 	border-radius: 2px;
 	padding: 15px 14px;
+	margin-top: ${(props) => props.marginTop};
 
 	::placeholder,
 	::-webkit-input-placeholder {

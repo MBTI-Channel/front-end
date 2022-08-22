@@ -1,27 +1,58 @@
-import { Wrapper, InputBox } from './ChangeProfilePage.styled';
+import { InputBox } from './ChangeProfilePage.styled';
 import { Button } from '../elements/button/Button';
 import { BlueStrokeButton } from '../elements/button/BlueStrokeButton';
+import { Column } from '../elements/Wrapper.style';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { nicknameState, mbtiState, accessTokenState } from '../../store/user';
+import User from '../../service/userService';
 
 const changeProfile = () => {
+	const [nickname, setNickname] = useRecoilState(nicknameState);
+	const [mbti, setMbti] = useRecoilState(mbtiState);
+	const accessToken = useRecoilValue(accessTokenState);
+
+	console.log('hi', nickname, mbti, accessToken);
+
+	const onNicknameChange = (e) => {
+		let newNickname = e.target.value;
+		if (newNickname !== nickname) {
+			User.changeNickname(accessToken).then((res) => console.log(res));
+		}
+	};
+
+	const onMbtiChange = (e) => {
+		let newMbti = e.target.value;
+		if (newMbti !== mbti) {
+			User.changeMbti(accessToken).then((res) => console.log(res));
+		}
+	};
+
 	const onChangeProfileButtonClick = () => {};
 
 	return (
-		<Wrapper>
-			<div style={{ fontSize: '40px', fontWeight: '700' }}>
+		<Column alignItems='center' justifyContent='center'>
+			<div className='title' style={{ marginTop: '48px' }}>
 				닉네임 / MBTI 변경
 			</div>
-			<div style={{ fontSize: '20px', fontWeight: '400', marginTop: '22px' }}>
+			<div className='heading-2' style={{ marginTop: '32px' }}>
 				본인의 닉네임을 설정해주세요.
 			</div>
 			<InputBox
-				placeholder='닉네임은 언제든지 바꿀 수 있어요!'
+				placeholder='닉네임은 자유롭게 바꿀 수 있어요!'
 				style={{ marginTop: '44px' }}
+				onChange={onNicknameChange}
+			/>
+			<InputBox
+				placeholder='MBTI는  14일 마다 바꿀 수 있어요!'
+				style={{ marginTop: '20px' }}
+				onChange={onMbtiChange}
 			/>
 			<Button
 				width='390px'
 				height='52px'
+				className='heading-3-label'
 				backgroundColor='#1973FB'
-				style={{ marginTop: '154px' }}
+				style={{ marginTop: '213px' }}
 				onClick={onChangeProfileButtonClick}
 			>
 				설정하기
@@ -30,11 +61,12 @@ const changeProfile = () => {
 				width='390px'
 				marginTop='8px'
 				backgroundColor='white'
+				className='heading-3-label'
 				color='#1973FB'
 			>
 				뒤로가기
 			</BlueStrokeButton>
-		</Wrapper>
+		</Column>
 	);
 };
 

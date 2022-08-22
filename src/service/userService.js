@@ -36,14 +36,15 @@ class UserService {
 		}
 	};
 
-	getPost = async (category, startId, size, sort) => {
+	getPost = async (accessToken, page, maxResults) => {
 		try {
-			const res = await this.user.get(`posts`, {
+			const res = await this.user.get(`users/posts`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
 				params: {
-					category: category,
-					startId: startId,
-					size: size,
-					sort: sort,
+					page: page,
+					maxResults: maxResults,
 				},
 			});
 			return res;
@@ -61,6 +62,32 @@ class UserService {
 				params: {
 					page: page,
 					maxResults: maxResults,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	changeNickname = async (accessToken) => {
+		try {
+			const res = await this.user.patch(`users/me/nickname`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	changeMbti = async (accessToken) => {
+		try {
+			const res = await this.user.patch(`users/me/mbti`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
 				},
 			});
 			return res;
