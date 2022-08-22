@@ -4,6 +4,7 @@ import CheckedCheckbox from '../../../../public/Icons/Basic/checked.svg';
 import CheckBox from '../../../../public/Icons/Basic/checkbox.svg';
 import { Row, Column } from '../Wrapper.style';
 import LikeIcon from '../../elements/customIcon/LikeIcon';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
 	width: 795px;
@@ -27,7 +28,7 @@ const ContentWrapper = styled.div`
 `;
 
 const CommentBar = ({
-	isClicked,
+	isChecked,
 	comment,
 	time,
 	title,
@@ -37,7 +38,7 @@ const CommentBar = ({
 	return (
 		<Wrapper>
 			<Row alignItems='center'>
-				{isClicked ? (
+				{isChecked ? (
 					<CheckedCheckbox style={{ marginTop: '22px', marginLeft: '38px' }} />
 				) : (
 					<CheckBox style={{ marginTop: '22px', marginLeft: '38px' }} />
@@ -45,7 +46,7 @@ const CommentBar = ({
 				<ContentWrapper style={{ marginTop: '22px' }}>
 					<div>{comment || 'd'}</div>
 					<Row alignItems='center'>
-						<div>{time || '2022.02.22 22:22'}</div>
+						<div>{time}</div>
 						<Row marginLeft='4px'>
 							<LikeIcon fill={RED} style={{ marginLeft: '4px' }} />
 							<span style={{ marginLeft: '4px', color: RED }}>
@@ -63,6 +64,15 @@ const CommentBar = ({
 			</Row>
 		</Wrapper>
 	);
+};
+
+CommentBar.propTypes = {
+	isChecked: PropTypes.bool,
+	comment: PropTypes.string,
+	time: PropTypes.string,
+	title: PropTypes.string,
+	likesCount: PropTypes.number,
+	replyCount: PropTypes.number,
 };
 
 export default CommentBar;

@@ -2,12 +2,11 @@ import Header from '../elements/header/Header';
 import { Section } from './MainPage.styled';
 import Card from '../elements/card/Card';
 import { CardWrapper } from './MainPage.styled';
+import { accessTokenState } from '../../store/user';
+import { useRecoilValue } from 'recoil';
 
 const mainPage = () => {
-	if (typeof window !== 'undefined') {
-		const accessToken = localStorage.getItem('mbtichannel');
-		console.log(accessToken);
-	}
+	const accessToken = useRecoilValue(accessTokenState);
 	return (
 		<>
 			<Header isVisible />

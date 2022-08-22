@@ -52,11 +52,13 @@ class UserService {
 		}
 	};
 
-	comment = async (postId, page, maxResults) => {
+	comment = async (accessToken, page, maxResults) => {
 		try {
-			const res = await this.user.get(`comments`, {
+			const res = await this.user.get(`users/comments`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
 				params: {
-					postId: postId,
 					page: page,
 					maxResults: maxResults,
 				},

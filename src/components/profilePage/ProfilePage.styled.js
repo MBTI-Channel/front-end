@@ -47,7 +47,9 @@ export const ActivityContainer = styled.div`
 	border-radius: 4px;
 `;
 
-export const ActivityBar = styled.div`
+export const ActivityBar = styled.div.attrs((props) => ({
+	value: props.value,
+}))`
 	width: 771px;
 	height: 56px;
 	display: flex;

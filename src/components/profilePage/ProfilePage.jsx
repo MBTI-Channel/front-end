@@ -18,7 +18,8 @@ import Category from '../elements/category/Category';
 import { Footer } from '../writingPage/WritingPage.style';
 import User from '../../service/userService';
 import profileService from '../../service/profileservice';
-import { useRecoilState } from 'recoil';
+import { accessTokenState } from '../../store/user';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { isAdminState } from '../../store/profileState';
 
 /* 7/25 TODO
@@ -32,7 +33,7 @@ const Profile = () => {
 	const router = useRouter();
 	const [nickname, setNickname] = useState('');
 	const [mbti, setMbti] = useState('');
-	const [accessToken, setAccessToken] = useState('');
+	const accessToken = useRecoilValue(accessTokenState);
 	const [createdAt, setCreatedAt] = useState('');
 	const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
 
@@ -52,36 +53,33 @@ const Profile = () => {
 		);
 	};
 
-	useEffect(() => {
-		setAccessToken(localStorage.getItem('mbtichannel'));
-	}, [accessToken]);
-
 	if (nickname == '') {
-		User.me(accessToken).then((res) => {
-			if (res) {
+		if (accessToken) {
+			User.me(accessToken).then((res) => {
 				setNickname(res.data.nickname);
 				setMbti(res.data.mbti);
 				setCreatedAt(res.data.createdAt.slice(0, 10));
 				setIsAdmin(res.data.isAdmin);
-			}
-		});
+			});
+		}
 	}
 
 	const onClickActivity = (e) => {
-		const { value } = e.target.value;
-		if (value == alarm) {
-			router.push('/alarm');
-		} else if (value == myActivity) {
-			router.push('/myActivity');
-		} else if (value == question) {
-			router.push('/question');
-		} else if (value == prohibit) {
-			router.push('/prohibit');
-		} else if (value == quit) {
-			router.push('/quit');
-		} else if (value == myActivity) {
-			router.push('/myActivity');
-		}
+		// const { value } = e.target.value;
+		// if (value == 'alarm') {
+		// 	router.push('/alarm');
+		// } else if (value == 'myActivity') {
+		// 	router.push('/myActivity');
+		// } else if (value == 'question') {
+		// 	router.push('/question');
+		// } else if (value == 'prohibit') {
+		// 	router.push('/prohibit');
+		// } else if (value == 'quit') {
+		// 	router.push('/quit');
+		// } else if (value == 'myActivity') {
+		// 	router.push('/myActivity');
+		// }
+		console.log(e.target.value);
 	};
 
 	return (
@@ -110,9 +108,11 @@ const Profile = () => {
 							</SmallButton>
 						</ProfileBar>
 						<ActivityContainer className='label'>
-							<ActivityBar style={{ marginTop: '24px' }}>
+							<ActivityBar style={{ marginTop: '24px' }} value='alarm'>
 								<img className='icon-container' src='/Icons/Basic/bell.svg' />
-								<span className='text-container'>알림</span>
+								<span className='text-container' value='alarm'>
+									알림
+								</span>
 							</ActivityBar>
 							<ActivityBar>
 								<img

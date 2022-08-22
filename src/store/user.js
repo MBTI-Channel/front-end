@@ -34,3 +34,8 @@ export const userName = atom({
 	key: 'userName',
 	default: { value: '', isValid: false, duplicate: false },
 });
+
+export const accessTokenState = atom({
+	key: 'user/accessToken',
+	default: '',
+});

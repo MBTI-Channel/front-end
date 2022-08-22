@@ -16,7 +16,7 @@ import { Row, Column } from '../elements/Wrapper.style';
 import User from '../../service/userService';
 
 const ActivityPage = () => {
-	User.getPost('trip', 0, 4, 'createdAt').then((res) => console.log(res));
+	User.getPost('test', 0, 4, 'createdAt').then((res) => console.log(res));
 	return (
 		<>
 			<Header isVisible />

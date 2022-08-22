@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Logo } from './Header.styled';
 import Gnb from '../../articles/Gnb';
 import User from '../../../service/userService';
-import { userInfo } from '../../../store/user';
-import { useSetRecoilState } from 'recoil';
+import { accessTokenState, userInfo } from '../../../store/user';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 const GnbWrapper = styled.header.attrs((props) => ({
 	// TODO: Wrapper Component로 분리하기
@@ -39,6 +39,7 @@ const GnbWrapper = styled.header.attrs((props) => ({
 const Header = () => {
 	const router = useRouter();
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const setAccessToken = useSetRecoilState(accessTokenState);
 	const setuserState = useSetRecoilState(userInfo);
 	useEffect(() => {
 		const accessToken = localStorage.getItem('mbtichannel');
@@ -46,8 +47,10 @@ const Header = () => {
 			if (res?.data.nickname) {
 				setuserState(res.data);
 				setIsLoggedIn(true);
+				setAccessToken(accessToken);
 			} else {
 				setIsLoggedIn(false);
+				setAccessToken('');
 			}
 		});
 	});
