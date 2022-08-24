@@ -12,7 +12,7 @@ const GnbWrapper = styled.header.attrs((props) => ({
 	// TODO: Wrapper Component로 분리하기
 	isVisible: props.isVisible,
 }))`
-	z-index: 10;
+	/* z-index: 10; */
 	position: sticky;
 	top: 0;
 	left: 0;

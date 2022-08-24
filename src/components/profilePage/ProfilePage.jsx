@@ -9,6 +9,9 @@ import {
 	ActivityBar,
 	MyActivityContainer,
 	MyActivity,
+	InputBox,
+	Modal,
+	ModalBox,
 } from './ProfilePage.styled';
 import { Row, Column } from '../elements/Wrapper.style';
 import Card from '../elements/card/Card';
@@ -17,14 +20,17 @@ import SearchBar from '../elements/bar/SearchBar';
 import Category from '../elements/category/Category';
 import { Footer } from '../writingPage/WritingPage.style';
 import User from '../../service/userService';
-import profileService from '../../service/profileservice';
 import {
 	accessTokenState,
 	nicknameState,
 	mbtiState,
 	isAdminState,
+	newNicknameState,
 } from '../../store/user';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { Button } from '../elements/button/Button';
+import { MBTI_BLUE } from '../../styles/color';
+import SetMBTI from '../user/setMBTI/SetMBTI';
 
 /* 7/25 TODO
 1. 컬러, 폰트 컴포넌트 정리
@@ -40,22 +46,32 @@ const Profile = () => {
 	const accessToken = useRecoilValue(accessTokenState);
 	const [createdAt, setCreatedAt] = useState('');
 	const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
+	const [showNicknameChangeModal, setShowNicknameChangeModal] = useState(false);
+	const [showMbtiChangeModal, setShowMbtiChangeModal] = useState(false);
+	const [newNickname, setNewNickname] = useRecoilState(newNicknameState);
 
-	const userId = router.query.id;
+	const onClick = (e) => {
+		const value = e.target.value;
+		if (value == 'openNicknameChangeModal') {
+			setShowNicknameChangeModal(true);
+		} else if (value == 'openMbtiChangeModal') {
+			setShowMbtiChangeModal(true);
+		} else if (value == 'changeNickname') {
+			if (newNickname !== nickname) {
+				User.changeNickname(accessToken, newNickname).then((res) => {
+					setAccessToken(res.data.accessToken);
+					setNickname(newNickname);
+					console.log(res);
+				});
+			}
+		} else if (value == 'changeMbti') {
+			d;
+		}
+	};
 
-	const onClickChangeProfileInfo = () => {
-		// console.log(nickname, mbti);
-		const screenWidth = screen.availWidth;
-		const screenHeight = screen.availHeight;
-		const popWidth = 779;
-		const popHeight = 779;
-		const positionLeft = (screenWidth - popWidth) / 2;
-		const positionTop = (screenHeight - popHeight) / 2;
-		window.open(
-			'/auth/changeProfile',
-			'test',
-			`width=${popWidth}, height=${popHeight}, top=${positionTop}, left=${positionLeft}, resizable=yes, scrollbars=no`,
-		);
+	const onChange = (e) => {
+		const value = e.target.value;
+		setNewNickname(value);
 	};
 
 	if (nickname == '') {
@@ -108,10 +124,29 @@ const Profile = () => {
 									{createdAt}
 								</span>
 							</div>
-							<SmallButton isFilled={true} onClick={onClickChangeProfileInfo}>
-								닉네임/MBTI 변경
-							</SmallButton>
+							<Row>
+								<SmallButton
+									width='107px'
+									className='small-text-regular'
+									onClick={onClick}
+									value='openNicknameChangeModal'
+								>
+									닉네임 변경
+								</SmallButton>
+								<SmallButton
+									width='103px'
+									className='small-text-regular'
+									onClick={onClick}
+									value='openMbtiChangeModal'
+									style={{ marginLeft: '8px' }}
+								>
+									MBTI 변경
+								</SmallButton>
+							</Row>
 						</ProfileBar>
+						{/* <Modal>
+							<ModalBox>닉네임 변경</ModalBox>
+						</Modal> */}
 						<ActivityContainer className='label'>
 							<ActivityBar style={{ marginTop: '24px' }} value='alarm'>
 								<img className='icon-container' src='/Icons/Basic/bell.svg' />
@@ -158,6 +193,65 @@ const Profile = () => {
 						<Footer style={{ marginTop: '20px' }}>Footer</Footer>
 					</Column>
 				</Row>
+				{showNicknameChangeModal ? (
+					<Modal>
+						<ModalBox>
+							<Column alignItems='center' justifyContent='center'>
+								<div className='title' style={{ marginTop: '92px' }}>
+									닉네임 변경
+								</div>
+								<div className='notice-l' style={{ marginTop: '32px' }}>
+									채널에서 사용할 닉네임을 설정해주세요.
+								</div>
+								<InputBox
+									placeholder='닉네임은 언재든지 바꿀 수 있어요!'
+									style={{ marginTop: '16px' }}
+									onChange={onChange}
+								/>
+								<Button
+									width='390px'
+									height='52px'
+									className='heading-3-label'
+									value='changeNickname'
+									backgroundColor={MBTI_BLUE}
+									style={{ marginTop: '303px' }}
+									onClick={onClick}
+								>
+									설정하기
+								</Button>
+							</Column>
+						</ModalBox>
+					</Modal>
+				) : (
+					<></>
+				)}
+				{showMbtiChangeModal ? (
+					<Modal>
+						<ModalBox>
+							<Column alignItems='center' justifyContent='center'>
+								<div className='title' style={{ marginTop: '92px' }}>
+									MBTI 변경
+								</div>
+								<div className='notice-l' style={{ marginTop: '32px' }}>
+									아래 알파벳을 조합해 MBTI를 설정해주세요.
+								</div>
+								<SetMBTI style={{ marginBottom: '240px' }} />
+								<Button
+									width='390px'
+									height='52px'
+									className='heading-3-label'
+									backgroundColor='#1973FB'
+									style={{ marginTop: '303px' }}
+									onClick={onClick}
+								>
+									설정하기
+								</Button>
+							</Column>
+						</ModalBox>
+					</Modal>
+				) : (
+					<></>
+				)}
 			</Section>
 		</>
 	);

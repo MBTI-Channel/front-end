@@ -25,9 +25,10 @@ const LoginRedirectHandler = ({ provider }) => {
 				router.push('/user/signUp/setMBTI');
 			}
 			localStorage.setItem('mbtichannel', user.data.accessToken);
+			Cookies.set('mbtichannel-nickname', encodeURI(user.data.nickname));
+			Cookies.set('mbtichannel-mbti', user.data.mbti);
 		});
 	}, []);
-
 	return <div></div>;
 };
 

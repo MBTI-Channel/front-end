@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { InputBox } from './ChangeProfilePage.styled';
 import { Button } from '../elements/button/Button';
 import { BlueStrokeButton } from '../elements/button/BlueStrokeButton';
@@ -5,29 +6,49 @@ import { Column } from '../elements/Wrapper.style';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { nicknameState, mbtiState, accessTokenState } from '../../store/user';
 import User from '../../service/userService';
+import { useEffect, useState } from 'react';
 
 const changeProfile = () => {
-	const [nickname, setNickname] = useRecoilState(nicknameState);
-	const [mbti, setMbti] = useRecoilState(mbtiState);
-	const accessToken = useRecoilValue(accessTokenState);
+	// const [nickname, setNickname] = useRecoilState(nicknameState);
+	// const [mbti, setMbti] = useRecoilState(mbtiState);
+	const [nickname, setNickname] = useState(
+		decodeURI(Cookies.get('mbtichannel-nickname')),
+	);
+	const [mbti, setMbti] = useState(Cookies.get('mbtichannel-mbti'));
+	const [accessToken, setAccessToken] = useState('');
+	const [newNickname, setNewNickname] = useState('');
+	const [newMbti, setNewMbti] = useState('');
 
-	console.log('hi', nickname, mbti, accessToken);
+	useEffect(() => {
+		if (accessToken == '') {
+			setAccessToken(localStorage.getItem('mbtichannel'));
+		}
+	});
 
 	const onNicknameChange = (e) => {
-		let newNickname = e.target.value;
-		if (newNickname !== nickname) {
-			User.changeNickname(accessToken).then((res) => console.log(res));
-		}
+		setNewNickname(e.target.value);
+		// if (newNickname !== nickname) {
+		// 	User.changeNickname(accessToken).then((res) => console.log(res));
+		// }
 	};
 
 	const onMbtiChange = (e) => {
-		let newMbti = e.target.value;
-		if (newMbti !== mbti) {
-			User.changeMbti(accessToken).then((res) => console.log(res));
-		}
+		setNewMbti(e.target.value);
+		// if (newMbti !== mbti) {
+		// 	User.changeMbti(accessToken).then((res) => console.log(res));
+		// }
 	};
 
-	const onChangeProfileButtonClick = () => {};
+	const onChangeProfileButtonClick = () => {
+		if (newNickname !== nickname) {
+			User.changeNickname(accessToken, newNickname).then((res) =>
+				console.log(res),
+			);
+		}
+		if (newMbti !== mbti) {
+			User.changeMbti(accessToken, newMbti).then((res) => console.log(res));
+		}
+	};
 
 	return (
 		<Column alignItems='center' justifyContent='center'>

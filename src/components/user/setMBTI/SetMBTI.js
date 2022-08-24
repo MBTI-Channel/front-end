@@ -69,12 +69,12 @@ const SetMBTI = ({ nextHref }) => {
 
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 			<Wrapper>
 				<Content>
-					<Typo fontWeight={400} fontSize={'1.5rem'} mb={'48px'}>
+					{/* <Typo fontWeight={400} fontSize={'1.5rem'} mb={'48px'}>
 						알파벳을 조합해 MBTI를 설정해주세요.
-					</Typo>
+					</Typo> */}
 					<Middle>
 						<div>
 							<label>

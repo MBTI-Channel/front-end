@@ -92,3 +92,45 @@ export const MyActivity = styled.div`
 	margin-top: 8px;
 	color: #333333;
 `;
+
+export const InputBox = styled.input.attrs((props) => ({
+	marginTop: props.marginTop,
+}))`
+	width: 390px;
+	height: 52px;
+	color: black;
+	border: 1px solid #ebebeb;
+	border-radius: 2px;
+	padding: 15px 14px;
+	margin-top: ${(props) => props.marginTop};
+
+	::placeholder,
+	::-webkit-input-placeholder {
+		color: #c4c4c4;
+		font-family: 'Noto Sans';
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+	}
+`;
+
+export const Modal = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+`;
+
+export const ModalBox = styled.div`
+	position: absolute;
+	top: calc(50vh - 343px);
+	left: calc(50vw - 310px);
+	background-color: white;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	width: 621px;
+	height: 687px;
+`;

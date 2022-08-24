@@ -54,3 +54,8 @@ export const mbtiState = atom({
 	key: 'user/mbti',
 	default: '',
 });
+
+export const newNicknameState = atom({
+	key: 'user/newNickname',
+	default: '',
+});

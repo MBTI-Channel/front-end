@@ -70,26 +70,34 @@ class UserService {
 		}
 	};
 
-	changeNickname = async (accessToken) => {
+	changeNickname = async (accessToken, nickname) => {
 		try {
-			const res = await this.user.patch(`users/me/nickname`, {
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
+			const res = await this.user.patch(
+				`users/me/nickname`,
+				{ nickname: nickname },
+				{
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
 				},
-			});
+			);
 			return res;
 		} catch (e) {
 			console.log(e);
 		}
 	};
 
-	changeMbti = async (accessToken) => {
+	changeMbti = async (accessToken, mbti) => {
 		try {
-			const res = await this.user.patch(`users/me/mbti`, {
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
+			const res = await this.user.patch(
+				`users/me/mbti`,
+				{ mbti: mbti },
+				{
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
 				},
-			});
+			);
 			return res;
 		} catch (e) {
 			console.log(e);
