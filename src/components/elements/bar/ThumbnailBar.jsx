@@ -3,6 +3,7 @@ import LikeIcon from '../../../../public/icon/like.svg';
 import CommentIcon from '../../../../public/icon/comment.svg';
 import EyeIcon from '../../../../public/icon/eye.svg';
 import BookmarkIcon from '../../../../public/Icons/Basic/Bookmark.svg';
+import { Row } from '../Wrapper.style';
 import PropTypes from 'prop-types';
 import { RED, MBTI_BLUE, DARK_GREY_2 } from '../../../styles/color';
 import { useRecoilValue } from 'recoil';
@@ -19,8 +20,7 @@ const Wrapper = styled.div.attrs((props) => ({
 `;
 
 const UsernameContainer = styled.div`
-	/* width: 219px; */
-	max-height: 24px;
+	/* max-height: 24px; */
 	display: flex;
 	align-items: center;
 
@@ -31,6 +31,7 @@ const UsernameContainer = styled.div`
 
 const TextContainer = styled.div`
 	/* max-width: 763px; */
+	/* display: flex; */
 	text-overflow: ellipsis;
 
 	& .content-thumbnail {
@@ -41,7 +42,12 @@ const TextContainer = styled.div`
 		border: transparent;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		border: 1px solid red;
+	}
+
+	& img {
+		/* position: relative; */
+		/* top: 0px; */
+		/* left: 608px; */
 	}
 `;
 
@@ -64,7 +70,7 @@ const ThumbnailBar = ({
 	userNickname,
 	title,
 	likesCount,
-	replyCount,
+	commentCount,
 	viewCount,
 	updateDatetime,
 	textContent,
@@ -73,58 +79,61 @@ const ThumbnailBar = ({
 }) => {
 	return (
 		<Wrapper marginTop={marginTop}>
-			<TextContainer style={{ padding: '16px' }}>
-				<UsernameContainer>
-					{isBookmarked ? (
-						<>
-							<BookmarkIcon fill={RED} />
-							<span
-								className='small-text-bold'
-								style={{
-									color: MBTI_BLUE,
-									marginLeft: '6px',
-								}}
-							>
-								[{mbti}] {userNickname}
-							</span>
-						</>
-					) : (
-						<>
-							<span
-								className='small-text-bold'
-								style={{
-									color: MBTI_BLUE,
-								}}
-							>
-								[{mbti}] {userNickname}
-							</span>
-						</>
-					)}
-					<span
-						className='label'
-						style={{
-							marginLeft: '6px',
-						}}
+			<Row alignItems='center'>
+				<TextContainer style={{ padding: '16px' }}>
+					<UsernameContainer>
+						{isBookmarked ? (
+							<>
+								<BookmarkIcon fill={RED} />
+								<span
+									className='small-text-bold'
+									style={{
+										color: MBTI_BLUE,
+										marginLeft: '6px',
+									}}
+								>
+									[{mbti}] {userNickname}
+								</span>
+							</>
+						) : (
+							<>
+								<span
+									className='small-text-bold'
+									style={{
+										color: MBTI_BLUE,
+									}}
+								>
+									[{mbti}] {userNickname}
+								</span>
+							</>
+						)}
+						<span
+							className='label'
+							style={{
+								marginLeft: '6px',
+							}}
+						>
+							{title}
+						</span>
+					</UsernameContainer>
+					<div
+						className='content-thumbnail paragraph'
+						style={{ color: DARK_GREY_2 }}
 					>
-						{title}
-					</span>
-				</UsernameContainer>
-				<div className='content-thumbnail'>
-					<div className='paragraph' style={{ color: DARK_GREY_2 }}>
-						{textContent ||
-							'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content smore-or-less normal distribution of letters, as opposed to using Content here, content smore-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content s more-or-less normal distribution of letters, as opposed to using Content here, content s v more-or-less normal distribution of letters, as opposed to using Content here, content s'}
+						{textContent}
 					</div>
-				</div>
-				{imgSrc ? <img src={imgSrc} /> : <></>}
-			</TextContainer>
-			<ContentContainer>
+				</TextContainer>
+				{imgSrc ? <img src={imgSrc} width='155px' /> : <></>}
+			</Row>
+
+			<ContentContainer className='small-text-regular'>
 				<div className='content-count'>
 					<LikeIcon width='16px' height='16px' fill='#4F4C4C' />
 					<span style={{ marginLeft: '4px' }}>{likesCount}</span>
 				</div>
 				<div className='content-count' style={{ marginLeft: '12px' }}>
 					<CommentIcon width='16px' height='16px' fill='#4F4C4C' />
-					<span style={{ marginLeft: '4px' }}>{replyCount}</span>
+					<span style={{ marginLeft: '4px' }}>{commentCount}</span>
 				</div>
 				<div className='content-count' style={{ marginLeft: '12px' }}>
 					<EyeIcon width='16px' height='16px' />

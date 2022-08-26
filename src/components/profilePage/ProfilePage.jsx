@@ -27,10 +27,11 @@ import {
 	isAdminState,
 	newNicknameState,
 } from '../../store/user';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilCallback, useRecoilState, useRecoilValue } from 'recoil';
 import { Button } from '../elements/button/Button';
 import { MBTI_BLUE } from '../../styles/color';
 import SetMBTI from '../user/setMBTI/SetMBTI';
+import CrossIcon from '../elements/customIcon/CrossIcon';
 
 /* 7/25 TODO
 1. 컬러, 폰트 컴포넌트 정리
@@ -43,7 +44,7 @@ const Profile = () => {
 	const router = useRouter();
 	const [nickname, setNickname] = useRecoilState(nicknameState);
 	const [mbti, setMbti] = useRecoilState(mbtiState);
-	const accessToken = useRecoilValue(accessTokenState);
+	const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 	const [createdAt, setCreatedAt] = useState('');
 	const [isAdmin, setIsAdmin] = useRecoilState(isAdminState);
 	const [showNicknameChangeModal, setShowNicknameChangeModal] = useState(false);
@@ -66,6 +67,9 @@ const Profile = () => {
 			}
 		} else if (value == 'changeMbti') {
 			d;
+		} else if (value == 'backward-button') {
+			console.log('hi');
+			setShowNicknameChangeModal(false);
 		}
 	};
 
@@ -197,6 +201,16 @@ const Profile = () => {
 					<Modal>
 						<ModalBox>
 							<Column alignItems='center' justifyContent='center'>
+								<CrossIcon
+									style={{
+										position: 'relative',
+										top: '20px',
+										left: '278.5px',
+										backgroundColor: 'white',
+									}}
+									onClick={onClick}
+									value='backward-button'
+								/>
 								<div className='title' style={{ marginTop: '92px' }}>
 									닉네임 변경
 								</div>
@@ -235,7 +249,7 @@ const Profile = () => {
 								<div className='notice-l' style={{ marginTop: '32px' }}>
 									아래 알파벳을 조합해 MBTI를 설정해주세요.
 								</div>
-								<SetMBTI style={{ marginBottom: '240px' }} />
+								<SetMBTI style={{ marginBottom: '2400px' }} />
 								<Button
 									width='390px'
 									height='52px'

@@ -22,7 +22,7 @@ import { Button, BackwardButton } from '../../elements/button/Button';
 import { Typo } from '../../elements/typo/Typo.styled';
 import Header from '../../elements/header/Header';
 
-const SetMBTI = ({ nextHref }) => {
+const SetMBTI = ({ nextHref, style }) => {
 	const [ei, setEI] = useRecoilState(EI);
 	const [ns, setNS] = useRecoilState(NS);
 	const [ft, setFT] = useRecoilState(FT);
@@ -70,7 +70,7 @@ const SetMBTI = ({ nextHref }) => {
 	return (
 		<>
 			{/* <Header /> */}
-			<Wrapper>
+			<Wrapper style={style}>
 				<Content>
 					{/* <Typo fontWeight={400} fontSize={'1.5rem'} mb={'48px'}>
 						알파벳을 조합해 MBTI를 설정해주세요.

@@ -3,6 +3,7 @@ import CommentBar from '../../src/components/elements/bar/CommentBar';
 import User from '../service/userService';
 import Header from '../components/elements/header/Header';
 import QuestionBar from '../components/elements/bar/QuestionBar';
+import SetMBTI from '../components/user/setMBTI/SetMBTI';
 
 const Test = () => {
 	const [comment, setComment] = useState('');
@@ -45,7 +46,8 @@ const Test = () => {
 				replyCount={replyCount}
 				title={title}
 			/> */}
-			<QuestionBar />
+			{/* <QuestionBar /> */}
+			<SetMBTI />
 		</>
 	);
 };

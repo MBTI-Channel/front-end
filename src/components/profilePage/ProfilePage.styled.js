@@ -133,4 +133,10 @@ export const ModalBox = styled.div`
 	border-radius: 4px;
 	width: 621px;
 	height: 687px;
+
+	& .backward-button {
+		position: 'relative';
+		top: '20px';
+		left: '278.5px';
+	}
 `;
