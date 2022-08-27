@@ -66,7 +66,7 @@ const ContentContainer = styled.div`
 
 const ThumbnailBar = ({
 	marginTop,
-	mbti,
+	userMbti,
 	userNickname,
 	title,
 	likesCount,
@@ -92,7 +92,7 @@ const ThumbnailBar = ({
 										marginLeft: '6px',
 									}}
 								>
-									[{mbti}] {userNickname}
+									[{userMbti}] {userNickname}
 								</span>
 							</>
 						) : (
@@ -103,7 +103,7 @@ const ThumbnailBar = ({
 										color: MBTI_BLUE,
 									}}
 								>
-									[{mbti}] {userNickname}
+									[{userMbti}] {userNickname}
 								</span>
 							</>
 						)}

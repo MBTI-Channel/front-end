@@ -20,104 +20,57 @@ import { useEffect, useState } from 'react';
 import { E } from '../user/setMBTI/SetMBTI.styled';
 
 const ActivityPage = () => {
-	const [userMbti, setUserMbti] = useState('');
-	const [userNickname, setUserNickname] = useState('');
-	const [titleList, setTitleList] = useState([]);
-	const [likesCountList, setLikesCountList] = useState([]);
-	const [replyCountList, setReplyCountList] = useState([]);
-	const [viewCountList, setViewCountList] = useState([]);
-	const [dateTimeList, setDateTimeList] = useState([]);
-	const [textContentList, setTextContentList] = useState([]);
-	let [itemsList, setItemsList] = useState([]);
-
+	const [itemsList, setItemsList] = useState([]);
 	const accessToken = useRecoilValue(accessTokenState);
 
 	useEffect(() => {
-		User.getPost(accessToken, 1, 10).then((res) => {
-			if (res) {
-				let items = res.data.items;
-				// console.log(items);
-				for (let itemsIndex = 0; itemsIndex < items.length; itemsIndex++) {
-					let item = items[itemsIndex];
-					if (item.updatedAt) {
-						// setItemsList((prev) => [...prev, ])
-						itemsList.push({
-							userMbti: item.userMbti,
-							userNickname: item.userNickname,
-							title: item.title,
-							likesCount: item.likesCount,
-							commentCount: item.commentCount,
-							viewCount: item.viewCount,
-							time:
-								`${item.updatedAt.slice(0, 10)}` +
-								' ' +
-								`${item.updatedAt.slice(11, 16)}`,
-							content: item.content,
-						});
-					} else {
-						itemsList.push({
-							userMbti: item.userMbti,
-							userNickname: item.userNickname,
-							title: item.title,
-							likesCount: item.likesCount,
-							commentCount: item.commentCount,
-							viewCount: item.viewCount,
-							time:
-								`${item.createdAt.slice(0, 10)}` +
-								' ' +
-								`${item.createdAt.slice(11, 16)}`,
-							content: item.content,
-						});
+		if (accessToken) {
+			User.getPost(accessToken, 1, 10).then((res) => {
+				if (res) {
+					let items = res.data.items;
+					for (let itemsIndex = 0; itemsIndex < items.length; itemsIndex++) {
+						let item = items[itemsIndex];
+						// let newArr = [...itemsList];
+						// // console.log(newArr);
+						if (item.updatedAt) {
+							setItemsList((prev) => [
+								...prev,
+								{
+									userMbti: item.userMbti,
+									userNickname: item.userNickname,
+									title: item.title,
+									likesCount: item.likesCount,
+									commentCount: item.commentCount,
+									viewCount: item.viewCount,
+									time:
+										`${item.updatedAt.slice(0, 10)}` +
+										' ' +
+										`${item.updatedAt.slice(11, 16)}`,
+									content: item.content,
+								},
+							]);
+						} else {
+							setItemsList((prev) => [
+								...prev,
+								{
+									userMbti: item.userMbti,
+									userNickname: item.userNickname,
+									title: item.title,
+									likesCount: item.likesCount,
+									commentCount: item.commentCount,
+									viewCount: item.viewCount,
+									time:
+										`${item.createdAt.slice(0, 10)}` +
+										' ' +
+										`${item.createdAt.slice(11, 16)}`,
+									content: item.content,
+								},
+							]);
+						}
 					}
-
-					// if (item.updatedAt) {
-					// 	itemsList.concat([
-					// 		item.title,
-					// 		item.likesCount,
-					// 		item.commentCount,
-					// 		item.viewCount,
-					// 		`${item.updatedAt.slice(0, 10)}` +
-					// 			' ' +
-					// 			`${item.updatedAt.slice(11, 16)}`,
-					// 		item.content,
-					// 	]);
-					// } else {
-					// 	itemsList.concat([
-					// 		item.title,
-					// 		item.likesCount,
-					// 		item.commentCount,
-					// 		item.viewCount,
-					// 		`${item.createdAt.slice(0, 10)}` +
-					// 			' ' +
-					// 			`${item.createdAt.slice(11, 16)}`,
-					// 		item.content,
-					// 	]);
-					// }
-
-					// setTitleList((prev) => [...prev, item.title]);
-					// setLikesCountList((prev) => [...prev, item.likesCount]);
-					// setReplyCountList((prev) => [...prev, item.commentCount]);
-					// setViewCountList((prev) => [...prev, item.viewCount]);
-					// if (item.updatedAt) {
-					// 	setDateTimeList((prev) => [
-					// 		...prev,
-					// 		`${item.updatedAt.slice(0, 10)}` +
-					// 			' ' +
-					// 			`${item.updatedAt.slice(11, 16)}`,
-					// 	]);
-					// } else {
-					// 	setDateTimeList((prev) => [
-					// 		...prev,
-					// 		`${item.createdAt.slice(0, 10)}` +
-					// 			' ' +
-					// 			`${item.createdAt.slice(11, 16)}`,
-					// 	]);
-					// }
-					// setTextContentList((prev) => [...prev, item.content]);
 				}
-			}
-		});
-		console.log(itemsList);
+			});
+		}
 	}, [accessToken]);
 
 	return (
@@ -169,23 +122,24 @@ const ActivityPage = () => {
 								</CategoryButton>
 							</ButtonContainer>
 						</Column>
-						<ContentWrapper style={{ marginTop: '16px' }}>
+						<Row marginTop='16px'>
 							<Column gap='8px'>
-								{itemsList ? (
+								{itemsList.length > 0 ? (
 									itemsList.map((item) => (
 										<ThumbnailBar
-											mbti={item.userMbti}
+											key={item.title}
+											userMbti={item.userMbti}
 											userNickname={item.userNickname}
 											title={item.title}
 											likesCount={item.likesCount}
 											commentCount={item.commentCount}
-											viewCount={item.ciewCount}
+											viewCount={item.viewCount}
 											updateDatetime={item.time}
 											textContent={item.content}
 										/>
 									))
 								) : (
-									<></>
+									<>d</>
 								)}
 							</Column>
 							<Column marginLeft='14px'>
@@ -193,7 +147,7 @@ const ActivityPage = () => {
 								<Category marginTop='16px' />
 								<Footer marginTop='16px' />
 							</Column>
-						</ContentWrapper>
+						</Row>
 					</Column>
 				</Row>
 			</Section>

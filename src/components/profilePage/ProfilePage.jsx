@@ -78,15 +78,13 @@ const Profile = () => {
 		setNewNickname(value);
 	};
 
-	if (nickname == '') {
-		if (accessToken) {
-			User.me(accessToken).then((res) => {
-				setNickname(res.data.nickname);
-				setMbti(res.data.mbti);
-				setCreatedAt(res.data.createdAt.slice(0, 10));
-				setIsAdmin(res.data.isAdmin);
-			});
-		}
+	if (nickname == '' && accessToken) {
+		User.me(accessToken).then((res) => {
+			setNickname(res.data.nickname);
+			setMbti(res.data.mbti);
+			setCreatedAt(res.data.createdAt.slice(0, 10));
+			setIsAdmin(res.data.isAdmin);
+		});
 	}
 
 	const onClickActivity = (e) => {
