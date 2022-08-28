@@ -22,12 +22,13 @@ const InputParagraph = styled.textarea.attrs((props) => ({
 	}
 `;
 
-const Paragraph = ({ marginTop, placeholder, onChange }) => {
+const Paragraph = ({ marginTop, placeholder, onChange, value }) => {
 	return (
 		<InputParagraph
 			placeholder={placeholder}
 			marginTop={marginTop}
 			onChange={onChange}
+			value={value}
 		/>
 	);
 };

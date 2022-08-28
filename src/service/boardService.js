@@ -7,12 +7,11 @@ class BoardService {
 
 	// 게시글 작성
 	//TODO: 이미지 업로드 과정 추가
-	write = async (accessToken, category, isSecret, title, content) => {
-		console.log(category);
+	write = async (accessToken, category, isSecret, title, content, filesUrl) => {
 		try {
 			const res = await this.board.post(
 				`posts`,
-				{ category, isSecret, title, content },
+				{ category, isSecret, title, content, filesUrl },
 				{
 					headers: {
 						Authorization: `Bearer ${accessToken}`,
@@ -32,6 +31,24 @@ class BoardService {
 					Authorization: `Bearer ${accessToken}`,
 				},
 			});
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	update = async (accessToken, id, title, content, isSecret, filesUrl) => {
+		console.log(accessToken);
+		try {
+			const res = await this.board.patch(
+				`posts/${id}`,
+				{ id, title, content, isSecret, filesUrl },
+				{
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
+				},
+			);
 			return res;
 		} catch (e) {
 			console.log(e);

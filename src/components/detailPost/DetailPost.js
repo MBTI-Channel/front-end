@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import Header from '../../components/elements/header/Header';
 import Card from '../../components/elements/card/Card';
 import SearchBar from '../../components/elements/bar/SearchBar';
 import SideBar from '../elements/sideBar/SideBar';
-import boardService from '../../service/boardService';
 import {
 	// TODO: 공용 컴포넌트로 분리하기
 	Section,
@@ -29,15 +28,19 @@ import {
 import { useRouter } from 'next/router';
 import Board from '../../service/boardService';
 
-// import { Category } from './DetailPost.styled';
-
 const DetailPost = (props) => {
 	const router = useRouter();
 	const { id } = router.query;
-	useEffect(() => {
+	const [detail, setDetail] = useState({});
+
+	useLayoutEffect(() => {
+		if (!router.isReady) return;
 		const accessToken = localStorage.getItem('mbtichannel');
-		Board.detail(accessToken, id).then((res) => console.log(res));
-	});
+		Board.detail(accessToken, Number(id)).then((res) => {
+			console.log(res);
+			setDetail(res?.data);
+		});
+	}, [router.isReady]);
 
 	return (
 		<>
@@ -56,20 +59,22 @@ const DetailPost = (props) => {
 							<DetailHeader>
 								<PostTitleContainer>
 									<PostTitleWrapper>
-										<MBTI className='large-text-bold'>[INTJ]</MBTI>
-										<Title className='large-text-bold'>
-											깻잎 논쟁 어떻게 생각하시나요?
-										</Title>
+										<MBTI className='large-text-bold'>[{detail.userMbti}]</MBTI>
+										<Title className='large-text-bold'>{detail.title}</Title>
 									</PostTitleWrapper>
 									신고
 								</PostTitleContainer>
 								<Info>
-									<UserName className='middle-text-regular'>야옹맨</UserName>
-									<PostDate>2020.08.22 18:20:33</PostDate>
+									<UserName className='middle-text-regular'>
+										{detail.userNickname}
+									</UserName>
+									<PostDate>
+										{new Date(Date.parse(detail.createdAt)).toLocaleString()}
+									</PostDate>
 								</Info>
 							</DetailHeader>
 						</PostWrapper>
-						<PostContent>ㅈㄱㄴ</PostContent>
+						<PostContent>{detail.content}</PostContent>
 					</TextWrapper>
 					<MenuWrapper>
 						<SearchBar />

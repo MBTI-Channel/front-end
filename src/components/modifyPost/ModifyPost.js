@@ -7,7 +7,7 @@ import {
 	CategoryConatiner,
 	MenuWrapper,
 	Footer,
-} from './WritingPage.style';
+} from '../writingPage/WritingPage.style';
 import Card from '../elements/card/Card';
 import Title from '../elements/input/Title';
 import Paragraph from '../elements/input/Paragraph';
@@ -15,9 +15,10 @@ import { Button } from '../elements/button/Button';
 import SearchBar from '../elements/bar/SearchBar';
 import SideBar from '../elements/sideBar/SideBar';
 import CameraIcon from '../../../public/Icons/Basic/Camera.svg';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import Board from '../../service/boardService';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 /* 7/21 TODO
 	1. placeholder 줄바꿈 ... 미해결
@@ -31,11 +32,13 @@ const ThumbnailImage = styled.img`
 	border-radius: 8px;
 `;
 
-const WritingPage = () => {
+const ModifyPost = () => {
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
-	const [accessToken, setAccessToken] = useState('');
+	const router = useRouter();
+	const { id } = router.query;
+	const [detail, setDetail] = useState({});
 
 	const onTitleChange = (e) => {
 		const value = e.target.value;
@@ -48,14 +51,22 @@ const WritingPage = () => {
 	};
 
 	const onPostButtonClick = () => {
-		Board
-			.write(accessToken, 'love', false, title, content, [])
-			.then((res) => console.log(res));
+		const accessToken = localStorage.getItem('mbtichannel');
+		Board.update(accessToken, id, title, content, false, []).then((res) =>
+			console.log(res),
+		);
 	};
 
-	useEffect(() => {
-		setAccessToken(localStorage.getItem('mbtichannel'));
-	}, [accessToken]);
+	useLayoutEffect(() => {
+		if (!router.isReady) return;
+		const accessToken = localStorage.getItem('mbtichannel');
+		Board.detail(accessToken, Number(id)).then((res) => {
+			console.log(res);
+			setDetail(res?.data);
+			setTitle(res?.data.title);
+			setContent(res?.data.content);
+		});
+	}, [router.isReady]);
 
 	const encodeFileToBase64 = (fileBlob) => {
 		const fileReader = new FileReader();
@@ -86,11 +97,12 @@ const WritingPage = () => {
 				<CategoryConatiner>
 					<TextWrapper>
 						<div style={{ fontWeight: '700', fontSize: '20px' }}>글 쓰기</div>
-						<Title marginTop='16px' onChange={onTitleChange} />
+						<Title marginTop='16px' onChange={onTitleChange} value={title} />
 						<Paragraph
 							marginTop='8px'
 							placeholder='&#8226; MBTI CHANNEL은 누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 &#13;&#10; 이용규칙을 제정하여 운영하고 있습니다. &#8226; 위반 시 게시물이 삭제되고 서비스 이용이 일정 기간 제한될 수 있습니다. &#8226; 게시물 작성 전 커뮤니티 이용규칙 공지사항을 반드시 확인하시기 바랍니다. '
 							onChange={onParagraphChange}
+							value={content}
 						/>
 						<div
 							style={{ marginTop: '16px', fontSize: '14px', fontWeight: '700' }}
@@ -121,7 +133,7 @@ const WritingPage = () => {
 							backgroundColor='#1973FB'
 							onClick={onPostButtonClick}
 						>
-							글 올리기
+							글 수정
 						</Button>
 					</TextWrapper>
 					<MenuWrapper>
@@ -135,4 +147,4 @@ const WritingPage = () => {
 	);
 };
 
-export default WritingPage;
+export default ModifyPost;
