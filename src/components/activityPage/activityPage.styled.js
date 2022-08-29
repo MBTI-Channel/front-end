@@ -10,21 +10,29 @@ export const ContentWrapper = styled.div`
 
 export const ButtonContainer = styled.div`
 	display: flex;
-	width: 469px;
-	justify-content: space-around;
+	gap: 8px;
 	margin-top: 16px;
+
+	& input {
+		display: none;
+	}
 `;
 
 export const CategoryButton = styled.button.attrs((props) => ({
 	width: props.width,
-	height: props.height,
 	isSelected: props.isSelected,
 }))`
+	display: flex;
 	width: ${(props) => props.width};
-	height: ${(props) => props.height};
+	height: '34px';
 	color: ${(props) => (props.isSelected ? WHITE : MBTI_BLUE)};
 	background-color: ${(props) => (props.isSelected ? MBTI_BLUE : WHITE)};
-	border: ${(props) =>
-		props.isSelected ? `transparent` : `1px solid ${MBTI_BLUE}`};
+	border: 1px solid ${MBTI_BLUE};
 	border-radius: 4px;
+	padding: 8px 24px;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	line-height: 150%;
+	font-weight: ${(props) => (props.isSelected ? 700 : 400)};
 `;

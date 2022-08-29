@@ -53,7 +53,7 @@ class UserService {
 		}
 	};
 
-	comment = async (accessToken, page, maxResults) => {
+	getComment = async (accessToken, page, maxResults) => {
 		try {
 			const res = await this.user.get(`users/comments`, {
 				headers: {

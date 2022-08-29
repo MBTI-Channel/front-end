@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import { WHITE, LIGHT_GREY_1, RED } from '../../../styles/color';
+import {
+	WHITE,
+	LIGHT_GREY_1,
+	RED,
+	GREY_2,
+	GREY_4,
+	DARK_GREY_2,
+} from '../../../styles/color';
 import CheckedCheckbox from '../../../../public/Icons/Basic/checked.svg';
 import CheckBox from '../../../../public/Icons/Basic/checkbox.svg';
 import { Row, Column } from '../Wrapper.style';
@@ -19,12 +26,7 @@ const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 32px;
-	/* margin-top: 22px; */
-	font-family: 'Noto Sans';
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 150%;
+	gap: 4px;
 `;
 
 const CommentBar = ({
@@ -35,6 +37,7 @@ const CommentBar = ({
 	likesCount,
 	replyCount,
 }) => {
+	// TODO 체크박스 기능 재구현
 	return (
 		<Wrapper>
 			<Row alignItems='center'>
@@ -44,18 +47,25 @@ const CommentBar = ({
 					<CheckBox style={{ marginTop: '22px', marginLeft: '38px' }} />
 				)}
 				<ContentWrapper style={{ marginTop: '22px' }}>
-					<div>{comment || 'd'}</div>
+					<div className='parargraph' style={{ color: DARK_GREY_2 }}>
+						{comment || 'd'}
+					</div>
 					<Row alignItems='center'>
-						<div>{time}</div>
+						<div className='small-text-regular' style={{ color: GREY_4 }}>
+							{time}
+						</div>
 						<Row marginLeft='4px'>
 							<LikeIcon fill={RED} style={{ marginLeft: '4px' }} />
-							<span style={{ marginLeft: '4px', color: RED }}>
+							<span
+								className='small-text-regular'
+								style={{ marginLeft: '4px', color: RED }}
+							>
 								{likesCount || '4'}
 							</span>
 						</Row>
 					</Row>
-					<div>
-						{title || 's'}
+					<div className='parargraph'>
+						<span style={{ color: GREY_2 }}>{title || 's'}</span>
 						<span style={{ color: RED, marginLeft: '4px' }}>
 							[{replyCount || '4'}]
 						</span>
