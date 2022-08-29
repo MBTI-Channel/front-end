@@ -1,1 +1,1 @@
-export { default } from '../../../components/modifyPost/ModifyPost';
+export { default } from '../../../components/post/modify/ModifyPost';

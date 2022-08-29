@@ -1,1 +1,1 @@
-export { default } from '../../../components/writingPage';
+export { default } from '../../../components/post/write';

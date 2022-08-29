@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
-import Header from '../../components/elements/header/Header';
-import Card from '../../components/elements/card/Card';
-import SearchBar from '../../components/elements/bar/SearchBar';
-import SideBar from '../elements/sideBar/SideBar';
+import Header from '../../elements/header/Header';
+import Card from '../../elements/card/Card';
+import SearchBar from '../../elements/bar/SearchBar';
+import SideBar from '../../elements/sideBar/SideBar';
 import {
 	// TODO: 공용 컴포넌트로 분리하기
 	Section,
@@ -11,7 +11,7 @@ import {
 	MenuWrapper,
 	Footer,
 	TextWrapper,
-} from '../writingPage/WritingPage.style';
+} from '../write/WritingPage.style';
 import {
 	Category,
 	DetailHeader,
@@ -26,7 +26,10 @@ import {
 	UserName,
 } from './DetailPost.styled';
 import { useRouter } from 'next/router';
-import Board from '../../service/boardService';
+import Board from '../../../service/boardService';
+import IsMy from '../../isMy/IsMy';
+
+const report = <div>신고</div>;
 
 const DetailPost = (props) => {
 	const router = useRouter();
@@ -62,7 +65,7 @@ const DetailPost = (props) => {
 										<MBTI className='large-text-bold'>[{detail.userMbti}]</MBTI>
 										<Title className='large-text-bold'>{detail.title}</Title>
 									</PostTitleWrapper>
-									신고
+									{detail.isMy == true ? <IsMy></IsMy> : report}
 								</PostTitleContainer>
 								<Info>
 									<UserName className='middle-text-regular'>

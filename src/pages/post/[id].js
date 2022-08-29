@@ -1,1 +1,1 @@
-export { default } from '../../components/detailPost/DetailPost';
+export { default } from '../../components/post/detail/DetailPost';

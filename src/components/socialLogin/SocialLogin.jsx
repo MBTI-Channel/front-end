@@ -9,7 +9,6 @@ import {
 	NaverLogin,
 	NaverIcon,
 } from './SocialLogin.styled';
-import Gnb from '../articles/Gnb';
 import nextConfig from '../../../next.config';
 import Header from '../elements/header/Header';
 

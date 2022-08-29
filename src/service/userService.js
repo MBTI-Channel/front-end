@@ -32,7 +32,24 @@ class UserService {
 			});
 			return res;
 		} catch (e) {
-			console.log(e);
+			this.reissue(accessToken)
+				.then((res) => {
+					console.log(res);
+				})
+				.catch((e) => console.log(e));
+		}
+	};
+
+	reissue = async (accessToken) => {
+		try {
+			const res = await this.user.get(`users/accessToken`, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			});
+			return res;
+		} catch (e) {
+			console.log(e, +'asdasd');
 		}
 	};
 }
