@@ -10,6 +10,11 @@ export const userState = atom({
 	default: { id: '', uuid: '', mbti: '', nickname: '' },
 });
 
+export const userToken = atom({
+	key: 'userToken',
+	default: {},
+});
+
 export const EI = atom({
 	key: 'EI',
 	default: '_',

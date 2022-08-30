@@ -65,7 +65,7 @@ const DetailPost = (props) => {
 										<MBTI className='large-text-bold'>[{detail.userMbti}]</MBTI>
 										<Title className='large-text-bold'>{detail.title}</Title>
 									</PostTitleWrapper>
-									{detail.isMy == true ? <IsMy></IsMy> : report}
+									{detail.isMy == true ? <IsMy id={id}></IsMy> : report}
 								</PostTitleContainer>
 								<Info>
 									<UserName className='middle-text-regular'>

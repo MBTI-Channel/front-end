@@ -34,7 +34,7 @@ class UserService {
 		} catch (e) {
 			this.reissue(accessToken)
 				.then((res) => {
-					console.log(res);
+					console.log(res, 'qwerty');
 				})
 				.catch((e) => console.log(e));
 		}

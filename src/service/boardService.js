@@ -38,7 +38,6 @@ class BoardService {
 	};
 
 	update = async (accessToken, id, title, content, isSecret, filesUrl) => {
-		console.log(accessToken);
 		try {
 			const res = await this.board.patch(
 				`posts/${id}`,
@@ -48,6 +47,23 @@ class BoardService {
 						Authorization: `Bearer ${accessToken}`,
 					},
 				},
+			);
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	delete = async (accessToken, id) => {
+		try {
+			const res = await this.board.delete(
+				`posts/${id}`,
+				{
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
+				},
+				{ id },
 			);
 			return res;
 		} catch (e) {

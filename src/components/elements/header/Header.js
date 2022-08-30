@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Logo } from './Header.styled';
 import Gnb from '../../articles/Gnb';
 import User from '../../../service/userService';
-import { userInfo } from '../../../store/user';
-import { useSetRecoilState } from 'recoil';
+import { userInfo, userToken } from '../../../store/user';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 const GnbWrapper = styled.header.attrs((props) => ({
 	// TODO: Wrapper Component로 분리하기
@@ -39,18 +39,23 @@ const GnbWrapper = styled.header.attrs((props) => ({
 const Header = () => {
 	const router = useRouter();
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const setuserState = useSetRecoilState(userInfo);
+	const setUserState = useSetRecoilState(userInfo);
+	const [accessToken, setAccessToken] = useRecoilState(userToken);
+
+	useLayoutEffect(() => {
+		setAccessToken(localStorage.getItem('mbtichannel'));
+	}, []);
+
 	useEffect(() => {
-		const accessToken = localStorage.getItem('mbtichannel');
 		User.me(accessToken).then((res) => {
 			if (res?.data.nickname) {
-				setuserState(res.data);
+				setUserState(res.data);
 				setIsLoggedIn(true);
 			} else {
 				setIsLoggedIn(false);
 			}
 		});
-	}, []);
+	}, [accessToken]);
 
 	const navHandler = (e) => {
 		const { value } = e.currentTarget;
