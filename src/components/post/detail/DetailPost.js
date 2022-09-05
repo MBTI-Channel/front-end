@@ -78,6 +78,46 @@ const DetailPost = (props) => {
 							</DetailHeader>
 						</PostWrapper>
 						<PostContent>{detail.content}</PostContent>
+						<div
+							style={{
+								width: '10re',
+								display: 'flex',
+								flexDirection: 'row',
+								alignItems: 'flex-start',
+								padding: '0px',
+								gap: '8px',
+							}}
+						>
+							<button
+								style={{
+									display: 'flex',
+									flexDirection: 'row',
+									justifyContent: 'center',
+									alignitems: 'center',
+									padding: '8px 16px',
+									gap: '4px',
+									width: '6.3rem',
+									height: '2.5rem',
+									background: '#1973FB',
+									color: 'white',
+								}}
+								className='middle-text-bold'
+							>
+								<span
+									style={{
+										width: '1rem',
+										height: '1rem',
+										backgroundImage: 'url(/icon/like.svg)',
+										fill: 'white',
+										display: 'inline-block',
+										backgroundSize: 'contain',
+										backgroundRepeat: 'no-repeat',
+										verticalAlign: 'text-top',
+									}}
+								/>
+								좋아요
+							</button>
+						</div>
 					</TextWrapper>
 					<MenuWrapper>
 						<SearchBar />
