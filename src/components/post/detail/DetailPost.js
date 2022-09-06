@@ -28,6 +28,8 @@ import {
 import { useRouter } from 'next/router';
 import Board from '../../../service/boardService';
 import IsMy from '../../isMy/IsMy';
+import { Button } from '../../elements/button/Button';
+import BookNLike from '../bookNLike/bookNLike';
 
 const report = <div>신고</div>;
 
@@ -83,40 +85,14 @@ const DetailPost = (props) => {
 								width: '10re',
 								display: 'flex',
 								flexDirection: 'row',
-								alignItems: 'flex-start',
+								alignItems: 'center',
+								justifyContent: 'center',
 								padding: '0px',
 								gap: '8px',
+								marginTop: '3rem',
 							}}
 						>
-							<button
-								style={{
-									display: 'flex',
-									flexDirection: 'row',
-									justifyContent: 'center',
-									alignitems: 'center',
-									padding: '8px 16px',
-									gap: '4px',
-									width: '6.3rem',
-									height: '2.5rem',
-									background: '#1973FB',
-									color: 'white',
-								}}
-								className='middle-text-bold'
-							>
-								<span
-									style={{
-										width: '1rem',
-										height: '1rem',
-										backgroundImage: 'url(/icon/like.svg)',
-										fill: 'white',
-										display: 'inline-block',
-										backgroundSize: 'contain',
-										backgroundRepeat: 'no-repeat',
-										verticalAlign: 'text-top',
-									}}
-								/>
-								좋아요
-							</button>
+							<BookNLike />
 						</div>
 					</TextWrapper>
 					<MenuWrapper>

@@ -7,14 +7,21 @@ export const Button = styled.button.attrs((props) => ({
 	bg: props.bg || '#1973fb',
 	color: props.color || 'white',
 	p: props.p,
+	border: props.border || '0 none',
 }))`
+  display: flex;
+	flex-direction: ${(props) => props.flexDirection};
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
 	margin: ${(props) => props.m};
 	padding: ${(props) => props.p};
-	border: 0 none;
+	gap: ${(props) => props.gap};
+	border: ${(props) => props.border};
 	border-radius: 4px;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
+	align-items: center;
 	background-color: ${(props) => props.bg};
 	font-weight: ${(props) => props.fontWeight};
 	color: ${(props) => props.color};
